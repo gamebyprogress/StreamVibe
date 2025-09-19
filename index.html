@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamVibe - Смотри фильмы вместе!</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23ff6b6b'/><stop offset='100%' stop-color='%23d946ef'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23grad)' stroke='%23fff' stroke-width='2'/><text x='50' y='55' font-family='Roboto' font-size='20' fill='%23fff' text-anchor='middle' font-weight='bold'>SV</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -108,7 +108,7 @@
             padding: 3rem 2rem; 
             text-align: center; 
             background: rgba(0,0,0,0.3); 
-            margin-top: -5rem; /* Поднимаем вверх */
+            margin-top: -5rem; 
             position: relative;
             z-index: 2;
         }
@@ -127,20 +127,24 @@
             overflow: hidden; 
             cursor: pointer; 
             transition: transform 0.3s; 
-            height: 450px; /* Подлиннее блоки */
+            height: 420px; /* Чуть подлиннее */
             display: flex;
             flex-direction: column;
         }
         .movie-card:hover { transform: scale(1.05); }
         .movie-card img { 
             width: 100%; 
-            height: 350px; /* Больше фото */
+            height: 320px; /* Фиксированная высота для всех фото */
             object-fit: cover; 
+            flex-shrink: 0;
         }
         .movie-card h3 { 
             padding: 1rem; 
-            margin-top: auto; /* Название внизу */
+            margin-top: auto; 
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
         }
         .features { padding: 4rem 2rem; text-align: center; }
         .features h2 { font-size: 2.5rem; margin-bottom: 3rem; }
@@ -231,7 +235,7 @@
             cursor: pointer; 
             transition: all 0.3s; 
             position: relative; 
-            height: 320px; /* Подлиннее блоки комнат */
+            height: 350px; /* Подлиннее блоки комнат */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -242,10 +246,11 @@
         }
         .room-card img { 
             width: 100%; 
-            height: 150px; /* Больше для фотки */
+            height: 180px; /* Больше для фотки */
             object-fit: cover; 
             border-radius: 8px; 
             margin-bottom: 1rem; 
+            flex-shrink: 0;
         }
         .room-card h4 { 
             margin-bottom: 0.5rem; 
@@ -261,16 +266,6 @@
             padding: 0.3rem 0.8rem; 
             background: rgba(255,107,107,0.2); 
             border-radius: 15px; 
-            font-size: 0.8rem; 
-        }
-        .room-count { 
-            position: absolute; 
-            top: 10px; 
-            right: 10px; 
-            background: rgba(0,255,0,0.8); 
-            color: white; 
-            padding: 0.2rem 0.5rem; 
-            border-radius: 50%; 
             font-size: 0.8rem; 
         }
         #watch-party { padding: 2rem; max-width: 1200px; margin: 0 auto; }
@@ -721,7 +716,6 @@
             const roomsContainer = document.getElementById('movie-rooms');
             roomsContainer.innerHTML = rooms.map((room, index) => `
                 <div class="room-card ${room.status}" onclick="joinRoomFromList(${index})">
-                    <div class="room-count">${room.viewers}</div>
                     <img src="${room.mini}" alt="${room.title}">
                     <h4>${room.title}</h4>
                     <p>${room.viewers} зрителей</p>
@@ -735,7 +729,6 @@
                 const filteredRooms = rooms.filter(room => room.title.toLowerCase().includes(query));
                 roomsContainer.innerHTML = filteredRooms.map((room, index) => `
                     <div class="room-card ${room.status}" onclick="joinRoomFromList(${rooms.indexOf(room)})">
-                        <div class="room-count">${room.viewers}</div>
                         <img src="${room.mini}" alt="${room.title}">
                         <h4>${room.title}</h4>
                         <p>${room.viewers} зрителей</p>
