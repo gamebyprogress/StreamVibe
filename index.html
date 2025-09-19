@@ -60,6 +60,10 @@
             padding: 5rem 2rem;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: #fff; text-shadow: 0 0 10px rgba(255,107,107,0.5); }
@@ -100,13 +104,44 @@
             50% { box-shadow: 0 0 20px 10px rgba(255,107,107,0); }
             100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
         }
-        .popular-movies { padding: 4rem 2rem; text-align: center; background: rgba(0,0,0,0.3); }
+        .popular-movies { 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            background: rgba(0,0,0,0.3); 
+            margin-top: -5rem; /* Поднимаем вверх */
+            position: relative;
+            z-index: 2;
+        }
         .popular-movies h2 { font-size: 2.5rem; margin-bottom: 3rem; }
-        .movie-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: none; margin: 0 auto; width: 100%; }
-        .movie-card { background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
+        .movie-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 2rem; 
+            max-width: none; 
+            margin: 0 auto; 
+            width: 100%; 
+        }
+        .movie-card { 
+            background: rgba(255,255,255,0.05); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: transform 0.3s; 
+            height: 450px; /* Подлиннее блоки */
+            display: flex;
+            flex-direction: column;
+        }
         .movie-card:hover { transform: scale(1.05); }
-        .movie-card img { width: 100%; height: 300px; object-fit: cover; }
-        .movie-card h3 { padding: 1rem; }
+        .movie-card img { 
+            width: 100%; 
+            height: 350px; /* Больше фото */
+            object-fit: cover; 
+        }
+        .movie-card h3 { 
+            padding: 1rem; 
+            margin-top: auto; /* Название внизу */
+            text-align: center;
+        }
         .features { padding: 4rem 2rem; text-align: center; }
         .features h2 { font-size: 2.5rem; margin-bottom: 3rem; }
         .feature-grid {
@@ -184,7 +219,7 @@
             max-height: 150px; 
             padding: 1rem; 
         }
-        #movie-select { padding: 4.5rem 2rem; text-align: center; width: 100%; max-width: none; } /* Чуть меньше отступы */
+        #movie-select { padding: 4.5rem 2rem; text-align: center; width: 100%; max-width: none; }
         #movie-select h2 { margin-bottom: 2rem; }
         #search { width: 100%; max-width: 600px; padding: 1.2rem; border: none; border-radius: 25px; font-size: 1.1rem; margin-bottom: 2rem; background: rgba(255,255,255,0.1); color: white; box-shadow: 0 2px 10px rgba(255,107,107,0.2); }
         .movie-rooms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: none; margin: 0 auto; width: 100%; }
@@ -196,7 +231,7 @@
             cursor: pointer; 
             transition: all 0.3s; 
             position: relative; 
-            height: 280px; /* Больше высота */
+            height: 320px; /* Подлиннее блоки комнат */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -207,7 +242,7 @@
         }
         .room-card img { 
             width: 100%; 
-            height: 120px; /* Больше для фотки */
+            height: 150px; /* Больше для фотки */
             object-fit: cover; 
             border-radius: 8px; 
             margin-bottom: 1rem; 
@@ -369,25 +404,25 @@
         <section class="popular-movies">
             <h2>Популярные фильмы и сериалы</h2>
             <div class="movie-grid">
-                <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/Way9Dexny3w')">
-                    <img src="img1.jpg" alt="Dune 2">
-                    <h3>Dune: Part Two</h3>
-                </div>
-                <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/iKZyYdwS3Wg')">
-                    <img src="img2.jpg" alt="Stranger Things">
-                    <h3>Stranger Things S5</h3>
-                </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/pBk4NYhWNMM')">
-                    <img src="img3.jpg" alt="Barbie">
+                    <img src="img1.jpg" alt="Barbie">
                     <h3>Barbie</h3>
                 </div>
+                <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/Way9Dexny3w')">
+                    <img src="img2.jpg" alt="Dune 2">
+                    <h3>Dune: Part Two</h3>
+                </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/YoHD9XEInc0')">
-                    <img src="img4.jpg" alt="Oppenheimer">
+                    <img src="img3.jpg" alt="Oppenheimer">
                     <h3>Oppenheimer</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/OzY2r2JXsDM')">
-                    <img src="img5.jpg" alt="The Batman">
+                    <img src="img4.jpg" alt="The Batman">
                     <h3>The Batman</h3>
+                </div>
+                <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/iKZyYdwS3Wg')">
+                    <img src="img5.jpg" alt="Stranger Things">
+                    <h3>Stranger Things S5</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/5q8V6vV49d4')">
                     <img src="img6.jpg" alt="Avatar Fire and Ash">
