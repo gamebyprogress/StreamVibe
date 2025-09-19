@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamVibe - Смотри фильмы вместе!</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -24,7 +25,6 @@
             padding: 1rem 2rem;
             background: rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
             border-radius: 0 0 20px 20px;
         }
         .logo { font-size: 1.8rem; font-weight: bold; color: #ff6b6b; text-shadow: 0 0 5px #ff6b6b; transition: transform 0.3s; }
@@ -34,8 +34,25 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        nav a { color: #ff6b6b; text-decoration: none; margin: 0 1.5rem; font-weight: bold; position: relative; transition: color 0.3s; }
-        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: #d946ef; transform: scaleX(0); transition: transform 0.3s; }
+        nav a { 
+            color: #ff6b6b; 
+            text-decoration: none; 
+            margin: 0 1.5rem; 
+            font-weight: bold; 
+            position: relative; 
+            transition: color 0.3s; 
+        }
+        nav a::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -5px; 
+            left: 0; 
+            width: 100%; 
+            height: 2px; 
+            background: #d946ef; 
+            transform: scaleX(0); 
+            transition: transform 0.3s; 
+        }
         nav a:hover { color: #d946ef; }
         nav a:hover::after { transform: scaleX(1); }
         .hero {
@@ -85,7 +102,7 @@
         }
         .popular-movies { padding: 4rem 2rem; text-align: center; background: rgba(0,0,0,0.3); }
         .popular-movies h2 { font-size: 2.5rem; margin-bottom: 3rem; }
-        .movie-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .movie-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: none; margin: 0 auto; width: 100%; }
         .movie-card { background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
         .movie-card:hover { transform: scale(1.05); }
         .movie-card img { width: 100%; height: 300px; object-fit: cover; }
@@ -121,38 +138,153 @@
         .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
         .testimonial { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; }
         .testimonial img { width: 50px; height: 50px; border-radius: 50%; margin-bottom: 1rem; }
-        .faq { padding: 4rem 2rem; }
+        .faq { padding: 4rem 0; width: 100%; max-width: none; }
         .faq h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
-        .faq-item { background: rgba(255,255,255,0.05); margin-bottom: 1rem; border-radius: 10px; overflow: hidden; transition: all 0.3s ease; }
-        .faq-question { padding: 1rem; cursor: pointer; background: rgba(255,107,107,0.1); transition: background 0.3s; }
-        .faq-question:hover { background: rgba(255,107,107,0.2); }
-        .faq-answer { padding: 0 1rem; max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease; }
-        .faq-item.active .faq-answer { max-height: 500px; padding: 1rem; }
-        #movie-select { padding: 4rem 2rem; text-align: center; } /* Увеличил padding */
-        #search { width: 100%; max-width: 600px; padding: 1.2rem; border: none; border-radius: 25px; font-size: 1.1rem; margin-bottom: 2rem; background: rgba(255,255,255,0.1); color: white; box-shadow: 0 2px 10px rgba(255,107,107,0.2); } /* Увеличил margin-bottom */
-        #movie-list li {
-            cursor: pointer;
-            padding: 1rem;
-            background: rgba(255,255,255,0.05);
-            margin: 0.5rem;
-            border-radius: 10px;
-            transition: background 0.3s;
-            list-style: none;
+        .faq-item { 
+            background: rgba(255,255,255,0.05); 
+            margin-bottom: 1rem; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            transition: all 0.3s ease; 
+            width: 100%; 
+            max-width: 1200px; 
+            margin-left: auto; 
+            margin-right: auto; 
         }
-        #movie-list li:hover { background: rgba(255,107,107,0.2); }
+        .faq-question { 
+            padding: 1rem; 
+            cursor: pointer; 
+            background: rgba(255,107,107,0.1); 
+            transition: background 0.3s; 
+            position: relative; 
+        }
+        .faq-question::after {
+            content: '\f067'; /* FontAwesome плюс */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+        .faq-question:hover { background: rgba(255,107,107,0.2); }
+        .faq-item.active .faq-question::after {
+            transform: translateY(-50%) rotate(45deg); /* Крест */
+        }
+        .faq-answer { 
+            padding: 0 1rem; 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.5s ease, padding 0.5s ease; 
+            line-height: 1.5; 
+            font-size: 0.95rem; 
+        }
+        .faq-item.active .faq-answer { 
+            max-height: 150px; 
+            padding: 1rem; 
+        }
+        #movie-select { padding: 4.5rem 2rem; text-align: center; width: 100%; max-width: none; } /* Чуть меньше отступы */
+        #movie-select h2 { margin-bottom: 2rem; }
+        #search { width: 100%; max-width: 600px; padding: 1.2rem; border: none; border-radius: 25px; font-size: 1.1rem; margin-bottom: 2rem; background: rgba(255,255,255,0.1); color: white; box-shadow: 0 2px 10px rgba(255,107,107,0.2); }
+        .movie-rooms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: none; margin: 0 auto; width: 100%; }
+        .room-card { 
+            background: rgba(255,255,255,0.05); 
+            border-radius: 15px; 
+            padding: 2rem; 
+            text-align: center; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            position: relative; 
+            height: 280px; /* Больше высота */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .room-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(255,107,107,0.3); 
+        }
+        .room-card img { 
+            width: 100%; 
+            height: 120px; /* Больше для фотки */
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin-bottom: 1rem; 
+        }
+        .room-card h4 { 
+            margin-bottom: 0.5rem; 
+            font-size: 1.1rem;
+        }
+        .room-card p { 
+            opacity: 0.8; 
+            font-size: 0.9rem; 
+            margin-bottom: 1rem; 
+        }
+        .room-card .room-status { 
+            display: inline-block; 
+            padding: 0.3rem 0.8rem; 
+            background: rgba(255,107,107,0.2); 
+            border-radius: 15px; 
+            font-size: 0.8rem; 
+        }
+        .room-count { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: rgba(0,255,0,0.8); 
+            color: white; 
+            padding: 0.2rem 0.5rem; 
+            border-radius: 50%; 
+            font-size: 0.8rem; 
+        }
         #watch-party { padding: 2rem; max-width: 1200px; margin: 0 auto; }
-        .party-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
-        .party-header button { background: #ff6b6b; padding: 0.5rem 1rem; border-radius: 20px; border: none; color: white; cursor: pointer; transition: background 0.3s; }
+        .party-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 1rem; 
+            flex-wrap: wrap; 
+            gap: 1rem; 
+        }
+        .party-header button { 
+            background: #ff6b6b; 
+            padding: 0.5rem 1rem; 
+            border-radius: 20px; 
+            border: none; 
+            color: white; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+        }
         .party-header button:hover { background: #d946ef; }
-        .party-header .private-toggle { display: flex; align-items: center; gap: 0.5rem; }
         .player-chat { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
-        #chat { background: rgba(0,0,0,0.5); border-radius: 10px; padding: 1rem; height: 500px; display: flex; flex-direction: column; }
+        #chat { 
+            background: rgba(0,0,0,0.5); 
+            border-radius: 10px; 
+            padding: 1rem; 
+            height: 500px; 
+            display: flex; 
+            flex-direction: column; 
+        }
         #messages { flex: 1; overflow-y: auto; list-style: none; padding: 0; }
         #messages li { padding: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); word-wrap: break-word; }
         #messages li small { opacity: 0.7; font-size: 0.8rem; display: block; }
         .chat-input { display: flex; margin-top: auto; }
-        .chat-input input { flex: 1; padding: 0.5rem; border: none; border-radius: 20px 0 0 20px; background: rgba(255,255,255,0.1); color: white; }
-        .chat-input button { border-radius: 0 20px 20px 0; background: #ff6b6b; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+        .chat-input input { 
+            flex: 1; 
+            padding: 0.5rem; 
+            border: none; 
+            border-radius: 20px 0 0 20px; 
+            background: rgba(255,255,255,0.1); 
+            color: white; 
+        }
+        .chat-input button { 
+            border-radius: 0 20px 20px 0; 
+            background: #ff6b6b; 
+            border: none; 
+            padding: 0.5rem 1rem; 
+            cursor: pointer; 
+        }
         #users-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
         .user { display: flex; align-items: center; gap: 0.5rem; }
         .user img { width: 30px; height: 30px; border-radius: 50%; }
@@ -201,8 +333,13 @@
             .hero iframe { width: 100%; height: 200px; }
             nav { flex-direction: column; gap: 1rem; }
             .contacts { flex-direction: column; align-items: center; }
-            .movie-grid { grid-template-columns: 1fr; }
+            .movie-grid { grid-template-columns: 1fr 1fr; }
+            .movie-rooms { grid-template-columns: 1fr 1fr; }
             .feature-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 769px) {
+            .movie-grid { grid-template-columns: repeat(4, 1fr); }
+            .movie-rooms { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
@@ -223,7 +360,7 @@
             <p>Синхронный просмотр Netflix, YouTube и сериалов — скачай StreamVibe для Windows!</p>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/pBk4NYhWNMM" frameborder="0" allowfullscreen></iframe>
             <div class="cta-container">
-                <a href="streamvibe_setup.exe" class="cta-btn" onclick="showDownloadModal(event)">Скачать для Windows <i class="fas fa-download"></i></a>
+                <a href="https://www.mediafire.com/file/pwv5wfidklmxua1/streamvibe_setup.zip/file" class="cta-btn" onclick="showDownloadModal(event)">Скачать для Windows <i class="fas fa-download"></i></a>
             </div>
         </section>
     </header>
@@ -363,46 +500,50 @@
         <section class="faq" id="faq">
             <h2>Часто задаваемые вопросы</h2>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">Нужен ли аккаунт?</div>
-                <div class="faq-answer">Нет, просто скачай приложение и начни смотреть! Мы сделали всё максимально просто, чтобы вы могли сразу наслаждаться просмотром с друзьями без лишней регистрации. Если у вас уже есть аккаунт на Netflix или YouTube, StreamVibe интегрируется с ними seamlessly.</div>
+                <div class="faq-question" onclick="toggleFaq(this)">Как скачать приложение?</div>
+                <div class="faq-answer">
+                    <strong>Шаг 1:</strong> Перейдите по ссылке на MediaFire и скачайте архив <code>streamvibe_setup.zip</code>.<br><br>
+                    <strong>Шаг 2:</strong> Пароль от архива: <code>3987</code>. Введите его при распаковке.<br><br>
+                    <strong>Шаг 3:</strong> Разархивируйте файл и найдите <code>stream-vibe-installer.exe</code>.<br><br>
+                    <strong>Шаг 4:</strong> Запустите установщик и следуйте простым инструкциям на экране.<br><br>
+                    <strong>Готово!</strong> Установка занимает всего 2-3 минуты. После перезапуска приложения вы сразу сможете создавать комнаты и смотреть фильмы с друзьями!
+                </div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Работает ли на Mac?</div>
-                <div class="faq-answer">Пока только Windows, но Mac-версия в разработке и выйдет в ближайшие месяцы. Мы активно работаем над кроссплатформенностью, чтобы все пользователи могли наслаждаться синхронным просмотром независимо от ОС. Следите за обновлениями!</div>
+                <div class="faq-answer">Пока только Windows, но Mac-версия в разработке и выйдет в ближайшие месяцы. Следите за обновлениями!</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Как синхронизировать видео?</div>
-                <div class="faq-answer">Видео синхронизируется автоматически при создании комнаты. Просто выберите фильм, поделитесь ссылкой, и все участники увидят видео в одном темпе. Если возникнут лаги, приложение автоматически подстроит скорость для всех, обеспечивая плавный просмотр.</div>
+                <div class="faq-answer">Видео синхронизируется автоматически при создании комнаты. Просто выберите фильм, поделитесь ссылкой, и все участники увидят видео в одном темпе.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Какие сервисы поддерживаются?</div>
-                <div class="faq-answer">Netflix, YouTube, Amazon Prime и другие популярные стриминговые сервисы. Мы постоянно добавляем новые интеграции, чтобы вы могли смотреть любимый контент из любого источника. Если вашего сервиса нет, напишите нам — добавим!</div>
+                <div class="faq-answer">Netflix, YouTube, Amazon Prime и другие популярные стриминговые сервисы. Мы постоянно добавляем новые интеграции.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Безопасно ли приложение?</div>
-                <div class="faq-answer">100% безопасно, проверено антивирусами и сертифицировано. Мы используем шифрование данных и не храним ваши пароли или личную информацию. Приватные комнаты защищены паролем, а все соединения — через secure протоколы.</div>
+                <div class="faq-answer">100% безопасно, проверено антивирусами и сертифицировано. Мы используем шифрование данных и не храним ваши пароли.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Можно ли смотреть оффлайн?</div>
-                <div class="faq-answer">Для синхронного просмотра нужен интернет, но вы можете скачать фильмы заранее через интегрированные сервисы. Оффлайн-режим для solo-просмотра в разработке, но для группового просмотра соединение необходимо для синхронизации.</div>
+                <div class="faq-answer">Для синхронного просмотра нужен интернет, но вы можете скачать фильмы заранее через интегрированные сервисы.</div>
             </div>
         </section>
 
         <section id="movie-select">
-            <h2>Попробуй онлайн-демо</h2>
-            <input type="text" id="search" placeholder="Поиск... (Dune, Barbie)">
-            <ul id="movie-list"></ul>
+            <h2>Выберите комнату</h2>
+            <input type="text" id="search" placeholder="Поиск комнат...">
+            <div class="movie-rooms" id="movie-rooms">
+                <!-- Комнаты будут заполнены JS -->
+            </div>
         </section>
         
         <section id="watch-party" style="display:none;">
             <div class="party-header">
                 <h2>Вечеринка: <span id="room-id"></span></h2>
-                <div class="private-toggle">
-                    <input type="checkbox" id="private-room">
-                    <label for="private-room">Приватная комната</label>
-                </div>
                 <button onclick="shareRoom()">Поделиться ссылкой</button>
-                <button onclick="leaveRoom()">Покинуть комнату</button>
+                <button onclick="leaveRoom()">Выйти из комнаты</button>
             </div>
             <div id="users-list"></div>
             <div class="player-chat">
@@ -472,28 +613,100 @@
             retina_detect: true
         });
 
-        // Фильмы с локальными изображениями
-        const movies = [
-            { title: 'Dune: Part Two (Трейлер)', video: 'https://www.youtube.com/embed/Way9Dexny3w', poster: 'img1.jpg' },
-            { title: 'Stranger Things S5 Teaser', video: 'https://www.youtube.com/embed/iKZyYdwS3Wg', poster: 'img2.jpg' },
-            { title: 'Barbie (Трейлер)', video: 'https://www.youtube.com/embed/pBk4NYhWNMM', poster: 'img3.jpg' },
-            { title: 'Oppenheimer (Трейлер)', video: 'https://www.youtube.com/embed/YoHD9XEInc0', poster: 'img4.jpg' },
-            { title: 'The Batman (Трейлер)', video: 'https://www.youtube.com/embed/OzY2r2JXsDM', poster: 'img5.jpg' },
-            { title: 'Avatar: Fire and Ash (Трейлер)', video: 'https://www.youtube.com/embed/5q8V6vV49d4', poster: 'img6.jpg' },
-            { title: 'Deadpool & Wolverine (Трейлер)', video: 'https://www.youtube.com/embed/qxD0Rg4dW74', poster: 'img7.jpg' },
-            { title: 'Inside Out 2 (Трейлер)', video: 'https://www.youtube.com/embed/0x1vP8X9dT-Y', poster: 'img8.jpg' }
+        // Данные комнат (другие фильмы, не из популярных)
+        const rooms = [
+            { 
+                title: 'Interstellar', 
+                video: 'https://www.youtube.com/embed/zSWdZVtXT7E', 
+                poster: 'img1.jpg',
+                mini: 'mimg1.jpg',
+                viewers: 5,
+                status: 'active'
+            },
+            { 
+                title: 'Inception', 
+                video: 'https://www.youtube.com/embed/YoHD9XEInc0', 
+                poster: 'img2.jpg',
+                mini: 'mimg2.jpg',
+                viewers: 4,
+                status: 'active'
+            },
+            { 
+                title: 'The Dark Knight', 
+                video: 'https://www.youtube.com/embed/EXeTwQWrcwY', 
+                poster: 'img3.jpg',
+                mini: 'mimg3.jpg',
+                viewers: 6,
+                status: 'active'
+            },
+            { 
+                title: 'Pulp Fiction', 
+                video: 'https://www.youtube.com/embed/s7EdQGSF2Jw', 
+                poster: 'img4.jpg',
+                mini: 'mimg4.jpg',
+                viewers: 3,
+                status: 'waiting'
+            },
+            { 
+                title: 'The Matrix', 
+                video: 'https://www.youtube.com/embed/vKQi3bBA1y8', 
+                poster: 'img5.jpg',
+                mini: 'mimg5.jpg',
+                viewers: 7,
+                status: 'active'
+            },
+            { 
+                title: 'Fight Club', 
+                video: 'https://www.youtube.com/embed/Sux_wAhCR9U', 
+                poster: 'img6.jpg',
+                mini: 'mimg6.jpg',
+                viewers: 2,
+                status: 'active'
+            },
+            { 
+                title: 'Forrest Gump', 
+                video: 'https://www.youtube.com/embed/bLvqoHBptjg', 
+                poster: 'img7.jpg',
+                mini: 'mimg7.jpg',
+                viewers: 8,
+                status: 'active'
+            },
+            { 
+                title: 'The Shawshank Redemption', 
+                video: 'https://www.youtube.com/embed/6hB3S9bIaco', 
+                poster: 'img8.jpg',
+                mini: 'mimg8.jpg',
+                viewers: 1,
+                status: 'waiting'
+            }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Заполнить список фильмов
-            const list = document.getElementById('movie-list');
-            list.innerHTML = movies.map(m => `<li data-video="${m.video}" onclick="startParty('${m.video}')">${m.title}</li>`).join('');
-            
-            // Поиск
+            // Заполнить список комнат
+            const roomsContainer = document.getElementById('movie-rooms');
+            roomsContainer.innerHTML = rooms.map((room, index) => `
+                <div class="room-card ${room.status}" onclick="joinRoomFromList(${index})">
+                    <div class="room-count">${room.viewers}</div>
+                    <img src="${room.mini}" alt="${room.title}">
+                    <h4>${room.title}</h4>
+                    <p>${room.viewers} зрителей</p>
+                    <span class="room-status">${room.status === 'active' ? '🔴 В эфире' : '⏳ Ждет зрителей'}</span>
+                </div>
+            `).join('');
+
+            // Поиск комнат
             document.getElementById('search').addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase();
-                list.innerHTML = movies.filter(m => m.title.toLowerCase().includes(query))
-                    .map(m => `<li data-video="${m.video}" onclick="startParty('${m.video}')">${m.title}</li>`).join('');
+                const filteredRooms = rooms.filter(room => room.title.toLowerCase().includes(query));
+                roomsContainer.innerHTML = filteredRooms.map((room, index) => `
+                    <div class="room-card ${room.status}" onclick="joinRoomFromList(${rooms.indexOf(room)})">
+                        <div class="room-count">${room.viewers}</div>
+                        <img src="${room.mini}" alt="${room.title}">
+                        <h4>${room.title}</h4>
+                        <p>${room.viewers} зрителей</p>
+                        <span class="room-status">${room.status === 'active' ? '🔴 В эфире' : '⏳ Ждет зрителей'}</span>
+                    </div>
+                `).join('');
             });
 
             // Анимация появления секций
@@ -523,7 +736,6 @@
 
                 let valid = true;
 
-                // Имя: только английские буквы и пробелы
                 if (!/^[A-Za-z\s]+$/.test(name) || name.length === 0) {
                     document.getElementById('name-error').style.display = 'block';
                     valid = false;
@@ -531,7 +743,6 @@
                     document.getElementById('name-error').style.display = 'none';
                 }
 
-                // Email: валидный
                 if (!/\S+@\S+\.\S+/.test(email)) {
                     document.getElementById('email-error').style.display = 'block';
                     valid = false;
@@ -539,7 +750,6 @@
                     document.getElementById('email-error').style.display = 'none';
                 }
 
-                // Сообщение: 10-500 символов
                 if (message.length < 10 || message.length > 500) {
                     document.getElementById('message-error').style.display = 'block';
                     valid = false;
@@ -561,11 +771,14 @@
             document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
 
-        function startParty(videoUrl) {
+        function joinRoomFromList(roomIndex) {
+            const selectedRoom = rooms[roomIndex];
             const roomId = 'Room-' + Math.random().toString(36).substr(2, 5);
+            
+            // Перейти в комнату
             document.getElementById('movie-select').style.display = 'none';
             document.getElementById('watch-party').style.display = 'block';
-            document.getElementById('video-player').src = videoUrl + '?autoplay=1';
+            document.getElementById('video-player').src = selectedRoom.video + '?autoplay=1';
             document.getElementById('room-id').textContent = roomId;
             joinRoom(roomId);
             updateUrl(roomId);
@@ -626,7 +839,7 @@
             document.getElementById('movie-select').style.display = 'block';
             document.getElementById('video-player').src = '';
             messages = [];
-            history.pushState(null, '', window.location.pathname); // Сброс URL
+            history.pushState(null, '', window.location.pathname);
         }
 
         function updateUrl(roomId) {
@@ -637,10 +850,9 @@
 
         function shareRoom() {
             const room = document.getElementById('room-id').textContent;
-            const isPrivate = document.getElementById('private-room').checked;
-            const shareUrl = window.location.origin + window.location.pathname + '?room=' + room.replace('Room-', '') + (isPrivate ? '&private=true' : '');
+            const shareUrl = window.location.origin + window.location.pathname + '?room=' + room.replace('Room-', '');
             navigator.clipboard.writeText(shareUrl);
-            alert('Ссылка на комнату скопирована! Приватный режим: ' + (isPrivate ? 'вкл' : 'выкл'));
+            alert('Ссылка на комнату скопирована!');
         }
 
         let messages = [];
@@ -682,7 +894,7 @@
             setTimeout(() => { progress.style.width = '100%'; }, 100);
             setTimeout(() => { 
                 modal.style.display = 'none'; 
-                window.location.href = 'streamvibe_setup.exe'; 
+                window.location.href = 'https://www.mediafire.com/file/pwv5wfidklmxua1/streamvibe_setup.zip/file'; 
             }, 3000);
         }
     </script>
