@@ -146,8 +146,9 @@
         .movie-card img { 
             width: 100%; 
             height: 320px; 
-            object-fit: cover; /* Обрезает и масштабирует изображение */
+            object-fit: contain; /* Масштабируем без обрезки */
             flex-shrink: 0;
+            background: #1a1a2e; /* Фон если фото меньше */
         }
         .movie-card h3 { 
             padding: 1rem; 
@@ -260,10 +261,11 @@
         .room-card img { 
             width: 100%; 
             height: 180px; /* Больше для фотки */
-            object-fit: cover; 
+            object-fit: contain; /* Масштабируем без обрезки */
             border-radius: 8px; 
             margin-bottom: 1rem; 
             flex-shrink: 0;
+            background: #1a1a2e; /* Фон если фото меньше */
         }
         .room-card h4 { 
             margin-bottom: 0.5rem; 
@@ -558,7 +560,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Как синхронизировать видео?</div>
-                <div class="faq-answer">Видео синхронизируется автоматически при создании комнаты. Просто выберите фильм, поделитесь ссылкой, и все участники увидят видео в одном темпе.</div>
+                <div class="faq-answer">Видео синхронизируется автоматически при создании комнаты. Просто выберите фильм, поделитесь ссылкой, и все участники увидют видео в одном темпе.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Какие сервисы поддерживаются?</div>
