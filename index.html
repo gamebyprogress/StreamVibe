@@ -631,7 +631,15 @@
         .contacts { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
         .contact-icon { width: 40px; height: 40px; fill: var(--primary-color); transition: fill 0.3s; }
         .contact-icon:hover { fill: var(--secondary-color); }
-        footer a:not(.contact-icon) { color: var(--primary-color); text-decoration: none; margin: 0 1rem; }
+        footer a:not(.contact-icon) { 
+            color: var(--primary-color); 
+            text-decoration: none; 
+            margin: 0 1rem; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
         .contact-form { max-width: 500px; margin: 2rem auto; }
         .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(231, 76, 60, 0.1); }
         .contact-form button { background: var(--primary-color); border: none; padding: 1rem 2rem; border-radius: 10px; color: white; cursor: pointer; }
@@ -694,6 +702,10 @@
             .features h2 { font-size: 2.2rem; }
             .how-it-works h2 { font-size: 1.5rem; }
             .steps .step-number { width: 40px; height: 40px; font-size: 1.2rem; }
+            footer a:not(.contact-icon) { 
+                display: block; 
+                margin: 0.5rem 0; 
+            }
         }
         @media (min-width: 769px) {
             .movie-grid { grid-template-columns: repeat(4, 1fr); }
@@ -707,7 +719,7 @@
         <nav>
             <div class="logo">StreamVibe <i class="fas fa-play-circle"></i></div>
             <div>
-                <a href="#movie-select" onclick="scrollToSection(event, '#movie-select')">ФИЛЬМЫ</a> |
+                <a href="#popular-movies" onclick="scrollToSection(event, '#popular-movies')">ФИЛЬМЫ</a> |
                 <a href="#how-it-works" onclick="scrollToSection(event, '#how-it-works')">КАК РАБОТАЕТ</a> |
                 <a href="#faq" onclick="scrollToSection(event, '#faq')">FAQ</a> |
                 <a href="#contacts" onclick="scrollToSection(event, '#contacts')">КОНТАКТЫ</a>
@@ -724,7 +736,7 @@
     </header>
     
     <main>
-        <section class="popular-movies">
+        <section class="popular-movies" id="popular-movies">
             <h2>Популярные фильмы и сериалы</h2>
             <div class="movie-grid">
                 <div class="movie-card">
@@ -1098,7 +1110,7 @@
             <div id="message-error" class="error">Сообщение должно быть от 10 до 500 символов</div>
             <button id="contact-submit">Отправить</button>
         </div>
-        <p><a href="#">О нас</a> | <a href="#">Поддержка</a> | <a href="#">Политика конфиденциальности</a></p>
+        <p><a href="#">О НАС</a> | <a href="#">ПОДДЕРЖКА</a> | <a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></p>
     </footer>
     
     <div class="modal" id="download-modal">
@@ -1160,16 +1172,21 @@
             'Техника съемки впечатляет'
         ];
 
+        // Функция для форматирования времени без секунд
+        function formatTimeWithoutSeconds(date) {
+            return date.toLocaleTimeString('ru-RU', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: false 
+            });
+        }
+
         // Функция для генерации случайного времени в прошлом
         function getRandomPastTime(minutesAgo = 0) {
             const now = new Date();
             const randomMinutes = minutesAgo + Math.random() * 30 + 15; // 15-45 минут назад
             const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000);
-            return pastTime.toLocaleTimeString('ru-RU', { 
-                hour: '2-digit', 
-                minute: '2-digit',
-                hour12: false 
-            });
+            return formatTimeWithoutSeconds(pastTime);
         }
 
         // Данные комнат (другие фильмы, не из популярных)
@@ -1361,6 +1378,8 @@
             const savedMessages = localStorage.getItem(`chat_${roomId}`);
             if (savedMessages) {
                 messages = JSON.parse(savedMessages);
+                // Сортируем по времени
+                messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
             } else {
                 // Генерируем только историю сообщений (2-5 старых)
                 const historyCount = Math.floor(Math.random() * 4) + 2; // 2-5 сообщений
@@ -1381,19 +1400,21 @@
             document.getElementById('watch-party').style.display = 'block';
             document.getElementById('movie-select').style.display = 'none';
 
-            // Симуляция новых сообщений (10-30 сек)
+            // Симуляция новых сообщений (10-15 сек)
             setInterval(() => {
                 const user = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
                 const message = fakeMessages[Math.floor(Math.random() * fakeMessages.length)];
                 const newMessage = { 
                     user: user, 
                     text: message, 
-                    timestamp: new Date().toLocaleTimeString() 
+                    timestamp: formatTimeWithoutSeconds(new Date()) 
                 };
                 messages.push(newMessage);
+                // Сортируем по времени
+                messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                 updateChat();
                 saveChat();
-            }, Math.random() * 20000 + 10000);
+            }, Math.random() * 5000 + 10000); // 10-15 секунд
         }
 
         function leaveRoom() {
@@ -1422,8 +1443,10 @@
             const input = document.getElementById('message-input');
             const msg = input.value.trim();
             if (msg) {
-                const message = { user: 'Вы', text: msg, timestamp: new Date().toLocaleTimeString() };
+                const message = { user: 'Вы', text: msg, timestamp: formatTimeWithoutSeconds(new Date()) };
                 messages.push(message);
+                // Сортируем по времени
+                messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                 updateChat();
                 saveChat();
                 input.value = '';
