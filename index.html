@@ -38,7 +38,7 @@
         .logo:hover { transform: scale(1.1); }
         .logo i { 
             margin-left: 0.5rem; 
-            animation: spin 6s ease-in-out infinite; /* Замедлил и сделал плавнее */
+            animation: spin 6s ease-in-out infinite;
         }
         @keyframes spin {
             0%, 15% { transform: rotate(0deg); }
@@ -118,7 +118,7 @@
         
         /* Блок Популярные фильмы и сериалы - минимальные отступы */
         .popular-movies { 
-            padding: 0.5rem 2rem 1rem; /* Минимальные отступы */
+            padding: 0.5rem 2rem 1rem;
             text-align: center; 
             background: rgba(0,0,0,0.3); 
             position: relative;
@@ -128,11 +128,11 @@
             flex-direction: column;
             justify-content: flex-start;
             scroll-snap-align: start;
-            overflow: hidden; /* Обрезаем вылезающий контент */
+            overflow: hidden;
         }
         .popular-movies h2 { 
             font-size: 2.3rem; 
-            margin-bottom: 1rem; /* Минимальный отступ */
+            margin-bottom: 1rem;
             margin-top: 0;
             flex-shrink: 0;
             padding: 0 1rem;
@@ -140,13 +140,13 @@
         .movie-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
-            gap: 1rem; /* Уменьшил gap */
+            gap: 1rem;
             max-width: none; 
             margin: 0 auto; 
             width: 100%; 
             flex-grow: 1;
             padding: 0 1rem;
-            overflow: hidden; /* Обрезаем карточки если вылезают */
+            overflow: hidden;
         }
         .movie-card { 
             background: rgba(255,255,255,0.05); 
@@ -157,26 +157,25 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            min-height: 220px; /* Ограничиваем высоту карточек */
+            min-height: 220px;
         }
         .movie-card:hover { transform: scale(1.03); }
         .movie-card img { 
             width: 100%; 
-            height: 160px; /* Значительно уменьшил высоту изображений */
-            object-fit: cover; /* Обрезаем если нужно */
+            height: 160px;
+            object-fit: cover;
             flex-shrink: 0;
             background: #1a1a2e;
         }
         .movie-card h3 { 
-            padding: 0.6rem; 
+            padding: 1rem; /* Вернул как было */
             margin-top: auto; 
             text-align: center;
             flex-grow: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            min-height: 40px; /* Фиксированная высота для названий */
+            font-size: 0.9rem; /* Вернул как было */
         }
 
         /* Контейнер для блоков "Почему StreamVibe?" и "Как это работает?" */
@@ -213,7 +212,7 @@
             max-width: 1200px;
             margin: 0 auto;
             flex-grow: 1;
-            min-height: 0; /* Позволяем сжиматься */
+            min-height: 0;
         }
         .feature {
             background: rgba(255,255,255,0.05);
@@ -318,7 +317,7 @@
             position: relative; 
         }
         .faq-question::after {
-            content: '\f067'; /* FontAwesome плюс */
+            content: '\f067';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
@@ -329,7 +328,7 @@
         }
         .faq-question:hover { background: rgba(255,107,107,0.2); }
         .faq-item.active .faq-question::after {
-            transform: translateY(-50%) rotate(45deg); /* Крест */
+            transform: translateY(-50%) rotate(45deg);
         }
         .faq-answer { 
             padding: 0 1rem; 
@@ -551,7 +550,7 @@
                     <h3>The Batman</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/iKZyYdwS3Wg')">
-                    <img src="img6.jpg" alt="Stranger Things">
+                    <img src="img3.jpg" alt="Stranger Things">
                     <h3>Stranger Things S5</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/5q8V6vV49d4')">
@@ -997,7 +996,7 @@
                 messages.push(message);
                 updateChat();
                 saveChat();
-            }, Math.random() * 20000 + 10000); // 10-30 сек
+            }, Math.random() * 20000 + 10000);
         }
 
         function leaveRoom() {
