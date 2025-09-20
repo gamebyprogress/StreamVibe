@@ -182,12 +182,13 @@
         .movie-card:hover::before { opacity: 1; }
         .movie-card img { 
             width: 100%; 
-            height: 220px;
-            object-fit: cover;
+            height: calc(100% - 60px); /* вся высота минус место для текста */
+            object-fit: contain; /* было cover - теперь содержимое полностью видно */
             flex-shrink: 0;
             background: linear-gradient(45deg, #1a1a2e, #16213e);
             position: relative;
             z-index: 2;
+            padding: 10px; /* небольшой отступ от краев */
         }
         .movie-card .play-overlay {
             position: absolute;
@@ -218,6 +219,10 @@
             z-index: 2;
             background: linear-gradient(145deg, rgba(0,0,0,0.7), transparent);
             flex-shrink: 0;
+            height: 60px; /* фиксированная высота для текста */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .movie-card .rating {
             position: absolute;
@@ -612,7 +617,8 @@
             .features { flex: 0 0 70%; padding: 1.5rem; }
             .how-it-works { flex: 0 0 30%; padding: 1.5rem; }
             .popular-movies { padding: 1rem; }
-            .movie-card img { height: 140px; }
+            .movie-card img { height: calc(100% - 50px); padding: 5px; }
+            .movie-card h3 { height: 50px; font-size: 0.9rem; padding: 0.5rem; }
             .features h2 { font-size: 2.2rem; }
             .how-it-works h2 { font-size: 1.5rem; }
             .steps .step-number { width: 40px; height: 40px; font-size: 1.2rem; }
