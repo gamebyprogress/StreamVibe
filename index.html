@@ -66,9 +66,12 @@
             color: var(--text-color); 
             text-decoration: none; 
             margin: 0 1.5rem; 
-            font-weight: 500; 
+            font-weight: 600; 
             position: relative; 
             padding: 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
         }
         nav a::before {
@@ -611,6 +614,18 @@
         #users-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
         .user { display: flex; align-items: center; gap: 0.5rem; }
         .user img { width: 30px; height: 30px; border-radius: 50%; }
+        .user .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
         .user .status { width: 10px; height: 10px; border-radius: 50%; background: #00ff00; }
         footer { text-align: center; padding: 3rem 2rem; background: rgba(0,0,0,0.6); border-top: 1px solid rgba(231, 76, 60, 0.1); }
         .contacts { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
@@ -692,10 +707,10 @@
         <nav>
             <div class="logo">StreamVibe <i class="fas fa-play-circle"></i></div>
             <div>
-                <a href="#movie-select" onclick="scrollToSection(event, '#movie-select')">Фильмы</a> |
-                <a href="#how-it-works" onclick="scrollToSection(event, '#how-it-works')">Как работает</a> |
+                <a href="#movie-select" onclick="scrollToSection(event, '#movie-select')">ФИЛЬМЫ</a> |
+                <a href="#how-it-works" onclick="scrollToSection(event, '#how-it-works')">КАК РАБОТАЕТ</a> |
                 <a href="#faq" onclick="scrollToSection(event, '#faq')">FAQ</a> |
-                <a href="#contacts" onclick="scrollToSection(event, '#contacts')">Контакты</a>
+                <a href="#contacts" onclick="scrollToSection(event, '#contacts')">КОНТАКТЫ</a>
             </div>
         </nav>
         <section class="hero">
@@ -715,49 +730,49 @@
                 <div class="movie-card">
                     <div class="rating">8.3</div>
                     <img src="img1.jpg" alt="Barbie">
-                    <a href="https://www.youtube.com/watch?v=fDq3Q6hI2ao" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt1517268/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Barbie</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">8.7</div>
                     <img src="img2.jpg" alt="Dune 2">
-                    <a href="https://www.youtube.com/watch?v=0vR9vX6c6pE" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt15239678/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Dune: Part Two</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">8.4</div>
                     <img src="img4.jpg" alt="Oppenheimer">
-                    <a href="https://www.youtube.com/watch?v=bqnYfCEeJ2U" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt15398776/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Oppenheimer</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">7.9</div>
                     <img src="img5.jpg" alt="The Batman">
-                    <a href="https://www.youtube.com/watch?v=EXeTwQWrcwY" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt1877830/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>The Batman</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">8.7</div>
                     <img src="img3.jpg" alt="Stranger Things">
-                    <a href="https://www.youtube.com/watch?v=6m7jzW9f0y0" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt4574334/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Stranger Things S5</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">7.8</div>
                     <img src="img6.jpg" alt="Avatar Fire and Ash">
-                    <a href="https://www.youtube.com/watch?v=1JByG7p9XjY" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt1757678/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Avatar: Fire and Ash</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">8.2</div>
                     <img src="img7.jpg" alt="Deadpool & Wolverine">
-                    <a href="https://www.youtube.com/watch?v=6zO0WqLqC6Y" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt6263850/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Deadpool & Wolverine</h3>
                 </div>
                 <div class="movie-card">
                     <div class="rating">8.1</div>
                     <img src="img8.jpg" alt="Inside Out 2">
-                    <a href="https://www.youtube.com/watch?v=GtP9YcmF2kY" target="_blank" class="play-overlay"><i class="fas fa-play"></i></a>
+                    <a href="https://www.imdb.com/title/tt22022452/" target="_blank" class="play-overlay"><i class="fas fa-external-link-alt"></i></a>
                     <h3>Inside Out 2</h3>
                 </div>
             </div>
@@ -1110,6 +1125,53 @@
             retina_detect: true
         });
 
+        // Расширенные данные для разнообразных сообщений
+        const fakeUsers = ['Анна', 'Макс', 'Катя', 'Дима', 'Лиза', 'Сергей', 'Вика', 'Алекс', 'Настя', 'Игорь'];
+        const fakeMessages = [
+            'Это мой любимый момент в фильме! ❤️',
+            'Кто-нибудь объяснит, что произошло? 🤔',
+            'Ха-ха, этот персонаж такой смешной! 😂',
+            'Интересный сюжетный поворот, не ожидал...',
+            'Паузу? Мне нужно попкорн обновить 🍿',
+            'Качество видео супер, 4K рулит! 📺',
+            'Что вы думаете о главном герое?',
+            'Это напоминает мне другой фильм...',
+            'Не спойлерите, я еще не смотрел! 🙈',
+            'Отличный выбор фильма, спасибо! 👍',
+            'Саундтрек просто бомба! 🎵',
+            'Этот актер всегда на высоте',
+            'Сценарий гениальный, не оторваться',
+            'Кто знает, когда выйдет продолжение?',
+            'Эффекты на уровне, как в IMAX',
+            'Диалоги просто огонь! 🔥',
+            'Не люблю такого жанра, но зацепило',
+            'Это лучше, чем ожидал, рекомендую',
+            'Смотрю второй раз, все равно круто',
+            'Кто-то уже видел режиссерскую версию?',
+            'Сюжет предсказуемый, но все равно классно',
+            'Нормальный фильм для пятницы вечером',
+            'Лучше бы сериал сделали из этого',
+            'Актерский состав идеальный',
+            'Смотреть только с хорошим звуком',
+            'Не понял концовку, что там было?',
+            'Это мой фильм года, однозначно!',
+            'Слишком много драм, нужен экшен',
+            'Романтика на уровне, для души',
+            'Техника съемки впечатляет'
+        ];
+
+        // Функция для генерации случайного времени в прошлом
+        function getRandomPastTime(minutesAgo = 0) {
+            const now = new Date();
+            const randomMinutes = minutesAgo + Math.random() * 30 + 15; // 15-45 минут назад
+            const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000);
+            return pastTime.toLocaleTimeString('ru-RU', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: false 
+            });
+        }
+
         // Данные комнат (другие фильмы, не из популярных)
         const rooms = [
             { 
@@ -1282,48 +1344,53 @@
         function joinRoom(roomId) {
             document.getElementById('room-id').textContent = roomId;
             const users = [
-                { name: 'Ты', avatar: 'https://randomuser.me/api/portraits/men/1.jpg', status: 'online' },
+                { name: 'Вы', avatar: null, status: 'online' },
                 { name: 'Анна', avatar: 'https://randomuser.me/api/portraits/women/2.jpg', status: 'online' },
                 { name: 'Макс', avatar: 'https://randomuser.me/api/portraits/men/3.jpg', status: 'offline' },
                 { name: 'Катя', avatar: 'https://randomuser.me/api/portraits/women/4.jpg', status: 'online' },
                 { name: 'Дима', avatar: 'https://randomuser.me/api/portraits/men/5.jpg', status: 'online' }
             ];
-            document.getElementById('users-list').innerHTML = users.map(u => 
-                `<div class="user"><img src="${u.avatar}" alt="${u.name}"><span>${u.name}</span><span class="status" style="background: ${u.status === 'online' ? '#00ff00' : '#ff0000'}"></span></div>`
-            ).join('');
+            document.getElementById('users-list').innerHTML = users.map(u => {
+                if (u.avatar) {
+                    return `<div class="user"><img src="${u.avatar}" alt="${u.name}"><span>${u.name}</span><span class="status" style="background: ${u.status === 'online' ? '#00ff00' : '#ff0000'}"></span></div>`;
+                } else {
+                    return `<div class="user"><div class="user-avatar">В</div><span>${u.name}</span><span class="status" style="background: ${u.status === 'online' ? '#00ff00' : '#ff0000'}"></span></div>`;
+                }
+            }).join('');
+            
             const savedMessages = localStorage.getItem(`chat_${roomId}`);
             if (savedMessages) {
                 messages = JSON.parse(savedMessages);
             } else {
-                messages = [
-                    { user: 'Система', text: `Добро пожаловать в комнату ${roomId}!`, timestamp: new Date().toLocaleTimeString() },
-                    { user: 'Анна', text: 'Привет всем! Готовы к просмотру? 🎥', timestamp: new Date().toLocaleTimeString() },
-                    { user: 'Макс', text: 'Да, давайте начинать, я уже жду!', timestamp: new Date().toLocaleTimeString() }
-                ];
+                // Генерируем только историю сообщений (2-5 старых)
+                const historyCount = Math.floor(Math.random() * 4) + 2; // 2-5 сообщений
+                messages = [];
+                
+                // Только старые сообщения (15-45 минут назад)
+                for (let i = 0; i < historyCount; i++) {
+                    const user = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
+                    const message = fakeMessages[Math.floor(Math.random() * fakeMessages.length)];
+                    messages.push({
+                        user: user,
+                        text: message,
+                        timestamp: getRandomPastTime(15)
+                    });
+                }
             }
             updateChat();
             document.getElementById('watch-party').style.display = 'block';
             document.getElementById('movie-select').style.display = 'none';
 
-            // Симуляция сообщений (реже, 10-30 сек)
+            // Симуляция новых сообщений (10-30 сек)
             setInterval(() => {
-                const fakeUsers = ['Анна', 'Макс', 'Катя', 'Дима'];
-                const fakeMessages = [
-                    'Это мой любимый момент в фильме! ❤️',
-                    'Кто-нибудь объяснит, что произошло? 🤔',
-                    'Ха-ха, этот персонаж такой смешной! 😂',
-                    'Интересный сюжетный поворот, не ожидал...',
-                    'Паузу? Мне нужно попкорн обновить 🍿',
-                    'Качество видео супер, 4K рулит! 📺',
-                    'Что вы думаете о главном герое?',
-                    'Это напоминает мне другой фильм...',
-                    'Не спойлерите, я еще не смотрел! 🙈',
-                    'Отличный выбор фильма, спасибо! 👍'
-                ];
-                const randomUser = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
-                const randomMsg = fakeMessages[Math.floor(Math.random() * fakeMessages.length)];
-                const message = { user: randomUser, text: randomMsg, timestamp: new Date().toLocaleTimeString() };
-                messages.push(message);
+                const user = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
+                const message = fakeMessages[Math.floor(Math.random() * fakeMessages.length)];
+                const newMessage = { 
+                    user: user, 
+                    text: message, 
+                    timestamp: new Date().toLocaleTimeString() 
+                };
+                messages.push(newMessage);
                 updateChat();
                 saveChat();
             }, Math.random() * 20000 + 10000);
@@ -1355,7 +1422,7 @@
             const input = document.getElementById('message-input');
             const msg = input.value.trim();
             if (msg) {
-                const message = { user: 'Ты', text: msg, timestamp: new Date().toLocaleTimeString() };
+                const message = { user: 'Вы', text: msg, timestamp: new Date().toLocaleTimeString() };
                 messages.push(message);
                 updateChat();
                 saveChat();
