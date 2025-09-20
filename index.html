@@ -16,6 +16,8 @@
             font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
         header { position: relative; z-index: 10; }
         nav {
@@ -60,10 +62,11 @@
             padding: 5rem 2rem;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
             position: relative;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            scroll-snap-align: start;
         }
         #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: #fff; text-shadow: 0 0 10px rgba(255,107,107,0.5); }
@@ -105,18 +108,18 @@
             100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
         }
         
-        /* Исправления для блока популярных фильмов */
+        /* Блок Популярные фильмы и сериалы */
         .popular-movies { 
             padding: 3rem 2rem; 
             text-align: center; 
             background: rgba(0,0,0,0.3); 
-            margin-top: -5rem; 
             position: relative;
             z-index: 2;
-            min-height: 100vh; /* Занимает всю высоту экрана */
+            height: 100vh; /* 100% высоты экрана */
             display: flex;
             flex-direction: column;
             justify-content: center;
+            scroll-snap-align: start;
         }
         .popular-movies h2 { 
             font-size: 2.5rem; 
@@ -160,8 +163,17 @@
             justify-content: center;
         }
         
-        .features { padding: 4rem 2rem; text-align: center; }
-        .features h2 { font-size: 2.5rem; margin-bottom: 3rem; }
+        /* Блоки Почему StreamVibe? и Как это работает? */
+        .features { 
+            padding: 4rem 2rem; 
+            text-align: center;
+            height: 50vh; /* По пол экрана каждый */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            scroll-snap-align: start;
+        }
+        .features h2 { font-size: 2.5rem; margin-bottom: 2rem; }
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -180,12 +192,44 @@
         .feature.visible { opacity: 1; transform: translateY(0); }
         .feature i { font-size: 3rem; color: #ff6b6b; margin-bottom: 1rem; }
         .feature h3 { margin-bottom: 0.5rem; }
-        .how-it-works { padding: 4rem 2rem; background: rgba(0,0,0,0.3); }
-        .how-it-works h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; }
-        .step { text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
+
+        .how-it-works { 
+            padding: 4rem 2rem; 
+            background: rgba(0,0,0,0.3);
+            height: 50vh; /* По пол экрана */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            scroll-snap-align: start;
+        }
+        .how-it-works h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; }
+        .steps { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 2rem; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
+        .step { 
+            text-align: center; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.5s, transform 0.5s; 
+        }
         .step.visible { opacity: 1; transform: translateY(0); }
-        .step-number { font-size: 2rem; background: #ff6b6b; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .step-number { 
+            font-size: 2rem; 
+            background: #ff6b6b; 
+            color: white; 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1rem; 
+        }
+        
         .testimonials { padding: 4rem 2rem; text-align: center; }
         .testimonials h2 { font-size: 2.5rem; margin-bottom: 3rem; }
         .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
@@ -423,15 +467,15 @@
                     <h3>Dune: Part Two</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/YoHD9XEInc0')">
-                    <img src="img3.jpg" alt="Oppenheimer">
+                    <img src="img5.jpg" alt="Oppenheimer">
                     <h3>Oppenheimer</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/OzY2r2JXsDM')">
-                    <img src="img4.jpg" alt="The Batman">
+                    <img src="img6.jpg" alt="The Batman">
                     <h3>The Batman</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/iKZyYdwS3Wg')">
-                    <img src="img5.jpg" alt="Stranger Things">
+                    <img src="img3.jpg" alt="Stranger Things">
                     <h3>Stranger Things S5</h3>
                 </div>
                 <div class="movie-card" onclick="startParty('https://www.youtube.com/embed/5q8V6vV49d4')">
@@ -560,7 +604,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Как синхронизировать видео?</div>
-                <div class="faq-answer">Видео синхронизируется автоматически при создании комнаты. Просто выберите фильм, поделитесь ссылкой, и все участники увидют видео в одном темпе.</div>
+                <div class="faq-answer">Видео синхронизируется автоматически при создании комнаты. Просто выберите фильм, поделитесь ссылкой, и все участники увидят видео в одном темпе.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Какие сервисы поддерживаются?</div>
@@ -939,6 +983,16 @@
                 modal.style.display = 'none'; 
                 window.location.href = 'https://www.mediafire.com/file/pwv5wfidklmxua1/streamvibe_setup.zip/file'; 
             }, 3000);
+        }
+
+        function startParty(videoUrl) {
+            const roomId = 'Room-' + Math.random().toString(36).substr(2, 5);
+            document.getElementById('movie-select').style.display = 'none';
+            document.getElementById('watch-party').style.display = 'block';
+            document.getElementById('video-player').src = videoUrl + '?autoplay=1';
+            document.getElementById('room-id').textContent = roomId;
+            joinRoom(roomId);
+            updateUrl(roomId);
         }
     </script>
 </body>
