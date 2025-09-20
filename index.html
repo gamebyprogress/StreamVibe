@@ -15,11 +15,11 @@
             --secondary-color: #9b59b6;
             --accent-color: #34495e;
             --text-color: #ecf0f1;
-            --bg-dark: #1a1a2e;
-            --bg-darker: #0f0f0f;
+            --bg-dark: #1a1a3e;
+            --bg-darker: #0c0c1d;
         }
         body {
-            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--accent-color) 100%);
+            background: linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 30%, #2a1b3d 60%, #1e3c72 100%);
             color: var(--text-color);
             font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
@@ -32,47 +32,63 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(0,0,0,0.8);
+            padding: 1.2rem 2.5rem;
+            background: rgba(26, 26, 62, 0.85);
             backdrop-filter: blur(10px);
             border-radius: 0 0 20px 20px;
+            border: 1px solid rgba(231, 76, 60, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 11;
         }
         .logo { 
             font-size: 1.8rem; 
             font-weight: bold; 
-            color: var(--primary-color); 
-            transition: transform 0.3s; 
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .logo:hover { transform: scale(1.1); }
+        .logo:hover { 
+            transform: scale(1.05); 
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.3));
+        }
         .logo i { 
-            margin-left: 0.5rem; 
-            animation: spin 6s ease-in-out infinite;
-        }
-        @keyframes spin {
-            0%, 15% { transform: rotate(0deg); }
-            85%, 100% { transform: rotate(360deg); }
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            animation: none;
         }
         nav a { 
-            color: var(--primary-color); 
+            color: var(--text-color); 
             text-decoration: none; 
             margin: 0 1.5rem; 
-            font-weight: bold; 
+            font-weight: 500; 
             position: relative; 
-            transition: color 0.3s; 
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
         }
-        nav a::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: -5px; 
-            left: 0; 
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        nav a:hover { 
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+        }
+        nav a:hover::before { 
             width: 100%; 
-            height: 2px; 
-            background: var(--secondary-color); 
-            transform: scaleX(0); 
-            transition: transform 0.3s; 
         }
-        nav a:hover { color: var(--secondary-color); }
-        nav a:hover::after { transform: scaleX(1); }
         .hero {
             text-align: center;
             padding: 5rem 2rem;
@@ -639,7 +655,11 @@
             .player-chat { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
             .hero iframe { width: 100%; height: 200px; }
-            nav { flex-direction: column; gap: 1rem; }
+            nav { 
+                flex-direction: column; 
+                gap: 1rem; 
+                padding: 1rem; 
+            }
             .contacts { flex-direction: column; align-items: center; }
             .movie-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
             .movie-rooms { grid-template-columns: 1fr 1fr; }
@@ -670,7 +690,7 @@
     <div id="particles-js"></div>
     <header>
         <nav>
-            <div class="logo">StreamVibe <i class="fas fa-film"></i></div>
+            <div class="logo">StreamVibe <i class="fas fa-play-circle"></i></div>
             <div>
                 <a href="#movie-select" onclick="scrollToSection(event, '#movie-select')">Фильмы</a> |
                 <a href="#how-it-works" onclick="scrollToSection(event, '#how-it-works')">Как работает</a> |
@@ -679,8 +699,8 @@
             </div>
         </nav>
         <section class="hero">
-            <h1>Смотри фильмы в 4K с друзьями!</h1>
-            <p>Синхронный просмотр Netflix, YouTube и сериалов — скачай StreamVibe для Windows!</p>
+            <h1>Смотри фильмы в 4K с друзьями</h1>
+            <p>Синхронный просмотр Netflix, YouTube и сериалов — скачай StreamVibe для Windows</p>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/pBk4NYhWNMM" frameborder="0" allowfullscreen></iframe>
             <div class="cta-container">
                 <a href="https://www.mediafire.com/file/pwv5wfidklmxua1/streamvibe_setup.zip/file" class="cta-btn" onclick="showDownloadModal(event)">Скачать для Windows <i class="fas fa-download"></i></a>
