@@ -65,12 +65,27 @@ function updateRoomsList(rooms = roomsData) {
     rooms.forEach((room, index) => {
         const roomCard = document.createElement('div');
         roomCard.className = `room-card ${room.status}`;
-        roomCard.innerHTML = `
-            <img src="mimg${index + 1}.jpg" alt="${room.title}">
-            <h4>${room.title}</h4>
-            <div class="viewers">${room.viewers} зрителей</div>
-            <div class="room-status">${room.status === 'active' ? 'Сеанс идет' : 'Ожидание'}</div>
-        `;
+        
+        const img = document.createElement('img');
+        img.src = `mimg${index + 1}.jpg`;
+        img.alt = room.title;
+        
+        const title = document.createElement('h4');
+        title.textContent = room.title;
+        
+        const viewers = document.createElement('div');
+        viewers.className = 'viewers';
+        viewers.textContent = `${room.viewers} зрителей`;
+        
+        const status = document.createElement('div');
+        status.className = 'room-status';
+        status.textContent = room.status === 'active' ? 'Сеанс идет' : 'Ожидание';
+        
+        roomCard.appendChild(img);
+        roomCard.appendChild(title);
+        roomCard.appendChild(viewers);
+        roomCard.appendChild(status);
+        
         roomCard.addEventListener('click', () => joinRoom(index));
         roomsContainer.appendChild(roomCard);
     });
@@ -129,14 +144,18 @@ function sendMessage() {
 // Sample users list
 function updateUsersList() {
     const usersList = document.getElementById('users-list');
-    usersList.innerHTML = `
-        <div class="user">Анна (хост)</div>
-        <div class="user">Максим</div>
-        <div class="user">Екатерина</div>
-    `;
+    usersList.innerHTML = '';
+    const users = ['Анна (хост)', 'Максим', 'Екатерина'];
+    users.forEach(user => {
+        const div = document.createElement('div');
+        div.className = 'user';
+        div.textContent = user;
+        usersList.appendChild(div);
+    });
 }
 
-// Initialize rooms on page load
+// Initialize rooms and event listeners on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateRoomsList();
+    document.getElementById('download-btn').addEventListener('click', showDownloadModal);
 });
