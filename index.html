@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="cta-container">
-                    <a href="#" class="cta-btn cta-primary" id="download-btn">
+                    <a href="#" class="cta-btn cta-primary" onclick="showDownloadModal(event)">
                         <i class="fas fa-download"></i>
                         Скачать для Windows
                     </a>
@@ -54,6 +54,7 @@
     </header>
     
     <main>
+        <!-- Popular Movies -->
         <section class="popular-movies" id="popular-movies">
             <div class="section-header">
                 <i class="fas fa-fire section-icon"></i>
@@ -63,7 +64,7 @@
             <div class="movie-grid">
                 <article class="movie-card">
                     <div class="rating">8.3</div>
-                    <img src="img1.jpg" alt="Barbie">
+                    <img src="https://via.placeholder.com/300x280/ff6b6b/ffffff?text=BARBIE" alt="Barbie">
                     <a href="https://www.imdb.com/title/tt1517268/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -74,7 +75,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">8.7</div>
-                    <img src="img2.jpg" alt="Dune: Part Two">
+                    <img src="https://via.placeholder.com/300x280/4ecdc4/ffffff?text=DUNE+2" alt="Dune: Part Two">
                     <a href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -85,7 +86,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">8.4</div>
-                    <img src="img3.jpg" alt="Oppenheimer">
+                    <img src="https://via.placeholder.com/300x280/45b7d1/ffffff?text=OPPENHEIMER" alt="Oppenheimer">
                     <a href="https://www.imdb.com/title/tt15398776/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -96,7 +97,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">7.9</div>
-                    <img src="img4.jpg" alt="The Batman">
+                    <img src="https://via.placeholder.com/300x280/ff6b6b/ffffff?text=THE+BATMAN" alt="The Batman">
                     <a href="https://www.imdb.com/title/tt1877830/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -107,7 +108,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">8.7</div>
-                    <img src="img5.jpg" alt="Stranger Things">
+                    <img src="https://via.placeholder.com/300x280/4ecdc4/ffffff?text=STRANGER+THINGS" alt="Stranger Things">
                     <a href="https://www.imdb.com/title/tt4574334/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -118,7 +119,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">7.8</div>
-                    <img src="img6.jpg" alt="Avatar: Fire and Ash">
+                    <img src="https://via.placeholder.com/300x280/45b7d1/ffffff?text=AVATAR" alt="Avatar: Fire and Ash">
                     <a href="https://www.imdb.com/title/tt1757678/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -129,6 +130,7 @@
             </div>
         </section>
 
+        <!-- Features -->
         <section class="features-container" id="features">
             <section class="features">
                 <div class="section-header">
@@ -203,6 +205,7 @@
             </section>
         </section>
 
+        <!-- Testimonials -->
         <section class="testimonials" id="testimonials">
             <div class="section-header">
                 <i class="fas fa-quote-left section-icon"></i>
@@ -260,6 +263,7 @@
             </div>
         </section>
 
+        <!-- FAQ -->
         <section class="faq" id="faq">
             <div class="section-header">
                 <i class="fas fa-question-circle section-icon"></i>
@@ -280,7 +284,7 @@
                             <li>Запустите <code>stream-vibe-installer.exe</code></li>
                             <li>Следуйте инструкциям установщика (2-3 минуты)</li>
                         </ul>
-                        <strong class="support-text">Поддержка: доступна 24/7 через встроенный чат</strong>
+                        <strong>Поддержка:</strong> доступна 24/7 через встроенный чат
                     </div>
                 </div>
                 
@@ -401,6 +405,7 @@
             </div>
         </section>
 
+        <!-- Rooms -->
         <section id="movie-select">
             <div class="section-header">
                 <i class="fas fa-users section-icon"></i>
@@ -410,52 +415,18 @@
             
             <div class="rooms-header">
                 <input type="text" id="search" placeholder="Поиск по названию фильма...">
-                <button class="create-room-btn" id="create-room-btn">
+                <button class="create-room-btn" onclick="createRoom()">
                     <i class="fas fa-plus"></i>
                     Создать комнату
                 </button>
             </div>
             
             <div class="movie-rooms" id="movie-rooms">
-                <div class="room-card active">
-                    <img src="mimg1.jpg" alt="Interstellar">
-                    <h4>Interstellar</h4>
-                    <div class="viewers">12 зрителей</div>
-                    <div class="room-status">Сеанс идет</div>
-                </div>
-                <div class="room-card active">
-                    <img src="mimg2.jpg" alt="Inception">
-                    <h4>Inception</h4>
-                    <div class="viewers">8 зрителей</div>
-                    <div class="room-status">Сеанс идет</div>
-                </div>
-                <div class="room-card active">
-                    <img src="mimg3.jpg" alt="The Dark Knight">
-                    <h4>The Dark Knight</h4>
-                    <div class="viewers">15 зрителей</div>
-                    <div class="room-status">Сеанс идет</div>
-                </div>
-                <div class="room-card waiting">
-                    <img src="mimg4.jpg" alt="Pulp Fiction">
-                    <h4>Pulp Fiction</h4>
-                    <div class="viewers">5 зрителей</div>
-                    <div class="room-status">Ожидание</div>
-                </div>
-                <div class="room-card active">
-                    <img src="mimg5.jpg" alt="The Matrix">
-                    <h4>The Matrix</h4>
-                    <div class="viewers">9 зрителей</div>
-                    <div class="room-status">Сеанс идет</div>
-                </div>
-                <div class="room-card active">
-                    <img src="mimg6.jpg" alt="Fight Club">
-                    <h4>Fight Club</h4>
-                    <div class="viewers">7 зрителей</div>
-                    <div class="room-status">Сеанс идет</div>
-                </div>
+                <!-- Dynamic rooms will be inserted here -->
             </div>
         </section>
         
+        <!-- Watch Party -->
         <section id="watch-party">
             <div class="party-header">
                 <div class="party-title">
@@ -536,6 +507,7 @@
         </div>
     </footer>
     
+    <!-- Download Modal -->
     <div class="modal" id="download-modal">
         <div class="modal-content">
             <h2>Скачивание StreamVibe</h2>
