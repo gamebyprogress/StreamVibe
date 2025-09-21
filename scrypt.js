@@ -1,4 +1,3 @@
-// Particles.js configuration
 particlesJS('particles-js', {
     particles: {
         number: { value: 50, density: { enable: true, value_area: 800 } },
