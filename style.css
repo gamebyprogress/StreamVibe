@@ -307,9 +307,9 @@ nav a:hover {
 
 .movie-card img { 
     width: 100%; 
-    height: 300px; /* Фиксированная высота для одинакового размера */
-    object-fit: cover; /* Масштабирование как сейчас */
-    background: var(--bg-tertiary); /* Цвет блока вместо черного */
+    height: 300px; 
+    object-fit: contain; 
+    background: var(--bg-tertiary); 
     transition: var(--transition);
 }
 
@@ -349,7 +349,7 @@ nav a:hover {
 }
 
 .movie-card-content {
-    padding: 1rem; /* Уменьшено с 1.5rem для сокращения места под текст */
+    padding: 0.8rem; 
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -360,29 +360,16 @@ nav a:hover {
 }
 
 .movie-card h3 { 
-    font-size: 1rem; /* Уменьшено с 1.1rem для компактности */
+    font-size: 1rem; 
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.3rem; /* Уменьшено с 0.5rem */
+    margin-bottom: 0.2rem; 
 }
 
 .movie-card p {
-    font-size: 0.85rem; /* Уменьшено с 0.9rem для сокращения текста */
+    font-size: 0.85rem; 
     color: var(--text-secondary);
-    line-height: 1.3; /* Уменьшено с 1.4 для компактности */
-}
-
-.movie-card .rating {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: var(--primary-color);
-    color: white;
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    z-index: 3;
+    line-height: 1.2; 
 }
 
 /* Features Container */
@@ -702,7 +689,7 @@ nav a:hover {
 .faq-answer { 
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease; /* Плавное открытие */
+    transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease;
     padding: 0 2rem;
     opacity: 0;
     line-height: 1.8;
@@ -710,7 +697,7 @@ nav a:hover {
 }
 
 .faq-item.active .faq-answer {
-    max-height: 500px; /* Увеличено для вмещения всего текста */
+    max-height: 800px; 
     padding: 1.5rem 2rem;
     opacity: 1;
 }
@@ -873,8 +860,8 @@ nav a:hover {
 .room-card img { 
     width: 100%; 
     height: 180px;
-    object-fit: cover;
-    background: var(--bg-tertiary); /* Цвет блока вместо черного */
+    object-fit: contain; 
+    background: var(--bg-tertiary); 
     border-radius: 15px; 
     margin-bottom: 1.5rem; 
     transition: var(--transition);
@@ -901,10 +888,10 @@ nav a:hover {
 
 .room-card .room-status { 
     display: inline-block;
-    padding: 0.4rem 0.8rem; /* Уменьшено с 0.6rem 1.2rem */
+    padding: 0.4rem 0.8rem; 
     background: rgba(78, 205, 196, 0.1); 
     border-radius: 25px; 
-    font-size: 0.85rem; /* Уменьшено с 0.9rem */
+    font-size: 0.85rem; 
     color: var(--secondary-color);
     font-weight: 500;
     border: 1px solid var(--secondary-color);
