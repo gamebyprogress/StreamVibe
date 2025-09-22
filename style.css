@@ -307,9 +307,9 @@ nav a:hover {
 
 .movie-card img { 
     width: 100%; 
-    height: 300px; /* Фиксированная высота для одинакового размера */
-    object-fit: contain; /* Масштабирование без обрезки */
-    background: var(--bg-tertiary); /* Цвет блока вместо черного */
+    height: 300px;
+    object-fit: cover;
+    background: var(--bg-tertiary);
     transition: var(--transition);
 }
 
@@ -596,6 +596,9 @@ nav a:hover {
     position: relative;
     overflow: hidden;
     text-align: left;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
 }
 
 .testimonial::before {
@@ -704,16 +707,17 @@ nav a:hover {
 .faq-answer { 
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease; /* Плавное открытие */
-    padding: 0 2rem;
+    transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease;
+    padding: 0 2rem 0;
     opacity: 0;
     line-height: 1.8;
     word-wrap: break-word;
+    margin-bottom: 1.5rem;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 2000px; /* Увеличено для всего текста */
-    padding: 1.5rem 2rem;
+    max-height: 2000px;
+    padding: 2rem 2rem 2.5rem;
     opacity: 1;
 }
 
@@ -721,18 +725,18 @@ nav a:hover {
     color: var(--primary-color); 
     font-weight: 600;
     display: block;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-size: 1.05rem;
 }
 
 .faq-answer ul {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     padding-left: 1.5rem;
     list-style: none;
 }
 
 .faq-answer li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     color: var(--text-secondary);
     position: relative;
     padding-left: 1.2rem;
@@ -745,6 +749,12 @@ nav a:hover {
     left: 0;
     color: var(--secondary-color);
     font-weight: 600;
+}
+
+.faq-answer p {
+    margin: 1rem 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
 .faq-answer code { 
@@ -875,7 +885,7 @@ nav a:hover {
 .room-card img { 
     width: 100%; 
     height: 180px;
-    object-fit: contain;
+    object-fit: cover;
     background: var(--bg-tertiary);
     border-radius: 15px; 
     margin-bottom: 1.5rem; 
@@ -975,6 +985,7 @@ nav a:hover {
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .party-header button:hover { 
@@ -1046,6 +1057,12 @@ nav a:hover {
     border-radius: 12px;
     border-left: 3px solid var(--primary-color);
     word-wrap: break-word; 
+}
+
+#messages li.you {
+    background: rgba(78, 205, 196, 0.1);
+    border-left-color: var(--secondary-color);
+    margin-left: 20%;
 }
 
 #messages li strong { 
@@ -1479,6 +1496,10 @@ footer h2 {
         align-items: stretch;
         text-align: center;
         gap: 1rem;
+    }
+    
+    .party-header button {
+        justify-content: center;
     }
     
     .footer-links {
