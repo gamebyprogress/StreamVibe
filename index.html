@@ -1,896 +1,1503 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StreamVibe - платформа для синхронного просмотра фильмов и сериалов с друзьями в 4K. Скачай приложение для Windows и наслаждайся совместным просмотром Netflix, YouTube и других сервисов.">
-    <meta name="keywords" content="StreamVibe, синхронный просмотр, фильмы с друзьями, 4K видео, Netflix, YouTube">
-    <meta property="og:title" content="StreamVibe: Смотри фильмы в 4K с друзьями">
-    <meta property="og:description" content="Синхронный просмотр Netflix, YouTube и сериалов. Скачай для Windows.">
-    <title>StreamVibe</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23ff6b6b'/><stop offset='100%' stop-color='%234ecdc4'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23grad)' stroke='%23fff' stroke-width='3'/><text x='50' y='58' font-family='Arial' font-size='24' fill='%23fff' text-anchor='middle' font-weight='bold'>SV</text></svg>" type="image/svg+xml">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-</head>
-<body>
-    <div id="particles-js"></div>
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --accent-color: #45b7d1;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c6dc;
+    --bg-primary: #0f0f23;
+    --bg-secondary: #1a1a2e;
+    --bg-tertiary: #16213e;
+    --border-color: rgba(255, 107, 107, 0.2);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+header { 
+    position: relative; 
+    z-index: 100; 
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo { 
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.logo:hover { 
+    transform: scale(1.05); 
+}
+
+.logo i { 
+    font-size: 1.6rem;
+    animation: pulse 2s infinite;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav a { 
+    color: var(--text-secondary); 
+    text-decoration: none; 
+    font-weight: 500; 
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    font-size: 0.9rem;
+    position: relative;
+    text-transform: uppercase;
+}
+
+nav a:hover { 
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    background: rgba(78, 205, 196, 0.1);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    scroll-snap-align: start;
+    background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
+}
+
+#particles-js { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1; 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.hero h1 { 
+    font-size: clamp(2.5rem, 5vw, 4.5rem); 
+    margin-bottom: 1.5rem; 
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero p { 
+    font-size: clamp(1rem, 2.5vw, 1.3rem); 
+    margin-bottom: 2.5rem; 
+    opacity: 0.9; 
+    font-weight: 400;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-video {
+    position: relative;
+    margin: 2rem auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    width: 100%;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero iframe { 
+    width: 100%; 
+    height: 450px;
+    border: none;
+    display: block;
+}
+
+.hero .cta-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.cta-btn { 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    border: none;
+    width: 220px;
+    justify-content: center;
+}
+
+.cta-primary {
+    background: var(--gradient);
+    color: white;
+}
+
+.cta-secondary {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+}
+
+.cta-btn:hover { 
+    transform: translateY(-3px); 
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cta-btn:hover::before { 
+    left: 100%; 
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.section-icon {
+    font-size: 2.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+/* Popular Movies */
+.popular-movies { 
+    padding: 3rem 2rem;
+    background: var(--bg-secondary);
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.movie-card { 
+    background: var(--bg-tertiary); 
+    border-radius: 20px; 
+    overflow: hidden; 
+    cursor: pointer; 
+    position: relative;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+    border-color: var(--primary-color);
+}
+
+.movie-card img { 
+    width: 100%; 
+    height: 300px; /* Фиксированная высота для одинакового размера */
+    object-fit: contain; /* Масштабирование без обрезки */
+    background: var(--bg-tertiary); /* Цвет блока вместо черного */
+    transition: var(--transition);
+}
+
+.movie-card:hover img {
+    transform: scale(1.05);
+}
+
+.movie-card .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 3;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.movie-card:hover .play-overlay { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+.movie-card .play-overlay i { 
+    color: white; 
+    font-size: 20px; 
+    margin-left: 2px;
+}
+
+.movie-card-content {
+    padding: 1rem; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-tertiary);
+    text-align: center;
+}
+
+.movie-card h3 { 
+    font-size: 1.1rem; 
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem; 
+}
+
+.movie-card p {
+    font-size: 0.9rem; 
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.movie-card .rating {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 3;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Features Container */
+.features-container {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.features { 
+    padding: 4rem 2rem; 
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.feature {
+    background: var(--bg-tertiary);
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.feature:hover::before {
+    transform: scaleX(1);
+}
+
+.feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.2);
+    border-color: var(--primary-color);
+}
+
+.feature.visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.feature i { 
+    font-size: 2.5rem; 
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem; 
+    filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.3));
+    transition: var(--transition);
+}
+
+.feature:hover i { 
+    transform: scale(1.1); 
+}
+
+.feature h3 { 
+    margin-bottom: 1rem; 
+    font-size: 1.2rem; 
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.feature p { 
+    font-size: 0.9rem; 
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* How It Works */
+.how-it-works { 
+    padding: 4rem 2rem; 
+    background: var(--bg-primary);
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.steps { 
+    display: flex; 
+    gap: 3rem; 
+    max-width: 1000px; 
+    margin: 3rem auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.step { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.6s ease; 
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+}
+
+.step.visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.step-number { 
+    font-size: 1.5rem; 
+    background: var(--gradient); 
+    color: white; 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto 1.5rem; 
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    width: 3rem;
+    height: 2px;
+    background: var(--border-color);
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.step:last-child .step-number::after { 
+    display: none; 
+}
+
+.step h3 { 
+    font-size: 1.2rem; 
+    margin-bottom: 0.8rem; 
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.step p { 
+    font-size: 0.95rem; 
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Testimonials */
+.testimonials { 
+    padding: 4rem 2rem; 
+    background: var(--bg-secondary);
+    scroll-snap-align: start;
+    text-align: center;
+}
+
+.testimonial-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 1rem;
+}
+
+.testimonial { 
+    background: var(--bg-tertiary); 
+    padding: 2.5rem 2rem; 
+    border-radius: 20px; 
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.testimonial::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: var(--secondary-color);
+    opacity: 0.1;
+    font-weight: 100;
+    line-height: 1;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.1);
+}
+
+.testimonial-avatar {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 0 auto 1.5rem; 
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+    display: block;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.testimonial-author {
+    display: block;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/* FAQ */
+.faq { 
+    padding: 4rem 2rem; 
+    background: var(--bg-primary);
+    scroll-snap-align: start;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.faq-item { 
+    background: var(--bg-tertiary); 
+    margin-bottom: 1rem; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.1);
+}
+
+.faq-question { 
+    padding: 1.5rem 2rem; 
+    cursor: pointer; 
+    background: transparent; 
+    transition: var(--transition); 
+    position: relative; 
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:hover { 
+    background: rgba(255, 107, 107, 0.05); 
+}
+
+.faq-question .icon {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    transition: var(--transition);
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.faq-item.active .faq-question .icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer { 
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease; /* Плавное открытие */
+    padding: 0 2rem;
+    opacity: 0;
+    line-height: 1.8;
+    word-wrap: break-word;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 2000px; /* Увеличено для всего текста */
+    padding: 1.5rem 2rem;
+    opacity: 1;
+}
+
+.faq-answer strong { 
+    color: var(--primary-color); 
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+}
+
+.faq-answer ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.faq-answer li {
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+}
+
+.faq-answer li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.faq-answer code { 
+    background: rgba(255, 107, 107, 0.1); 
+    padding: 0.3rem 0.6rem; 
+    border-radius: 6px; 
+    font-family: 'Monaco', monospace; 
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Rooms Section */
+#movie-select { 
+    padding: 4rem 2rem; 
+    background: var(--bg-secondary);
+    scroll-snap-align: start;
+    text-align: center;
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.rooms-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#search { 
+    flex: 1;
+    max-width: 400px;
+    padding: 1rem 1.5rem; 
+    border: 2px solid var(--border-color);
+    border-radius: 50px; 
+    font-size: 1rem; 
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    transition: var(--transition);
+    min-width: 250px;
+}
+
+#search:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+#search::placeholder {
+    color: var(--text-secondary);
+}
+
+.create-room-btn {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    white-space: nowrap;
+}
+
+.create-room-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.movie-rooms { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem; 
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.room-card { 
+    background: var(--bg-tertiary); 
+    border-radius: 20px; 
+    padding: 2rem; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: var(--transition); 
+    position: relative;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.room-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.room-card:hover::before {
+    transform: scaleX(1);
+}
+
+.room-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.2); 
+    border-color: var(--primary-color);
+}
+
+.room-card img { 
+    width: 100%; 
+    height: 180px;
+    object-fit: contain;
+    background: var(--bg-tertiary);
+    border-radius: 15px; 
+    margin-bottom: 1.5rem; 
+    transition: var(--transition);
+}
+
+.room-card:hover img {
+    transform: scale(1.02);
+}
+
+.room-card h4 { 
+    margin-bottom: 1rem; 
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.room-card .viewers {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.room-card .room-status { 
+    display: inline-block;
+    padding: 0.4rem 0.8rem; 
+    background: rgba(78, 205, 196, 0.1); 
+    border-radius: 25px; 
+    font-size: 0.85rem; 
+    color: var(--secondary-color);
+    font-weight: 500;
+    border: 1px solid var(--secondary-color);
+    white-space: nowrap;
+}
+
+.room-card.waiting .room-status {
+    background: rgba(255, 107, 107, 0.1);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Watch Party */
+#watch-party { 
+    padding: 2rem; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    display: none; 
+    scroll-snap-align: start;
+    background: var(--bg-primary);
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#watch-party.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.party-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 2rem; 
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.party-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.party-header button { 
+    background: var(--gradient);
+    border: none;
+    padding: 0.8rem 1.5rem; 
+    border-radius: 25px; 
+    color: white; 
+    cursor: pointer; 
+    transition: var(--transition); 
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.party-header button:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.player-chat { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr; 
+    gap: 2rem; 
+    margin-top: 2rem;
+}
+
+#video-player { 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: var(--shadow);
+    height: 600px;
+    width: 100%;
+}
+
+#chat { 
+    background: var(--bg-tertiary); 
+    border-radius: 20px; 
+    padding: 1.5rem; 
+    height: 600px; 
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid var(--border-color);
+}
+
+#chat h3 {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#messages { 
+    flex: 1; 
+    overflow-y: auto; 
+    list-style: none; 
+    padding-right: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+#messages li { 
+    padding: 1rem; 
+    margin-bottom: 0.8rem;
+    background: rgba(255, 107, 107, 0.05);
+    border-radius: 12px;
+    border-left: 3px solid var(--primary-color);
+    word-wrap: break-word; 
+}
+
+#messages li strong { 
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+#messages li small { 
+    opacity: 0.7; 
+    font-size: 0.8rem; 
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.chat-input { 
+    display: flex; 
+    gap: 0.8rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.chat-input input { 
+    flex: 1; 
+    padding: 0.8rem 1rem; 
+    border: 2px solid var(--border-color);
+    border-radius: 25px; 
+    background: var(--bg-secondary); 
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.chat-input input::placeholder {
+    color: var(--text-secondary);
+}
+
+.chat-input button { 
+    background: var(--gradient);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.chat-input button:hover {
+    transform: scale(1.1);
+}
+
+#users-list { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.8rem; 
+    margin-bottom: 1.5rem; 
+    padding: 1rem;
+    background: rgba(78, 205, 196, 0.05);
+    border-radius: 12px; 
+    border: 1px solid var(--secondary-color);
+    justify-content: center;
+}
+
+.user { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.user-avatar, .user img { 
+    width: 32px; 
+    height: 32px; 
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+    flex-shrink: 0;
+}
+
+.user .user-avatar {
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.user .status { 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%; 
+    background: #4ecdc4; 
+    box-shadow: 0 0 0 2px var(--bg-tertiary);
+    flex-shrink: 0;
+    margin-left: 0.3rem;
+}
+
+.user.offline .status { 
+    background: #ff6b6b; 
+}
+
+/* Footer */
+footer { 
+    text-align: center; 
+    padding: 4rem 2rem 2rem; 
+    background: var(--bg-primary); 
+    border-top: 1px solid var(--border-color); 
+    scroll-snap-align: start;
+}
+
+footer h2 { 
+    font-size: 2.5rem; 
+    margin-bottom: 2.5rem; 
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contacts { 
+    display: flex; 
+    justify-content: center; 
+    gap: 2rem; 
+    margin: 2rem 0; 
+    flex-wrap: wrap; 
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--bg-tertiary);
+    border-radius: 15px;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-link:hover { 
+    background: var(--gradient);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    border-color: transparent;
+}
+
+.contact-link i {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.contact-link:hover i {
+    color: white;
+}
+
+.contact-form { 
+    max-width: 600px; 
+    margin: 3rem auto 2rem; 
+    padding: 0 1rem;
+}
+
+.contact-form h3 {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.contact-form input, 
+.contact-form textarea { 
+    width: 100%; 
+    padding: 1.2rem; 
+    margin-bottom: 1.5rem; 
+    border: 2px solid var(--border-color); 
+    border-radius: 15px; 
+    background: var(--bg-tertiary); 
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button { 
+    background: var(--gradient); 
+    border: none; 
+    padding: 1.2rem 3rem; 
+    border-radius: 15px; 
+    color: white; 
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.contact-form button:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+}
+
+.footer-links {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-links a { 
+    color: var(--text-secondary); 
+    text-decoration: none; 
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
+.error {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    display: none;
+    text-align: left;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress { 
+    height: 100%; 
+    background: var(--gradient); 
+    width: 0;
+    transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    border-radius: 4px;
+}
+
+.modal-hint {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
     
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <i class="fas fa-play-circle"></i>
-                StreamVibe
-            </a>
-            <div class="nav-links">
-                <a href="#popular-movies">Фильмы</a>
-                <a href="#features">Особенности</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contacts">Контакты</a>
-            </div>
-        </nav>
-        
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Смотри фильмы в 4K вместе с друзьями</h1>
-                
-                <div class="hero-video">
-                    <iframe src="https://www.youtube.com/embed/pBk4NYhWNMM" title="StreamVibe Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                
-                <div class="cta-container">
-                    <a href="#" class="cta-btn cta-primary" id="downloadBtn">
-                        <i class="fas fa-download"></i>
-                        Скачать для Windows
-                    </a>
-                    <a href="#movie-select" class="cta-btn cta-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        Присоединиться к комнате
-                    </a>
-                </div>
-            </div>
-        </section>
-    </header>
+    .nav-links {
+        gap: 1rem;
+    }
     
-    <main>
-        <section class="popular-movies" id="popular-movies">
-            <div class="section-header">
-                <i class="fas fa-fire section-icon"></i>
-                <h2 class="section-title">Популярное сейчас</h2>
-            </div>
-            
-            <div class="movie-grid">
-                <article class="movie-card">
-                    <div class="rating">8.3</div>
-                    <img src="https://image.tmdb.org/t/p/original/8Gxv8gAuwvnP99EQ3kZOeaJU9Iv.jpg" alt="Barbie">
-                    <a href="https://www.imdb.com/title/tt1517268/" target="_blank" rel="noopener" class="play-overlay">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <div class="movie-card-content">
-                        <h3>Barbie</h3>
-                    </div>
-                </article>
-                
-                <article class="movie-card">
-                    <div class="rating">8.7</div>
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="Dune: Part Two">
-                    <a href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener" class="play-overlay">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <div class="movie-card-content">
-                        <h3>Dune: Part Two</h3>
-                    </div>
-                </article>
-                
-                <article class="movie-card">
-                    <div class="rating">8.4</div>
-                    <img src="https://image.tmdb.org/t/p/original/8Gxv8gAuwvnP99EQ3kZOeaJU9Iv.jpg" alt="Oppenheimer">
-                    <a href="https://www.imdb.com/title/tt15398776/" target="_blank" rel="noopener" class="play-overlay">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <div class="movie-card-content">
-                        <h3>Oppenheimer</h3>
-                    </div>
-                </article>
-                
-                <article class="movie-card">
-                    <div class="rating">7.9</div>
-                    <img src="https://image.tmdb.org/t/p/original/nHF3Iqnw7kd37xsxB3aOz8b7uPc.jpg" alt="The Batman">
-                    <a href="https://www.imdb.com/title/tt1877830/" target="_blank" rel="noopener" class="play-overlay">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <div class="movie-card-content">
-                        <h3>The Batman</h3>
-                    </div>
-                </article>
-                
-                <article class="movie-card">
-                    <div class="rating">8.7</div>
-                    <img src="https://image.tmdb.org/t/p/original/r6OUpWpeNztX3dO9lH0iTuyMKzz.jpg" alt="Stranger Things S5">
-                    <a href="https://www.imdb.com/title/tt4574334/" target="_blank" rel="noopener" class="play-overlay">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <div class="movie-card-content">
-                        <h3>Stranger Things S5</h3>
-                    </div>
-                </article>
-                
-                <article class="movie-card">
-                    <div class="rating">7.8</div>
-                    <img src="https://image.tmdb.org/t/p/original/3Z0x7ZyAMy1KQAEtcXfpZLLxiXO.jpg" alt="Avatar: Fire and Ash">
-                    <a href="https://www.imdb.com/title/tt1757678/" target="_blank" rel="noopener" class="play-overlay">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <div class="movie-card-content">
-                        <h3>Avatar: Fire and Ash</h3>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="features-container" id="features">
-            <section class="features">
-                <div class="section-header">
-                    <i class="fas fa-star section-icon"></i>
-                    <h2 class="section-title">Почему StreamVibe?</h2>
-                </div>
-                
-                <div class="feature-grid">
-                    <article class="feature">
-                        <i class="fas fa-users"></i>
-                        <h3>Совместный просмотр</h3>
-                        <p>Создавай приватные комнаты и приглашай друзей для синхронного просмотра в реальном времени</p>
-                    </article>
-                    
-                    <article class="feature">
-                        <i class="fas fa-comments"></i>
-                        <h3>Чат и голосовой чат</h3>
-                        <p>Общайтесь во время просмотра без спойлеров. Голосовой чат для живого общения</p>
-                    </article>
-                    
-                    <article class="feature">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Оптимизировано для Windows</h3>
-                        <p>Стабильная работа, минимальная нагрузка на систему и максимальная производительность</p>
-                    </article>
-                    
-                    <article class="feature">
-                        <i class="fas fa-lock"></i>
-                        <h3>Полная приватность</h3>
-                        <p>Комнаты доступны только приглашенным пользователям. End-to-End шифрование чатов</p>
-                    </article>
-                    
-                    <article class="feature">
-                        <i class="fas fa-tv"></i>
-                        <h3>4K и HDR качество</h3>
-                        <p>Поддержка высокого разрешения и HDR контента без потери качества изображения</p>
-                    </article>
-                    
-                    <article class="feature">
-                        <i class="fas fa-globe"></i>
-                        <h3>Мультиплатформенность</h3>
-                        <p>Интеграция с Netflix, YouTube, Amazon Prime, Disney+ и поддержка локальных файлов</p>
-                    </article>
-                </div>
-            </section>
-
-            <section class="how-it-works" id="how-it-works">
-                <div class="section-header">
-                    <i class="fas fa-play-circle section-icon"></i>
-                    <h2 class="section-title">Как это работает?</h2>
-                </div>
-                
-                <div class="steps">
-                    <article class="step">
-                        <div class="step-number">01</div>
-                        <h3>Скачай и установи</h3>
-                        <p>Загрузи приложение для Windows и установи за 2 минуты</p>
-                    </article>
-                    
-                    <article class="step">
-                        <div class="step-number">02</div>
-                        <h3>Создай комнату</h3>
-                        <p>Выбери фильм или сериал и сгенерируй уникальную ссылку для друзей</p>
-                    </article>
-                    
-                    <article class="step">
-                        <div class="step-number">03</div>
-                        <h3>Смотрите вместе</h3>
-                        <p>Видео автоматически синхронизируется для всех участников комнаты</p>
-                    </article>
-                </div>
-            </section>
-        </section>
-
-        <section class="testimonials" id="testimonials">
-            <div class="section-header">
-                <i class="fas fa-quote-left section-icon"></i>
-                <h2 class="section-title">Что говорят наши пользователи</h2>
-            </div>
-            
-            <div class="testimonial-grid">
-                <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Анна" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "StreamVibe полностью изменил наши посиделки! Смотрим Barbie с подругами, чат работает идеально, синхронизация без задержек. Просто огонь!"
-                    </div>
-                    <cite class="testimonial-author">- Анна, 22 года</cite>
-                </article>
-                
-                <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Максим" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Качество 4K просто потрясающее! Синхронизация работает без лагов даже при слабом соединении. Скачал за минуту и сразу начал пользоваться."
-                    </div>
-                    <cite class="testimonial-author">- Максим, 28 лет</cite>
-                </article>
-                
-                <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Екатерина" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Идеально для девичников! Приватные комнаты — это то, что нужно. Все подруги в восторге, теперь это наша основная платформа для кино."
-                    </div>
-                    <cite class="testimonial-author">- Екатерина, 19 лет</cite>
-                </article>
-                
-                <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Дмитрий" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Смотрели Oppenheimer — ощущения как в настоящем кинотеатре! Качество изображения и звука на высоте, все работает стабильно."
-                    </div>
-                    <cite class="testimonial-author">- Дмитрий, 25 лет</cite>
-                </article>
-                
-                <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Елизавета" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Приватные комнаты — настоящая находка! Никто не мешает, можно спокойно обсуждать сюжет. Интерфейс интуитивно понятный."
-                    </div>
-                    <cite class="testimonial-author">- Елизавета, 21 год</cite>
-                </article>
-                
-                <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Сергей" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Простое и удобное приложение. Скачал, установил, создали комнату — и сразу в дело. Никаких сложностей, всё работает как часы."
-                    </div>
-                    <cite class="testimonial-author">- Сергей, 30 лет</cite>
-                </article>
-            </div>
-        </section>
-
-        <section class="faq" id="faq">
-            <div class="section-header">
-                <i class="fas fa-question-circle section-icon"></i>
-                <h2 class="section-title">Часто задаваемые вопросы</h2>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Как скачать и установить приложение?
-                        <span class="icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Простая установка в 4 шага:
-                        	Нажмите кнопку "Скачать для Windows" на главной странице
-	Распакуйте архив (пароль: 3987)
-	Запустите stream-vibe-installer.exe
-	Следуйте инструкциям установщика (2-3 минуты)
-
-
-                        Поддержка: доступна 24/7 через встроенный чат
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        На каких платформах работает StreamVibe?
-                        <span class="icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Текущая поддержка:
-                        	Windows 10/11 — полная поддержка (64-bit)
-	Браузерная версия — Chrome, Firefox, Safari
-
-
-                        В разработке:
-                        	macOS — релиз через 2-3 месяца
-	iOS/Android — первая половина 2026 года
-
-
-                        Системные требования: 4 ГБ RAM, 100 МБ места
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Как работает синхронизация видео?
-                        <span class="icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Технология SyncTime™ обеспечивает:
-                        	Задержка <200мс даже при слабом соединении
-	Автоматическая синхронизация для всех участников
-	Компенсация jitter разной скорости интернета
-	Ручная синхронизация кнопкой при необходимости
-
-
-                        Поддерживаемые форматы: YouTube (4K/60fps), Netflix, Amazon Prime, Disney+, MP4/H.264 файлы
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Какие стриминговые сервисы поддерживаются?
-                        <span class="icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Полная поддержка:
-                        	YouTube — все видео включая 4K и 60 FPS
-	Netflix — премиум контент (требуется подписка)
-	Amazon Prime Video — 4K HDR контент
-	Disney+ — Marvel, Star Wars, Pixar
-	HBO Max — контент Warner Bros.
-
-
-                        Дополнительно:
-                        	Спорт: TNT Sports, ESPN+, DAZN
-	Музыка: Spotify, Apple Music
-	Файлы: MP4, MKV до 8K + субтитры
-
-
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Насколько безопасно использование?
-                        <span class="icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Меры безопасности:
-                        	Антивирусная защита: проверено Norton, McAfee, Kaspersky
-	Шифрование: TLS 1.3 для соединений + AES-256 для данных
-	Приватность: End-to-End шифрование приватных комнат
-	Аутентификация: цифровая подпись Microsoft Authenticode
-
-
-                        Что НЕ делаем:
-                        	Не собираем пароли от стриминговых сервисов
-	Не храним историю просмотров без согласия
-	Не показываем рекламу в приложении
-	Соответствуем GDPR и российскому законодательству
-
-
-                        Важно: скачивайте только с официального сайта
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Поддерживается ли оффлайн просмотр?
-                        <span class="icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Онлайн режим (основной):
-                        	1080p: от 5 Мбит/с
-	4K: от 25 Мбит/с
-	Авто-подстройка под скорость соединения
-
-
-                        
-                        Оффлайн возможности:
-                        	Локальные файлы: MP4, MKV до 8K разрешения
-	Скачивание: Netflix, YouTube Premium
-	Локальная сеть: Wi-Fi без интернета (multicast протокол)
-
-
-                        
-                        Хранение:
-                        	Автоматическая папка C:\StreamVibe\Offline
-	Поддержка USB/HDD накопителей
-	Встроенный плеер с субтитрами и эквалайзером
-
-
-                        
-                        Ограничения: чат работает только в локальной сети, нет облачного сохранения прогресса
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="movie-select">
-            <div class="section-header">
-                <i class="fas fa-users section-icon"></i>
-                <h2 class="section-title">Активные комнаты</h2>
-            </div>
-            
-            <div class="rooms-header">
-                <input type="text" id="search" placeholder="Поиск по названию фильма...">
-                <button class="create-room-btn" id="createRoomBtn">
-                    <i class="fas fa-plus"></i>
-                    Создать комнату
-                </button>
-            </div>
-            
-            <div class="movie-rooms" id="movie-rooms">
-                <article class="room-card">
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="Interstellar">
-                    <h4>Interstellar</h4>
-                    <div class="viewers">
-                        <i class="fas fa-eye"></i> 12 зрителей
-                    </div>
-                    <span class="room-status">
-                        <i class="fas fa-circle"></i> В эфире
-                    </span>
-                </article>
-                
-                <article class="room-card">
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="Inception">
-                    <h4>Inception</h4>
-                    <div class="viewers">
-                        <i class="fas fa-eye"></i> 8 зрителей
-                    </div>
-                    <span class="room-status">
-                        <i class="fas fa-circle"></i> В эфире
-                    </span>
-                </article>
-                
-                <article class="room-card">
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="The Dark Knight">
-                    <h4>The Dark Knight</h4>
-                    <div class="viewers">
-                        <i class="fas fa-eye"></i> 15 зрителей
-                    </div>
-                    <span class="room-status">
-                        <i class="fas fa-circle"></i> В эфире
-                    </span>
-                </article>
-                
-                <article class="room-card waiting">
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="Pulp Fiction">
-                    <h4>Pulp Fiction</h4>
-                    <div class="viewers">
-                        <i class="fas fa-eye"></i> 5 зрителей
-                    </div>
-                    <span class="room-status">
-                        <i class="fas fa-clock"></i> Ожидает
-                    </span>
-                </article>
-                
-                <article class="room-card">
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="The Matrix">
-                    <h4>The Matrix</h4>
-                    <div class="viewers">
-                        <i class="fas fa-eye"></i> 9 зрителей
-                    </div>
-                    <span class="room-status">
-                        <i class="fas fa-circle"></i> В эфире
-                    </span>
-                </article>
-                
-                <article class="room-card">
-                    <img src="https://image.tmdb.org/t/p/original/mBoNRrWjgjjl0GCIENsWo5cpN5B.jpg" alt="Fight Club">
-                    <h4>Fight Club</h4>
-                    <div class="viewers">
-                        <i class="fas fa-eye"></i> 7 зрителей
-                    </div>
-                    <span class="room-status">
-                        <i class="fas fa-circle"></i> В эфире
-                    </span>
-                </article>
-            </div>
-        </section>
-        
-        <section id="watch-party">
-            <div class="party-header">
-                <h2 class="party-title">Киносеанс: <span id="room-id">Loading...</span></h2>
-                <div>
-                    <button id="shareBtn">
-                        <i class="fas fa-share-alt"></i> Поделиться ссылкой
-                    </button>
-                    <button id="exitBtn">
-                        <i class="fas fa-sign-out-alt"></i> Выйти из комнаты
-                    </button>
-                </div>
-            </div>
-            
-            <div id="users-list">
-                <!-- Users will be inserted here -->
-            </div>
-            
-            <div class="player-chat">
-                <iframe id="video-player" frameborder="0" allowfullscreen></iframe>
-                <div id="chat">
-                    <h3><i class="fas fa-comments"></i> Чат комнаты</h3>
-                    <ul id="messages"></ul>
-                    <div class="chat-input">
-                        <input type="text" id="message-input" placeholder="Напишите сообщение...">
-                        <button id="sendBtn">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    .hero {
+        padding: 1rem;
+        min-height: calc(100vh - 80px);
+    }
     
-    <footer id="contacts">
-        <h2>Связаться с нами</h2>
-        
-        <div class="contacts">
-            <a href="mailto:support@streamvibe.com" class="contact-link">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://t.me/streamvibe" target="_blank" rel="noopener" class="contact-link">
-                <i class="fab fa-telegram-plane"></i>
-            </a>
-            <a href="https://vk.com/streamvibe" target="_blank" rel="noopener" class="contact-link">
-                <i class="fab fa-vk"></i>
-            </a>
-            <a href="https://discord.gg/streamvibe" target="_blank" rel="noopener" class="contact-link">
-                <i class="fab fa-discord"></i>
-            </a>
-        </div>
-        
-        <form class="contact-form" id="contact-form">
-            <h3>Обратная связь</h3>
-            
-            <input type="text" id="contact-name" placeholder="Ваше имя" required>
-            <div id="name-error" class="error"></div>
-            
-            <input type="email" id="contact-email" placeholder="Ваш email" required>
-            <div id="email-error" class="error"></div>
-            
-            <textarea id="contact-message" placeholder="Ваше сообщение" required></textarea>
-            <div id="message-error" class="error"></div>
-            
-            <button type="submit">Отправить</button>
-        </form>
-        
-        <div class="footer-links">
-            <a href="#">Политика конфиденциальности</a>
-            <a href="#">Условия использования</a>
-            <a href="#">Поддержка</a>
-            <a href="#">О нас</a>
-        </div>
-    </footer>
+    .hero iframe {
+        height: 250px;
+    }
+    
+    .hero .cta-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .movie-grid, .movie-rooms {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .feature-grid { 
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .steps { 
+        flex-direction: column; 
+        gap: 2rem;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contacts {
+        gap: 1.5rem;
+    }
+    
+    .contact-link {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .rooms-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    #search {
+        min-width: auto;
+    }
+    
+    .player-chat { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+    
+    #video-player, #chat {
+        height: 400px;
+    }
+    
+    .party-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
 
-    <div class="modal" id="download-modal">
-        <div class="modal-content">
-            <h2>Скачивание началось!</h2>
-            <p>Ваш файл загружается. Пожалуйста, дождитесь завершения.</p>
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-            <p class="modal-hint">После скачивания запустите <code>stream-vibe-installer.exe</code> и следуйте инструкциям.</p>
-        </div>
-    </div>
-
-    <script>
-        // Particles.js initialization
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: ['#ff6b6b', '#4ecdc4'] },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.1, width: 1 },
-                move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'out' }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: { grab: { distance: 200, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
-            },
-            retina_detect: true
-        });
-
-        // Smooth Scroll for Navigation
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function () {
-                const faqItem = this.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                const answer = faqItem.querySelector('.faq-answer');
-
-                // Close all other FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== faqItem) {
-                        item.classList.remove('active');
-                        item.querySelector('.faq-answer').style.maxHeight = '0';
-                        item.querySelector('.icon').textContent = '+';
-                    }
-                });
-
-                // Toggle current item
-                if (isActive) {
-                    faqItem.classList.remove('active');
-                    answer.style.maxHeight = '0';
-                    this.querySelector('.icon').textContent = '+';
-                } else {
-                    faqItem.classList.add('active');
-                    answer.style.maxHeight = (answer.scrollHeight + 20) + 'px'; // +20px для отступов
-                    this.querySelector('.icon').textContent = '-';
-                }
-            });
-        });
-
-        // Scroll Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature, .step').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Modal for Download
-        document.getElementById('downloadBtn').addEventListener('click', function (event) {
-            event.preventDefault();
-            const modal = document.getElementById('download-modal');
-            modal.classList.add('visible');
-
-            const progress = modal.querySelector('.progress');
-            progress.style.width = '0%';
-
-            const animationDuration = 2000; // 2 секунды
-            progress.style.transition = `width ${animationDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
-            setTimeout(() => {
-                progress.style.width = '100%';
-            }, 100);
-
-            setTimeout(() => {
-                modal.classList.remove('visible');
-            }, animationDuration + 1000); // Закрыть после завершения + 1 секунда
-        });
-
-        // Room Functions
-        document.getElementById('createRoomBtn').addEventListener('click', createRoom);
-
-        function createRoom() {
-            alert('Комната создана! Ссылка: ' + window.location.href + '/room/' + Math.random().toString(36).substr(2, 9));
-        }
-
-        document.querySelectorAll('.room-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const videoUrl = card.getAttribute('data-video');
-                const roomName = card.getAttribute('data-title');
-                joinRoom(videoUrl, roomName);
-            });
-        });
-
-        function joinRoom(videoUrl, roomName) {
-            const watchParty = document.getElementById('watch-party');
-            const movieSelect = document.getElementById('movie-select');
-            const videoPlayer = document.getElementById('video-player');
-            const roomId = document.getElementById('room-id');
-            const usersList = document.getElementById('users-list');
-
-            movieSelect.style.opacity = '0';
-            movieSelect.style.transform = 'translateY(-30px)';
-            setTimeout(() => {
-                movieSelect.style.display = 'none';
-                watchParty.style.display = 'block';
-                watchParty.style.opacity = '1';
-                watchParty.style.transform = 'translateY(0)';
-                videoPlayer.src = 'https://www.youtube.com/embed/' + videoUrl;
-                roomId.textContent = roomName;
-
-                // Имитация списка пользователей (больше пользователей)
-                usersList.innerHTML = `
-                    <div class="user">
-                        <div class="user-avatar">JD</div>
-                        <span>John Doe</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user offline">
-                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Jane" class="user-avatar">
-                        <span>Jane Smith</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user">
-                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Mike" class="user-avatar">
-                        <span>Mike Johnson</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user">
-                        <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Anna" class="user-avatar">
-                        <span>Anna Lee</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user offline">
-                        <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Bob" class="user-avatar">
-                        <span>Bob Ross</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user">
-                        <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="Emily" class="user-avatar">
-                        <span>Emily Davis</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user">
-                        <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="David" class="user-avatar">
-                        <span>David Wilson</span>
-                        <span class="status"></span>
-                    </div>
-                    <div class="user offline">
-                        <img src="https://randomuser.me/api/portraits/women/8.jpg" alt="Sophia" class="user-avatar">
-                        <span>Sophia Martinez</span>
-                        <span class="status"></span>
-                    </div>
-                `;
-            }, 300);
-
-            // Сообщение от системы
-            const messages = document.getElementById('messages');
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>System:</strong> You joined the room <small>${new Date().toLocaleTimeString()}</small>`;
-            messages.appendChild(li);
-            messages.scrollTop = messages.scrollHeight;
-
-            // Нет скролла наверх
-        }
-
-        document.getElementById('shareBtn').addEventListener('click', shareRoom);
-
-        function shareRoom() {
-            const roomId = document.getElementById('room-id').textContent;
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href + '/room/' + roomId.replace(/\s+/g, '-').toLowerCase();
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('Ссылка на комнату скопирована в буфер обмена!');
-        }
-
-        document.getElementById('exitBtn').addEventListener('click', leaveRoom);
-
-        function leaveRoom() {
-            const watchParty = document.getElementById('watch-party');
-            const movieSelect = document.getElementById('movie-select');
-            const videoPlayer = document.getElementById('video-player');
-            const messages = document.getElementById('messages');
-
-            watchParty.style.opacity = '0';
-            watchParty.style.transform = 'translateY(30px)';
-            setTimeout(() => {
-                watchParty.style.display = 'none';
-                movieSelect.style.display = 'block';
-                movieSelect.style.opacity = '1';
-                movieSelect.style.transform = 'translateY(0)';
-                videoPlayer.src = '';
-                messages.innerHTML = '';
-            }, 300);
-        }
-
-        // Chat Functionality
-        document.getElementById('sendBtn').addEventListener('click', sendMessage);
-        document.getElementById('message-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        function sendMessage() {
-            const input = document.getElementById('message-input');
-            const messages = document.getElementById('messages');
-            if (input.value.trim() !== '') {
-                const li = document.createElement('li');
-                li.innerHTML = `<strong>You:</strong> ${input.value} <small>${new Date().toLocaleTimeString()}</small>`;
-                messages.appendChild(li);
-                messages.scrollTop = messages.scrollHeight;
-                input.value = '';
-            }
-        }
-
-        // Simulate Messages
-        function simulateMessages() {
-            const messages = document.getElementById('messages');
-            const users = ['John Doe', 'Jane Smith', 'Mike Johnson', 'Anna Lee', 'Bob Ross', 'Emily Davis', 'David Wilson', 'Sophia Martinez'];
-            const sampleMessages = [
-                'This scene is amazing!',
-                'Did anyone notice that Easter egg?',
-                'Pause for 5 minutes, okay?',
-                'Best movie of the year!',
-                'What do you think will happen next?',
-                'The acting is top-notch!',
-                'Love this soundtrack.',
-                'That twist was unexpected!',
-                'Anyone else crying?',
-                'Classic film!',
-                'Highly recommend this!',
-                'The visuals are stunning in 4K.'
-            ];
-            setInterval(() => {
-                const user = users[Math.floor(Math.random() * users.length)];
-                const text = sampleMessages[Math.floor(Math.random() * sampleMessages.length)];
-                const li = document.createElement('li');
-                li.innerHTML = `<strong>${user}:</strong> ${text} <small>${new Date().toLocaleTimeString()}</small>`;
-                messages.appendChild(li);
-                messages.scrollTop = messages.scrollHeight;
-            }, 3000); // чаще, каждые 3 секунды
-        }
-
-        // Start simulation when room is joined (call in joinRoom if needed)
-        // simulateMessages(); // Uncomment if you want global simulation
-
-        // Form Validation
-        const form = document.getElementById('contact-form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('contact-name');
-            const email = document.getElementById('contact-email');
-            const message = document.getElementById('contact-message');
-            const nameError = document.getElementById('name-error');
-            const emailError = document.getElementById('email-error');
-            const messageError = document.getElementById('message-error');
-            
-            let valid = true;
-            
-            nameError.textContent = '';
-            emailError.textContent = '';
-            messageError.textContent = '';
-            
-            if (name.value.trim().length < 2) {
-                nameError.textContent = 'Имя должно содержать минимум 2 символа';
-                nameError.style.display = 'block';
-                valid = false;
-            }
-            
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email.value.trim())) {
-                emailError.textContent = 'Введите корректный email';
-                emailError.style.display = 'block';
-                valid = false;
-            }
-            
-            if (message.value.trim().length < 10) {
-                messageError.textContent = 'Сообщение должно содержать минимум 10 символов';
-                messageError.style.display = 'block';
-                valid = false;
-            }
-            
-            if (valid) {
-                alert('Сообщение отправлено!');
-                form.reset();
-            }
-        });
-
-        // Search Functionality
-        const searchInput = document.getElementById('search');
-        searchInput.addEventListener('input', () => {
-            const filter = searchInput.value.toLowerCase();
-            const rooms = document.querySelectorAll('.room-card');
-            rooms.forEach(room => {
-                const title = room.querySelector('h4').textContent.toLowerCase();
-                room.style.display = title.includes(filter) ? '' : 'none';
-            });
-        });
-    </script>
-</body>
-</html>
+@media (max-width: 480px) {
+    .movie-grid, .movie-rooms {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .section-icon {
+        font-size: 2rem;
+    }
+}
