@@ -286,6 +286,8 @@ nav a:hover {
     height: 400px;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
 }
 
 .movie-card:hover {
@@ -762,9 +764,6 @@ nav a:hover {
     scroll-snap-align: start;
     text-align: center;
     position: relative;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .rooms-header {
@@ -918,31 +917,36 @@ nav a:hover {
 
 /* Watch Party */
 #watch-party { 
-    padding: 2rem; 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    display: none; 
-    scroll-snap-align: start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background: var(--bg-primary);
-    min-height: 100vh;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    position: relative;
-    z-index: 50;
+    z-index: 1000;
+    display: none;
+    overflow-y: auto;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 #watch-party.active {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
+}
+
+.watch-party-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .party-header { 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    margin-bottom: 2rem; 
+    margin-bottom: 1rem; 
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--border-color);
     flex-wrap: wrap;
@@ -993,18 +997,88 @@ nav a:hover {
     box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
 }
 
+.party-users {
+    background: var(--bg-tertiary);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.party-users h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#users-list { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.8rem; 
+}
+
+.user { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.user-avatar, .user img { 
+    width: 32px; 
+    height: 32px; 
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+    flex-shrink: 0;
+}
+
+.user .user-avatar {
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.user .status { 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%; 
+    background: #4ecdc4; 
+    box-shadow: 0 0 0 2px var(--bg-tertiary);
+    flex-shrink: 0;
+    margin-left: 0.3rem;
+}
+
+.user.you .status { 
+    background: var(--primary-color); 
+}
+
 .player-chat { 
+    flex: 1;
     display: grid; 
     grid-template-columns: 2fr 1fr; 
     gap: 2rem; 
-    margin-top: 2rem;
+    min-height: 0;
 }
 
 #video-player { 
     border-radius: 20px; 
     overflow: hidden; 
     box-shadow: var(--shadow);
-    height: 600px;
+    height: 60vh;
+    max-height: 600px;
     width: 100%;
     position: relative;
 }
@@ -1013,10 +1087,11 @@ nav a:hover {
     background: var(--bg-tertiary); 
     border-radius: 20px; 
     padding: 1.5rem; 
-    height: 600px; 
     display: flex; 
     flex-direction: column; 
     border: 1px solid var(--border-color);
+    height: 60vh;
+    max-height: 600px;
 }
 
 #chat h3 {
@@ -1034,7 +1109,6 @@ nav a:hover {
     overflow-y: auto; 
     list-style: none; 
     padding-right: 0.5rem;
-    margin-bottom: 1.5rem;
 }
 
 #messages::-webkit-scrollbar {
@@ -1064,6 +1138,14 @@ nav a:hover {
     background: rgba(78, 205, 196, 0.1);
     border-left-color: var(--secondary-color);
     margin-left: 20%;
+}
+
+#messages li.system {
+    background: rgba(69, 183, 209, 0.1);
+    border-left-color: var(--accent-color);
+    text-align: center;
+    margin: 0 auto 0.8rem;
+    max-width: 80%;
 }
 
 #messages li strong { 
@@ -1121,62 +1203,6 @@ nav a:hover {
 
 .chat-input button:hover {
     transform: scale(1.1);
-}
-
-#users-list { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.8rem; 
-    margin-bottom: 1.5rem; 
-    padding: 1rem;
-    background: rgba(78, 205, 196, 0.05);
-    border-radius: 12px; 
-    border: 1px solid var(--secondary-color);
-    justify-content: center;
-}
-
-.user { 
-    display: flex; 
-    align-items: center; 
-    gap: 0.5rem; 
-    padding: 0.5rem 0.8rem;
-    background: var(--bg-secondary);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-.user-avatar, .user img { 
-    width: 32px; 
-    height: 32px; 
-    border-radius: 50%; 
-    object-fit: cover;
-    border: 2px solid var(--secondary-color);
-    flex-shrink: 0;
-}
-
-.user .user-avatar {
-    background: var(--gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 0.8rem;
-}
-
-.user .status { 
-    width: 10px; 
-    height: 10px; 
-    border-radius: 50%; 
-    background: #4ecdc4; 
-    box-shadow: 0 0 0 2px var(--bg-tertiary);
-    flex-shrink: 0;
-    margin-left: 0.3rem;
-}
-
-.user.offline .status { 
-    background: #ff6b6b; 
 }
 
 /* Footer */
@@ -1487,13 +1513,17 @@ footer h2 {
         min-width: auto;
     }
     
+    #watch-party {
+        padding: 1rem;
+    }
+    
     .player-chat { 
         grid-template-columns: 1fr; 
         gap: 1.5rem;
     }
     
     #video-player, #chat {
-        height: 400px;
+        height: 50vh;
     }
     
     .party-header {
@@ -1511,6 +1541,14 @@ footer h2 {
     .party-buttons button {
         flex: 1;
         max-width: 200px;
+        justify-content: center;
+    }
+    
+    .party-users {
+        margin-bottom: 1rem;
+    }
+    
+    #users-list {
         justify-content: center;
     }
     
@@ -1532,5 +1570,9 @@ footer h2 {
     
     .section-icon {
         font-size: 2rem;
+    }
+    
+    #video-player, #chat {
+        height: 40vh;
     }
 }
