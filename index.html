@@ -68,8 +68,7 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3>Barbie</h3>
-                        <p>Комедия о приключениях Барби в реальном мире.</p>
+                        <h3 style="text-align: center;">Barbie</h3>
                     </div>
                 </article>
                 
@@ -80,8 +79,7 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3>Dune: Part Two</h3>
-                        <p>Эпическое продолжение саги о пустынной планете.</p>
+                        <h3 style="text-align: center;">Dune: Part Two</h3>
                     </div>
                 </article>
                 
@@ -92,8 +90,7 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3>Oppenheimer</h3>
-                        <p>История создания атомной бомбы.</p>
+                        <h3 style="text-align: center;">Oppenheimer</h3>
                     </div>
                 </article>
                 
@@ -104,8 +101,7 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3>The Batman</h3>
-                        <p>Темное расследование Бэтмена в Готэме.</p>
+                        <h3 style="text-align: center;">The Batman</h3>
                     </div>
                 </article>
                 
@@ -116,8 +112,7 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3>Stranger Things S5</h3>
-                        <p>Финальный сезон приключений в Хокинсе.</p>
+                        <h3 style="text-align: center;">Stranger Things S5</h3>
                     </div>
                 </article>
                 
@@ -128,8 +123,7 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3>Avatar: Fire and Ash</h3>
-                        <p>Новая глава битвы за Пандору.</p>
+                        <h3 style="text-align: center;">Avatar: Fire and Ash</h3>
                     </div>
                 </article>
             </div>
@@ -631,7 +625,7 @@
             
             if (!isActive) {
                 faqItem.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + '200px';
+                answer.style.maxHeight = answer.scrollHeight + 'px';
                 answer.style.padding = '1.5rem 2rem';
                 answer.style.opacity = '1';
                 icon.classList.remove('fa-plus');
@@ -688,30 +682,37 @@
             const videoPlayer = document.getElementById('video-player');
             const roomId = document.getElementById('room-id');
             
-            watchParty.style.display = 'block';
-            movieSelect.style.display = 'none';
-            videoPlayer.src = videoUrl;
-            roomId.textContent = roomName;
-            
-            const usersList = document.getElementById('users-list');
-            usersList.innerHTML = `
-                <div class="user">
-                    <div class="user-avatar">JD</div>
-                    <span>John Doe</span>
-                    <span class="status"></span>
-                </div>
-                <div class="user offline">
-                    <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Jane" class="user-avatar">
-                    <span>Jane Smith</span>
-                    <span class="status"></span>
-                </div>
-                <div class="user">
-                    <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Mike" class="user-avatar">
-                    <span>Mike Johnson</span>
-                    <span class="status"></span>
-                </div>
-            `;
-            
+            // Плавный переход
+            movieSelect.style.opacity = '0';
+            movieSelect.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                watchParty.style.display = 'block';
+                movieSelect.style.display = 'none';
+                videoPlayer.src = videoUrl;
+                roomId.textContent = roomName;
+                
+                const usersList = document.getElementById('users-list');
+                usersList.innerHTML = `
+                    <div class="user">
+                        <div class="user-avatar">JD</div>
+                        <span>John Doe</span>
+                        <span class="status"></span>
+                    </div>
+                    <div class="user offline">
+                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Jane" class="user-avatar">
+                        <span>Jane Smith</span>
+                        <span class="status"></span>
+                    </div>
+                    <div class="user">
+                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Mike" class="user-avatar">
+                        <span>Mike Johnson</span>
+                        <span class="status"></span>
+                    </div>
+                `;
+                watchParty.style.opacity = '1';
+                watchParty.style.transform = 'translateY(0)';
+            }, 300); // Задержка для анимации
+
             window.scrollTo({ top: watchParty.offsetTop, behavior: 'smooth' });
         }
 
@@ -732,10 +733,17 @@
             const videoPlayer = document.getElementById('video-player');
             const messages = document.getElementById('messages');
             
-            watchParty.style.display = 'none';
-            movieSelect.style.display = 'block';
-            videoPlayer.src = '';
-            messages.innerHTML = '';
+            watchParty.style.opacity = '0';
+            watchParty.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                watchParty.style.display = 'none';
+                movieSelect.style.display = 'block';
+                videoPlayer.src = '';
+                messages.innerHTML = '';
+                movieSelect.style.opacity = '1';
+                movieSelect.style.transform = 'translateY(0)';
+            }, 300); // Задержка для анимации
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
