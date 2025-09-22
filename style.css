@@ -308,7 +308,7 @@ nav a:hover {
 .movie-card img { 
     width: 100%; 
     height: 300px;
-    object-fit: cover;
+    object-fit: contain;
     background: var(--bg-tertiary);
     transition: var(--transition);
 }
@@ -712,12 +712,12 @@ nav a:hover {
     opacity: 0;
     line-height: 1.8;
     word-wrap: break-word;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .faq-item.active .faq-answer {
     max-height: 2000px;
-    padding: 2rem 2rem 2.5rem;
+    padding: 1.5rem 2rem 1rem;
     opacity: 1;
 }
 
@@ -725,18 +725,18 @@ nav a:hover {
     color: var(--primary-color); 
     font-weight: 600;
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-size: 1.05rem;
 }
 
 .faq-answer ul {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     padding-left: 1.5rem;
     list-style: none;
 }
 
 .faq-answer li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     color: var(--text-secondary);
     position: relative;
     padding-left: 1.2rem;
@@ -752,7 +752,7 @@ nav a:hover {
 }
 
 .faq-answer p {
-    margin: 1rem 0;
+    margin: 0.8rem 0;
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
@@ -885,7 +885,7 @@ nav a:hover {
 .room-card img { 
     width: 100%; 
     height: 180px;
-    object-fit: cover;
+    object-fit: contain;
     background: var(--bg-tertiary);
     border-radius: 15px; 
     margin-bottom: 1.5rem; 
