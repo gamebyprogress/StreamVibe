@@ -30,9 +30,8 @@
         <div id="particles-js"></div>
         <div class="hero-content">
             <h1>Смотри фильмы в 4K вместе с друзьями</h1>
-            <p>Создавай приватные комнаты для синхронного просмотра</p>
             <div class="hero-video">
-                <iframe src="https://www.youtube.com/embed/f9T1oXhL5aA" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/pBk4NYhWNMM" allowfullscreen></iframe>
             </div>
             <div class="cta-container">
                 <a href="#" class="cta-btn cta-primary" onclick="downloadApp()">
@@ -200,42 +199,42 @@
         </div>
         <div class="testimonial-grid">
             <div class="testimonial">
-                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Анна" class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face&crop=face" alt="Анна" class="testimonial-avatar">
                 <div class="testimonial-text">
                     "StreamVibe полностью изменил наши посиделки! Смотрим Barbie с подругами, чат работает идеально, синхронизация без задержек. Просто огонь!"
                 </div>
                 <div class="testimonial-author">- Анна, 22 года</div>
             </div>
             <div class="testimonial">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Максим" class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face&crop=face" alt="Максим" class="testimonial-avatar">
                 <div class="testimonial-text">
                     "Качество 4K просто потрясающее! Синхронизация работает без лагов даже при слабом соединении. Скачал за минуту и сразу начал пользоваться."
                 </div>
                 <div class="testimonial-author">- Максим, 28 лет</div>
             </div>
             <div class="testimonial">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Екатерина" class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face&crop=face" alt="Екатерина" class="testimonial-avatar">
                 <div class="testimonial-text">
                     "Идеально для девичников! Приватные комнаты — это то, что нужно. Все подруги в восторге, теперь это наша основная платформа для кино."
                 </div>
                 <div class="testimonial-author">- Екатерина, 19 лет</div>
             </div>
             <div class="testimonial">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Дмитрий" class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face&crop=face" alt="Дмитрий" class="testimonial-avatar">
                 <div class="testimonial-text">
                     "Смотрели Oppenheimer — ощущения как в настоящем кинотеатре! Качество изображения и звука на высоте, все работает стабильно."
                 </div>
                 <div class="testimonial-author">- Дмитрий, 25 лет</div>
             </div>
             <div class="testimonial">
-                <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=150&h=150&fit=crop&crop=face" alt="Елизавета" class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=60&h=60&fit=crop&crop=face&crop=face" alt="Елизавета" class="testimonial-avatar">
                 <div class="testimonial-text">
                     "Приватные комнаты — настоящая находка! Никто не мешает, можно спокойно обсуждать сюжет. Интерфейс интуитивно понятный."
                 </div>
                 <div class="testimonial-author">- Елизавета, 21 год</div>
             </div>
             <div class="testimonial">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="Сергей" class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face&crop=face" alt="Сергей" class="testimonial-avatar">
                 <div class="testimonial-text">
                     "Простое и удобное приложение. Скачал, установил, создали комнату — и сразу в дело. Никаких сложностей, всё работает как часы."
                 </div>
@@ -438,12 +437,12 @@
     <section id="watch-party">
         <div class="party-header">
             <h2 class="party-title" id="party-title">Загрузка...</h2>
-            <div style="display: flex; gap: 1rem;">
-                <button onclick="shareRoom()" style="background: var(--secondary-color);">
+            <div class="party-buttons">
+                <button onclick="shareRoom()">
                     <i class="fas fa-share-alt"></i>
                     Поделиться ссылкой
                 </button>
-                <button onclick="leaveRoom()" style="background: var(--primary-color);">
+                <button onclick="leaveRoom()">
                     <i class="fas fa-sign-out-alt"></i>
                     Выйти из комнаты
                 </button>
@@ -645,9 +644,14 @@
             updateChat();
             updateUsersList();
             
-            // Hide rooms section
-            document.getElementById('movie-select').style.opacity = '0';
-            document.getElementById('movie-select').style.transform = 'translateY(20px)';
+            // Hide rooms section with smooth transition
+            const movieSelect = document.getElementById('movie-select');
+            movieSelect.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            movieSelect.style.opacity = '0';
+            movieSelect.style.transform = 'translateY(20px)';
+            
+            // Scroll to top to prevent jumping
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function leaveRoom() {
@@ -658,9 +662,18 @@
             currentMessages = [];
             currentUsers = [];
             
-            // Show rooms section
-            document.getElementById('movie-select').style.opacity = '1';
-            document.getElementById('movie-select').style.transform = 'translateY(0)';
+            // Show rooms section with smooth transition
+            const movieSelect = document.getElementById('movie-select');
+            movieSelect.style.opacity = '1';
+            movieSelect.style.transform = 'translateY(0)';
+            
+            // Scroll back to rooms
+            setTimeout(() => {
+                document.getElementById('movie-select').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
         }
 
         function shareRoom() {
