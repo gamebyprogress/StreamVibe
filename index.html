@@ -54,7 +54,6 @@
     </header>
     
     <main>
-        <!-- Popular Movies -->
         <section class="popular-movies" id="popular-movies">
             <div class="section-header">
                 <i class="fas fa-fire section-icon"></i>
@@ -130,7 +129,6 @@
             </div>
         </section>
 
-        <!-- Features -->
         <section class="features-container" id="features">
             <section class="features">
                 <div class="section-header">
@@ -205,7 +203,6 @@
             </section>
         </section>
 
-        <!-- Testimonials -->
         <section class="testimonials" id="testimonials">
             <div class="section-header">
                 <i class="fas fa-quote-left section-icon"></i>
@@ -263,7 +260,6 @@
             </div>
         </section>
 
-        <!-- FAQ -->
         <section class="faq" id="faq">
             <div class="section-header">
                 <i class="fas fa-question-circle section-icon"></i>
@@ -405,7 +401,6 @@
             </div>
         </section>
 
-        <!-- Rooms -->
         <section id="movie-select">
             <div class="section-header">
                 <i class="fas fa-users section-icon"></i>
@@ -489,7 +484,6 @@
             </div>
         </section>
         
-        <!-- Watch Party -->
         <section id="watch-party">
             <div class="party-header">
                 <div class="party-title">
@@ -547,7 +541,7 @@
             </a>
         </div>
         
-        <form class="contact-form">
+        <form class="contact-form" id="contact-form">
             <h3>Обратная связь</h3>
             
             <input type="text" id="contact-name" placeholder="Ваше имя" required>
@@ -570,7 +564,6 @@
         </div>
     </footer>
 
-    <!-- Modal -->
     <div class="modal" id="download-modal">
         <div class="modal-content">
             <h2>Скачивание началось!</h2>
@@ -583,6 +576,17 @@
     </div>
 
     <script>
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
         // Particles.js initialization
         particlesJS('particles-js', {
             particles: {
@@ -655,7 +659,7 @@
             const modal = document.getElementById('download-modal');
             const progress = modal.querySelector('.progress');
             
-            modal.style.display = 'flex';
+            modal.classList.add('visible');
             progress.style.width = '0%';
             
             setTimeout(() => {
@@ -663,7 +667,7 @@
             }, 100);
             
             setTimeout(() => {
-                modal.style.display = 'none';
+                modal.classList.remove('visible');
             }, 3000);
         }
 
@@ -743,7 +747,7 @@
         }
 
         // Form Validation
-        const form = document.querySelector('.contact-form');
+        const form = document.getElementById('contact-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -756,9 +760,9 @@
             
             let valid = true;
             
-            nameError.style.display = 'none';
-            emailError.style.display = 'none';
-            messageError.style.display = 'none';
+            nameError.textContent = '';
+            emailError.textContent = '';
+            messageError.textContent = '';
             
             if (name.value.trim().length < 2) {
                 nameError.textContent = 'Имя должно содержать минимум 2 символа';
