@@ -19,7 +19,7 @@
     
     <header>
         <nav>
-            <a href="#" class="logo">
+            <a href="#" class="logo" aria-label="StreamVibe Главная">
                 <i class="fas fa-play-circle"></i>
                 StreamVibe
             </a>
@@ -34,13 +34,11 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Смотри фильмы в 4K вместе с друзьями</h1>
-                
                 <div class="hero-video">
                     <iframe src="https://www.youtube.com/embed/pBk4NYhWNMM" title="StreamVibe Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                
                 <div class="cta-container">
-                    <a href="#" class="cta-btn cta-primary" onclick="showDownloadModal(event)">
+                    <a href="#" class="cta-btn cta-primary" id="downloadBtn">
                         <i class="fas fa-download"></i>
                         Скачать для Windows
                     </a>
@@ -59,71 +57,65 @@
                 <i class="fas fa-fire section-icon"></i>
                 <h2 class="section-title">Популярное сейчас</h2>
             </div>
-            
             <div class="movie-grid">
                 <article class="movie-card">
                     <div class="rating">8.3</div>
-                    <img src="img1.jpg" alt="Barbie">
+                    <img src="img1.jpg" alt="Barbie" loading="lazy">
                     <a href="https://www.imdb.com/title/tt1517268/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3 style="text-align: center;">Barbie</h3>
+                        <h3>Barbie</h3>
                     </div>
                 </article>
-                
                 <article class="movie-card">
                     <div class="rating">8.7</div>
-                    <img src="img2.jpg" alt="Dune: Part Two">
+                    <img src="img2.jpg" alt="Dune: Part Two" loading="lazy">
                     <a href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3 style="text-align: center;">Dune: Part Two</h3>
+                        <h3>Dune: Part Two</h3>
                     </div>
                 </article>
-                
                 <article class="movie-card">
                     <div class="rating">8.4</div>
-                    <img src="img3.jpg" alt="Oppenheimer">
+                    <img src="img3.jpg" alt="Oppenheimer" loading="lazy">
                     <a href="https://www.imdb.com/title/tt15398776/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3 style="text-align: center;">Oppenheimer</h3>
+                        <h3>Oppenheimer</h3>
                     </div>
                 </article>
-                
                 <article class="movie-card">
                     <div class="rating">7.9</div>
-                    <img src="img4.jpg" alt="The Batman">
+                    <img src="img4.jpg" alt="The Batman" loading="lazy">
                     <a href="https://www.imdb.com/title/tt1877830/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3 style="text-align: center;">The Batman</h3>
+                        <h3>The Batman</h3>
                     </div>
                 </article>
-                
                 <article class="movie-card">
                     <div class="rating">8.7</div>
-                    <img src="img5.jpg" alt="Stranger Things">
+                    <img src="img5.jpg" alt="Stranger Things" loading="lazy">
                     <a href="https://www.imdb.com/title/tt4574334/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3 style="text-align: center;">Stranger Things S5</h3>
+                        <h3>Stranger Things S5</h3>
                     </div>
                 </article>
-                
                 <article class="movie-card">
                     <div class="rating">7.8</div>
-                    <img src="img6.jpg" alt="Avatar: Fire and Ash">
+                    <img src="img6.jpg" alt="Avatar: Fire and Ash" loading="lazy">
                     <a href="https://www.imdb.com/title/tt1757678/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                     <div class="movie-card-content">
-                        <h3 style="text-align: center;">Avatar: Fire and Ash</h3>
+                        <h3>Avatar: Fire and Ash</h3>
                     </div>
                 </article>
             </div>
@@ -135,38 +127,32 @@
                     <i class="fas fa-star section-icon"></i>
                     <h2 class="section-title">Почему StreamVibe?</h2>
                 </div>
-                
                 <div class="feature-grid">
                     <article class="feature">
                         <i class="fas fa-users"></i>
                         <h3>Совместный просмотр</h3>
                         <p>Создавай приватные комнаты и приглашай друзей для синхронного просмотра в реальном времени</p>
                     </article>
-                    
                     <article class="feature">
                         <i class="fas fa-comments"></i>
                         <h3>Чат и голосовой чат</h3>
                         <p>Общайтесь во время просмотра без спойлеров. Голосовой чат для живого общения</p>
                     </article>
-                    
                     <article class="feature">
                         <i class="fas fa-desktop"></i>
                         <h3>Оптимизировано для Windows</h3>
                         <p>Стабильная работа, минимальная нагрузка на систему и максимальная производительность</p>
                     </article>
-                    
                     <article class="feature">
                         <i class="fas fa-lock"></i>
                         <h3>Полная приватность</h3>
                         <p>Комнаты доступны только приглашенным пользователям. End-to-End шифрование чатов</p>
                     </article>
-                    
                     <article class="feature">
                         <i class="fas fa-tv"></i>
                         <h3>4K и HDR качество</h3>
                         <p>Поддержка высокого разрешения и HDR контента без потери качества изображения</p>
                     </article>
-                    
                     <article class="feature">
                         <i class="fas fa-globe"></i>
                         <h3>Мультиплатформенность</h3>
@@ -175,25 +161,22 @@
                 </div>
             </section>
 
-            <section class="how-it-works" id="how-it-works">
+            <section class="how-it-works">
                 <div class="section-header">
                     <i class="fas fa-play-circle section-icon"></i>
                     <h2 class="section-title">Как это работает?</h2>
                 </div>
-                
                 <div class="steps">
                     <article class="step">
                         <div class="step-number">01</div>
                         <h3>Скачай и установи</h3>
                         <p>Загрузи приложение для Windows и установи за 2 минуты</p>
                     </article>
-                    
                     <article class="step">
                         <div class="step-number">02</div>
                         <h3>Создай комнату</h3>
                         <p>Выбери фильм или сериал и сгенерируй уникальную ссылку для друзей</p>
                     </article>
-                    
                     <article class="step">
                         <div class="step-number">03</div>
                         <h3>Смотрите вместе</h3>
@@ -208,53 +191,35 @@
                 <i class="fas fa-quote-left section-icon"></i>
                 <h2 class="section-title">Что говорят наши пользователи</h2>
             </div>
-            
             <div class="testimonial-grid">
                 <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Анна" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "StreamVibe полностью изменил наши посиделки! Смотрим Barbie с подругами, чат работает идеально, синхронизация без задержек. Просто огонь!"
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Анна" class="testimonial-avatar" loading="lazy">
+                    <div class="testimonial-text">"StreamVibe полностью изменил наши посиделки! Смотрим Barbie с подругами, чат работает идеально, синхронизация без задержек. Просто огонь!"</div>
                     <cite class="testimonial-author">- Анна, 22 года</cite>
                 </article>
-                
                 <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Максим" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Качество 4K просто потрясающее! Синхронизация работает без лагов даже при слабом соединении. Скачал за минуту и сразу начал пользоваться."
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Максим" class="testimonial-avatar" loading="lazy">
+                    <div class="testimonial-text">"Качество 4K просто потрясающее! Синхронизация работает без лагов даже при слабом соединении. Скачал за минуту и сразу начал пользоваться."</div>
                     <cite class="testimonial-author">- Максим, 28 лет</cite>
                 </article>
-                
                 <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Екатерина" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Идеально для девичников! Приватные комнаты — это то, что нужно. Все подруги в восторге, теперь это наша основная платформа для кино."
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Екатерина" class="testimonial-avatar" loading="lazy">
+                    <div class="testimonial-text">"Идеально для девичников! Приватные комнаты — это то, что нужно. Все подруги в восторге, теперь это наша основная платформа для кино."</div>
                     <cite class="testimonial-author">- Екатерина, 19 лет</cite>
                 </article>
-                
                 <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Дмитрий" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Смотрели Oppenheimer — ощущения как в настоящем кинотеатре! Качество изображения и звука на высоте, все работает стабильно."
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Дмитрий" class="testimonial-avatar" loading="lazy">
+                    <div class="testimonial-text">"Смотрели Oppenheimer — ощущения как в настоящем кинотеатре! Качество изображения и звука на высоте, все работает стабильно."</div>
                     <cite class="testimonial-author">- Дмитрий, 25 лет</cite>
                 </article>
-                
                 <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Елизавета" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Приватные комнаты — настоящая находка! Никто не мешает, можно спокойно обсуждать сюжет. Интерфейс интуитивно понятный."
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Елизавета" class="testimonial-avatar" loading="lazy">
+                    <div class="testimonial-text">"Приватные комнаты — настоящая находка! Никто не мешает, можно спокойно обсуждать сюжет. Интерфейс интуитивно понятный."</div>
                     <cite class="testimonial-author">- Елизавета, 21 год</cite>
                 </article>
-                
                 <article class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Сергей" class="testimonial-avatar">
-                    <div class="testimonial-text">
-                        "Простое и удобное приложение. Скачал, установил, создал комнату — и сразу в дело. Никаких сложностей, всё работает как часы."
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Сергей" class="testimonial-avatar" loading="lazy">
+                    <div class="testimonial-text">"Простое и удобное приложение. Скачал, установил, создал комнату — и сразу в дело. Никаких сложностей, всё работает как часы."</div>
                     <cite class="testimonial-author">- Сергей, 30 лет</cite>
                 </article>
             </div>
@@ -265,10 +230,9 @@
                 <i class="fas fa-question-circle section-icon"></i>
                 <h2 class="section-title">Часто задаваемые вопросы</h2>
             </div>
-            
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Как скачать и установить приложение?</span>
                         <i class="fas fa-plus icon"></i>
                     </div>
@@ -283,9 +247,8 @@
                         <strong>Поддержка:</strong> доступна 24/7 через встроенный чат
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>На каких платформах работает StreamVibe?</span>
                         <i class="fas fa-plus icon"></i>
                     </div>
@@ -303,9 +266,8 @@
                         <strong>Системные требования:</strong> 4 ГБ RAM, 100 МБ места
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Как работает синхронизация видео?</span>
                         <i class="fas fa-plus icon"></i>
                     </div>
@@ -320,9 +282,8 @@
                         <strong>Поддерживаемые форматы:</strong> YouTube (4K/60fps), Netflix, Amazon Prime, Disney+, MP4/H.264 файлы
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Какие стриминговые сервисы поддерживаются?</span>
                         <i class="fas fa-plus icon"></i>
                     </div>
@@ -343,9 +304,8 @@
                         </ul>
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Насколько безопасно использование?</span>
                         <i class="fas fa-plus icon"></i>
                     </div>
@@ -367,9 +327,8 @@
                         <strong>Важно:</strong> скачивайте только с официального сайта
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Поддерживается ли оффлайн просмотр?</span>
                         <i class="fas fa-plus icon"></i>
                     </div>
@@ -380,21 +339,18 @@
                             <li><strong>4K:</strong> от 25 Мбит/с</li>
                             <li><strong>Авто-подстройка</strong> под скорость соединения</li>
                         </ul>
-                        
                         <strong>Оффлайн возможности:</strong>
                         <ul>
                             <li><strong>Локальные файлы:</strong> MP4, MKV до 8K разрешения</li>
                             <li><strong>Скачивание:</strong> Netflix, YouTube Premium</li>
                             <li><strong>Локальная сеть:</strong> Wi-Fi без интернета (multicast протокол)</li>
                         </ul>
-                        
                         <strong>Хранение:</strong>
                         <ul>
                             <li>Автоматическая папка <code>C:\StreamVibe\Offline</code></li>
                             <li>Поддержка USB/HDD накопителей</li>
                             <li>Встроенный плеер с субтитрами и эквалайзером</li>
                         </ul>
-                        
                         <strong>Ограничения:</strong> чат работает только в локальной сети, нет облачного сохранения прогресса
                     </div>
                 </div>
@@ -406,79 +362,72 @@
                 <i class="fas fa-users section-icon"></i>
                 <h2 class="section-title">Активные комнаты</h2>
             </div>
-            
             <div class="rooms-header">
-                <input type="text" id="search" placeholder="Поиск по названию фильма...">
-                <button class="create-room-btn" onclick="createRoom()">
+                <input type="text" id="search" placeholder="Поиск по названию фильма..." aria-label="Поиск по фильмам">
+                <button class="create-room-btn" id="createRoomBtn">
                     <i class="fas fa-plus"></i>
                     Создать комнату
                 </button>
             </div>
-            
             <div class="movie-rooms" id="movie-rooms">
-                <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/zSWdZVtXT7E', 'Interstellar')" tabindex="0" role="button" aria-label="Присоединиться к комнате Interstellar">
+                <article class="room-card active" data-video="zSWdZVtXT7E" data-title="Interstellar" role="button" aria-label="Присоединиться к комнате Interstellar">
                     <img src="mimg1.jpg" alt="Постер Interstellar" loading="lazy">
                     <h4>Interstellar</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 12 зрителей
                     </div>
                     <span class="room-status">
-                        <i class="fas fa-circle" style="color: #4ecdc4;"></i> В эфире
+                        <i class="fas fa-circle"></i> В эфире
                     </span>
                 </article>
-                
-                <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/YoHD9XEInc0', 'Inception')" tabindex="0" role="button" aria-label="Присоединиться к комнате Inception">
+                <article class="room-card active" data-video="YoHD9XEInc0" data-title="Inception" role="button" aria-label="Присоединиться к комнате Inception">
                     <img src="mimg2.jpg" alt="Постер Inception" loading="lazy">
                     <h4>Inception</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 8 зрителей
                     </div>
                     <span class="room-status">
-                        <i class="fas fa-circle" style="color: #4ecdc4;"></i> В эфире
+                        <i class="fas fa-circle"></i> В эфире
                     </span>
                 </article>
-                
-                <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/EXeTwQWrcwY', 'The Dark Knight')" tabindex="0" role="button" aria-label="Присоединиться к комнате The Dark Knight">
+                <article class="room-card active" data-video="EXeTwQWrcwY" data-title="The Dark Knight" role="button" aria-label="Присоединиться к комнате The Dark Knight">
                     <img src="mimg3.jpg" alt="Постер The Dark Knight" loading="lazy">
                     <h4>The Dark Knight</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 15 зрителей
                     </div>
                     <span class="room-status">
-                        <i class="fas fa-circle" style="color: #4ecdc4;"></i> В эфире
+                        <i class="fas fa-circle"></i> В эфире
                     </span>
                 </article>
-                
-                <article class="room-card waiting" onclick="joinRoom('https://www.youtube.com/embed/s7EdQ4FqBHU', 'Pulp Fiction')" tabindex="0" role="button" aria-label="Присоединиться к комнате Pulp Fiction">
+                <article class="room-card waiting" data-video="s7EdQ4FqBHU" data-title="Pulp Fiction" role="button" aria-label="Присоединиться к комнате Pulp Fiction">
                     <img src="mimg4.jpg" alt="Постер Pulp Fiction" loading="lazy">
                     <h4>Pulp Fiction</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 5 зрителей
                     </div>
                     <span class="room-status">
-                        <i class="fas fa-clock" style="color: #ff6b6b;"></i> Ожидает
+                        <i class="fas fa-clock"></i> Ожидает
                     </span>
                 </article>
-                
-                <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/vKQi3bBA1y8', 'The Matrix')" tabindex="0" role="button" aria-label="Присоединиться к комнате The Matrix">
+                <article class="room-card active" data-video="vKQi3bBA1y8" data-title="The Matrix" role="button" aria-label="Присоединиться к комнате The Matrix">
                     <img src="mimg5.jpg" alt="Постер The Matrix" loading="lazy">
                     <h4>The Matrix</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 9 зрителей
                     </div>
                     <span class="room-status">
-                        <i class="fas fa-circle" style="color: #4ecdc4;"></i> В эфире
+                        <i class="fas fa-circle"></i> В эфире
                     </span>
                 </article>
-                
-                <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/Sux_wAhCR9U', 'Fight Club')" tabindex="0" role="button" aria-label="Присоединиться к комнате Fight Club">
+                <article class="room-card active" data-video="Sux_wAhCR9U" data-title="Fight Club" role="button" aria-label="Присоединиться к комнате Fight Club">
                     <img src="mimg6.jpg" alt="Постер Fight Club" loading="lazy">
                     <h4>Fight Club</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 7 зрителей
                     </div>
                     <span class="room-status">
-                        <i class="fas fa-circle" style="color: #4ecdc4;"></i> В эфире
+                        <i class="fas fa-circle"></i> В эфире
                     </span>
                 </article>
             </div>
@@ -491,30 +440,26 @@
                     <span>Киносеанс: </span>
                     <span id="room-id">Loading...</span>
                 </div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <button onclick="shareRoom()">
+                <div class="party-actions">
+                    <button id="shareBtn">
                         <i class="fas fa-share-alt"></i>
                         Поделиться ссылкой
                     </button>
-                    <button onclick="leaveRoom()">
+                    <button id="exitBtn">
                         <i class="fas fa-sign-out-alt"></i>
                         Выйти из комнаты
                     </button>
                 </div>
             </div>
-            
-            <div id="users-list" style="margin-bottom: 2rem;">
-                <!-- Users will be inserted here -->
-            </div>
-            
+            <div id="users-list"></div>
             <div class="player-chat">
                 <iframe id="video-player" frameborder="0" allowfullscreen title="Видеоплеер комнаты"></iframe>
                 <div id="chat">
                     <h3><i class="fas fa-comments"></i> Чат комнаты</h3>
                     <ul id="messages" aria-live="polite"></ul>
                     <div class="chat-input">
-                        <input type="text" id="message-input" placeholder="Напишите сообщение...">
-                        <button onclick="sendMessage()">
+                        <input type="text" id="message-input" placeholder="Напишите сообщение..." aria-label="Сообщение чата">
+                        <button id="sendBtn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -525,7 +470,6 @@
     
     <footer id="contacts">
         <h2>Связаться с нами</h2>
-        
         <div class="contacts">
             <a href="mailto:support@streamvibe.com" class="contact-link" aria-label="Написать на email" title="support@streamvibe.com">
                 <i class="fas fa-envelope"></i>
@@ -540,22 +484,16 @@
                 <i class="fab fa-discord"></i>
             </a>
         </div>
-        
         <form class="contact-form" id="contact-form">
             <h3>Обратная связь</h3>
-            
-            <input type="text" id="contact-name" placeholder="Ваше имя" required>
+            <input type="text" id="contact-name" placeholder="Ваше имя" required aria-label="Ваше имя">
             <div id="name-error" class="error"></div>
-            
-            <input type="email" id="contact-email" placeholder="Ваш email" required>
+            <input type="email" id="contact-email" placeholder="Ваш email" required aria-label="Ваш email">
             <div id="email-error" class="error"></div>
-            
-            <textarea id="contact-message" placeholder="Ваше сообщение" required></textarea>
+            <textarea id="contact-message" placeholder="Ваше сообщение" required aria-label="Ваше сообщение"></textarea>
             <div id="message-error" class="error"></div>
-            
             <button type="submit">Отправить</button>
         </form>
-        
         <div class="footer-links">
             <a href="#">Политика конфиденциальности</a>
             <a href="#">Условия использования</a>
@@ -569,25 +507,14 @@
             <h2>Скачивание началось!</h2>
             <p>Ваш файл загружается. Пожалуйста, дождитесь завершения.</p>
             <div class="progress-bar">
-                <div class="progress"></div>
+                <div class="progress" id="progressBar"></div>
             </div>
             <p class="modal-hint">После скачивания запустите <code>stream-vibe-installer.exe</code> и следуйте инструкциям.</p>
         </div>
     </div>
 
     <script>
-        // Smooth Scroll for Navigation
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Particles.js initialization
+        // Инициализация Particles.js
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -606,212 +533,256 @@
             retina_detect: true
         });
 
-        // FAQ Toggle
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const icon = element.querySelector('.icon');
-            const isActive = faqItem.classList.contains('active');
-            
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-                const ans = item.querySelector('.faq-answer');
-                ans.style.maxHeight = null;
-                ans.style.padding = '0 2rem';
-                ans.style.opacity = '0';
-                item.querySelector('.icon').classList.remove('fa-minus');
-                item.querySelector('.icon').classList.add('fa-plus');
+        // Плавный скролл для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
-            
-            if (!isActive) {
-                faqItem.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                answer.style.padding = '1.5rem 2rem';
-                answer.style.opacity = '1';
-                icon.classList.remove('fa-plus');
-                icon.classList.add('fa-minus');
-            }
-        }
+        });
 
-        // Scroll Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        // Аккордеон FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.icon');
+                const isActive = item.classList.contains('active');
 
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        otherItem.querySelector('.icon').classList.remove('fa-minus');
+                        otherItem.querySelector('.icon').classList.add('fa-plus');
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                } else {
+                    answer.style.maxHeight = null;
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                }
+            });
+        });
+
+        // Анимации при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
-        document.querySelectorAll('.feature, .step').forEach(element => {
-            observer.observe(element);
-        });
+        document.querySelectorAll('.feature, .step, .movie-card, .room-card, .testimonial').forEach(el => observer.observe(el));
 
-        // Modal for Download
-        function showDownloadModal(event) {
-            event.preventDefault();
+        // Модал скачивания
+        document.getElementById('downloadBtn').addEventListener('click', (e) => {
+            e.preventDefault();
             const modal = document.getElementById('download-modal');
-            const progress = modal.querySelector('.progress');
-            
+            const progress = document.getElementById('progressBar');
             modal.classList.add('visible');
             progress.style.width = '0%';
-            
-            setTimeout(() => {
-                progress.style.width = '100%';
+
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 5;
+                progress.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => modal.classList.remove('visible'), 1000);
+                }
             }, 100);
-            
-            setTimeout(() => {
-                modal.classList.remove('visible');
-            }, 3000);
+        });
+
+        // Функции комнат
+        function createRoom() {
+            const roomId = Math.random().toString(36).substr(2, 9);
+            alert(`Комната создана! Ссылка: ${window.location.href}/room/${roomId}`);
+            joinRoom('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Новая комната'); // Заглушка
         }
 
-        // Room Functions
-        function createRoom() {
-            alert('Комната создана! Ссылка: ' + window.location.href + '/room/' + Math.random().toString(36).substr(2, 9));
-        }
+        document.querySelectorAll('.room-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.dataset.video;
+                const title = card.dataset.title;
+                joinRoom(`https://www.youtube.com/embed/${videoId}`, title);
+            });
+        });
 
         function joinRoom(videoUrl, roomName) {
             const watchParty = document.getElementById('watch-party');
             const movieSelect = document.getElementById('movie-select');
             const videoPlayer = document.getElementById('video-player');
             const roomId = document.getElementById('room-id');
-            
-            // Плавный переход
+            const usersList = document.getElementById('users-list');
+
             movieSelect.style.opacity = '0';
-            movieSelect.style.transform = 'translateY(-20px)';
             setTimeout(() => {
-                watchParty.style.display = 'block';
                 movieSelect.style.display = 'none';
+                watchParty.style.display = 'block';
+                watchParty.classList.add('active');
                 videoPlayer.src = videoUrl;
                 roomId.textContent = roomName;
-                
-                const usersList = document.getElementById('users-list');
+
+                // Имитация списка пользователей
                 usersList.innerHTML = `
                     <div class="user">
                         <div class="user-avatar">JD</div>
                         <span>John Doe</span>
-                        <span class="status"></span>
+                        <span class="status online"></span>
                     </div>
-                    <div class="user offline">
+                    <div class="user">
                         <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Jane" class="user-avatar">
                         <span>Jane Smith</span>
-                        <span class="status"></span>
+                        <span class="status offline"></span>
                     </div>
                     <div class="user">
                         <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Mike" class="user-avatar">
                         <span>Mike Johnson</span>
-                        <span class="status"></span>
+                        <span class="status online"></span>
                     </div>
                 `;
                 watchParty.style.opacity = '1';
-                watchParty.style.transform = 'translateY(0)';
-            }, 300); // Задержка для анимации
+            }, 300);
 
             window.scrollTo({ top: watchParty.offsetTop, behavior: 'smooth' });
         }
 
-        function shareRoom() {
+        document.getElementById('shareBtn').addEventListener('click', () => {
             const roomId = document.getElementById('room-id').textContent;
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href + '/room/' + roomId.replace(/\s+/g, '-').toLowerCase();
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('Ссылка на комнату скопирована в буфер обмена!');
-        }
+            const link = `${window.location.href}/room/${roomId.replace(/\s+/g, '-').toLowerCase()}`;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Ссылка на комнату скопирована!');
+            }).catch(() => {
+                alert('Ошибка копирования ссылки');
+            });
+        });
 
-        function leaveRoom() {
+        document.getElementById('exitBtn').addEventListener('click', () => {
             const watchParty = document.getElementById('watch-party');
             const movieSelect = document.getElementById('movie-select');
             const videoPlayer = document.getElementById('video-player');
             const messages = document.getElementById('messages');
-            
+
             watchParty.style.opacity = '0';
-            watchParty.style.transform = 'translateY(20px)';
             setTimeout(() => {
                 watchParty.style.display = 'none';
+                watchParty.classList.remove('active');
                 movieSelect.style.display = 'block';
+                movieSelect.style.opacity = '1';
                 videoPlayer.src = '';
                 messages.innerHTML = '';
-                movieSelect.style.opacity = '1';
-                movieSelect.style.transform = 'translateY(0)';
-            }, 300); // Задержка для анимации
+            }, 300);
+        });
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        // Чат
+        document.getElementById('sendBtn').addEventListener('click', sendMessage);
+        document.getElementById('message-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
 
-        // Chat Functionality
         function sendMessage() {
             const input = document.getElementById('message-input');
             const messages = document.getElementById('messages');
-            if (input.value.trim() !== '') {
+            const text = input.value.trim();
+            if (text) {
                 const li = document.createElement('li');
-                li.innerHTML = `<strong>Вы:</strong> ${input.value} <small>${new Date().toLocaleTimeString()}</small>`;
+                li.innerHTML = `<strong>Вы:</strong> ${text} <small>${new Date().toLocaleTimeString()}</small>`;
                 messages.appendChild(li);
-                input.value = '';
                 messages.scrollTop = messages.scrollHeight;
+                input.value = '';
             }
         }
 
-        // Form Validation
-        const form = document.getElementById('contact-form');
-        form.addEventListener('submit', (e) => {
+        // Поиск по комнатам
+        document.getElementById('search').addEventListener('input', () => {
+            const filter = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('.room-card').forEach(room => {
+                const title = room.querySelector('h4').textContent.toLowerCase();
+                room.style.display = title.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Валидация формы
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const name = document.getElementById('contact-name');
             const email = document.getElementById('contact-email');
             const message = document.getElementById('contact-message');
             const nameError = document.getElementById('name-error');
             const emailError = document.getElementById('email-error');
             const messageError = document.getElementById('message-error');
-            
             let valid = true;
-            
+
             nameError.textContent = '';
             emailError.textContent = '';
             messageError.textContent = '';
-            
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            messageError.style.display = 'none';
+
             if (name.value.trim().length < 2) {
-                nameError.textContent = 'Имя должно содержать минимум 2 символа';
+                nameError.textContent = 'Имя должно быть длиннее 1 символа';
                 nameError.style.display = 'block';
                 valid = false;
             }
-            
+
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email.value.trim())) {
                 emailError.textContent = 'Введите корректный email';
                 emailError.style.display = 'block';
                 valid = false;
             }
-            
+
             if (message.value.trim().length < 10) {
-                messageError.textContent = 'Сообщение должно содержать минимум 10 символов';
+                messageError.textContent = 'Сообщение должно быть длиннее 10 символов';
                 messageError.style.display = 'block';
                 valid = false;
             }
-            
+
             if (valid) {
                 alert('Сообщение отправлено!');
-                form.reset();
+                document.getElementById('contact-form').reset();
             }
         });
 
-        // Search Functionality
-        const searchInput = document.getElementById('search');
-        searchInput.addEventListener('input', () => {
-            const filter = searchInput.value.toLowerCase();
-            const rooms = document.querySelectorAll('.room-card');
-            rooms.forEach(room => {
-                const title = room.querySelector('h4').textContent.toLowerCase();
-                room.style.display = title.includes(filter) ? 'block' : 'none';
-            });
+        // Имитация активности пользователей (для демо)
+        function simulateMessages() {
+            const messages = document.getElementById('messages');
+            const users = ['John Doe', 'Jane Smith', 'Mike Johnson'];
+            const sampleMessages = [
+                'Классный момент!',
+                'Кто-нибудь заметил пасхалку?',
+                'Пауза на 5 минут, ок?',
+                'Это лучший фильм года!'
+            ];
+            setInterval(() => {
+                const user = users[Math.floor(Math.random() * users.length)];
+                const text = sampleMessages[Math.floor(Math.random() * sampleMessages.length)];
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${user}:</strong> ${text} <small>${new Date().toLocaleTimeString()}</small>`;
+                messages.appendChild(li);
+                messages.scrollTop = messages.scrollHeight;
+            }, 10000);
+        }
+
+        // Запуск симуляции чата
+        simulateMessages();
+
+        // Обработка загрузки страницы
+        window.addEventListener('load', () => {
+            document.getElementById('watch-party').style.display = 'none';
+            document.getElementById('movie-select').style.opacity = '1';
         });
     </script>
 </body>
