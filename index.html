@@ -96,7 +96,7 @@
             font-weight: 500; 
             padding: 0.5rem 1rem;
             border-radius: 25px;
-            transition: var(--transition);
+            transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
             font-size: 0.9rem;
             position: relative;
             text-transform: uppercase;
@@ -105,19 +105,20 @@
         nav a:hover { 
             color: var(--text-primary);
             transform: translateY(-2px);
+            background: rgba(78, 205, 196, 0.1);
         }
         
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 80vh; /* Adjusted for button visibility */
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 2rem;
             scroll-snap-align: start;
-            background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
         }
         
         #particles-js { 
@@ -126,7 +127,7 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            z-index: 0; 
+            z-index: 1; 
         }
         
         .hero-content {
@@ -190,17 +191,17 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             font-size: 1rem;
             font-weight: 600;
-            border-radius: 25px; /* Fixed border-radius */
+            border-radius: 25px;
             text-decoration: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
             transition: var(--transition);
-            border: 2px solid transparent;
-            width: 250px;
+            border: none;
+            width: 220px;
             justify-content: center;
         }
         
@@ -212,7 +213,7 @@
         .cta-secondary {
             background: transparent;
             color: var(--secondary-color);
-            border-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
             box-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
         }
         
@@ -707,14 +708,16 @@
         .faq-answer { 
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.6s ease, padding 0.6s ease;
+            transition: max-height 0.6s ease, padding 0.6s ease, opacity 0.6s ease;
             padding: 0 2rem;
+            opacity: 0;
             line-height: 1.8;
-            word-wrap: break-word; /* Prevent text overflow */
+            word-wrap: break-word;
         }
         
         .faq-item.active .faq-answer {
             padding: 1.5rem 2rem;
+            opacity: 1;
         }
         
         .faq-answer strong { 
@@ -729,7 +732,6 @@
             margin: 1rem 0;
             padding-left: 1.5rem;
             list-style: none;
-            word-wrap: break-word;
         }
         
         .faq-answer li {
@@ -1031,7 +1033,7 @@
             background: rgba(255, 107, 107, 0.05);
             border-radius: 12px;
             border-left: 3px solid var(--primary-color);
-            word-wrap: break-word;
+            word-wrap: break-word; 
         }
         
         #messages li strong { 
@@ -1522,7 +1524,7 @@
             <div class="movie-grid">
                 <article class="movie-card">
                     <div class="rating">8.3</div>
-                    <img src="assets/images/barbie.jpg" alt="Barbie">
+                    <img src="img1.jpg" alt="Barbie">
                     <a href="https://www.imdb.com/title/tt1517268/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1533,7 +1535,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">8.7</div>
-                    <img src="assets/images/dune2.jpg" alt="Dune: Part Two">
+                    <img src="img2.jpg" alt="Dune: Part Two">
                     <a href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1544,7 +1546,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">8.4</div>
-                    <img src="assets/images/oppenheimer.jpg" alt="Oppenheimer">
+                    <img src="img3.jpg" alt="Oppenheimer">
                     <a href="https://www.imdb.com/title/tt15398776/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1555,7 +1557,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">7.9</div>
-                    <img src="assets/images/the_batman.jpg" alt="The Batman">
+                    <img src="img4.jpg" alt="The Batman">
                     <a href="https://www.imdb.com/title/tt1877830/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1566,7 +1568,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">8.7</div>
-                    <img src="assets/images/stranger_things.jpg" alt="Stranger Things">
+                    <img src="img5.jpg" alt="Stranger Things">
                     <a href="https://www.imdb.com/title/tt4574334/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1577,7 +1579,7 @@
                 
                 <article class="movie-card">
                     <div class="rating">7.8</div>
-                    <img src="assets/images/avatar3.jpg" alt="Avatar: Fire and Ash">
+                    <img src="img6.jpg" alt="Avatar: Fire and Ash">
                     <a href="https://www.imdb.com/title/tt1757678/" target="_blank" rel="noopener" class="play-overlay">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -1880,7 +1882,7 @@
             
             <div class="movie-rooms" id="movie-rooms">
                 <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/zSWdZVtXT7E', 'Interstellar')" tabindex="0" role="button" aria-label="Присоединиться к комнате Interstellar">
-                    <img src="assets/images/interstellar.jpg" alt="Постер Interstellar" loading="lazy">
+                    <img src="mimg1.jpg" alt="Постер Interstellar" loading="lazy">
                     <h4>Interstellar</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 12 зрителей
@@ -1891,7 +1893,7 @@
                 </article>
                 
                 <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/YoHD9XEInc0', 'Inception')" tabindex="0" role="button" aria-label="Присоединиться к комнате Inception">
-                    <img src="assets/images/inception.jpg" alt="Постер Inception" loading="lazy">
+                    <img src="mimg2.jpg" alt="Постер Inception" loading="lazy">
                     <h4>Inception</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 8 зрителей
@@ -1902,7 +1904,7 @@
                 </article>
                 
                 <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/EXeTwQWrcwY', 'The Dark Knight')" tabindex="0" role="button" aria-label="Присоединиться к комнате The Dark Knight">
-                    <img src="assets/images/dark_knight.jpg" alt="Постер The Dark Knight" loading="lazy">
+                    <img src="mimg3.jpg" alt="Постер The Dark Knight" loading="lazy">
                     <h4>The Dark Knight</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 15 зрителей
@@ -1913,7 +1915,7 @@
                 </article>
                 
                 <article class="room-card waiting" onclick="joinRoom('https://www.youtube.com/embed/s7EdQ4FqBHU', 'Pulp Fiction')" tabindex="0" role="button" aria-label="Присоединиться к комнате Pulp Fiction">
-                    <img src="assets/images/pulp_fiction.jpg" alt="Постер Pulp Fiction" loading="lazy">
+                    <img src="mimg4.jpg" alt="Постер Pulp Fiction" loading="lazy">
                     <h4>Pulp Fiction</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 5 зрителей
@@ -1924,7 +1926,7 @@
                 </article>
                 
                 <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/vKQi3bBA1y8', 'The Matrix')" tabindex="0" role="button" aria-label="Присоединиться к комнате The Matrix">
-                    <img src="assets/images/matrix.jpg" alt="Постер The Matrix" loading="lazy">
+                    <img src="mimg5.jpg" alt="Постер The Matrix" loading="lazy">
                     <h4>The Matrix</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 9 зрителей
@@ -1935,7 +1937,7 @@
                 </article>
                 
                 <article class="room-card active" onclick="joinRoom('https://www.youtube.com/embed/Sux_wAhCR9U', 'Fight Club')" tabindex="0" role="button" aria-label="Присоединиться к комнате Fight Club">
-                    <img src="assets/images/fight_club.jpg" alt="Постер Fight Club" loading="lazy">
+                    <img src="mimg6.jpg" alt="Постер Fight Club" loading="lazy">
                     <h4>Fight Club</h4>
                     <div class="viewers">
                         <i class="fas fa-eye"></i> 7 зрителей
@@ -2042,54 +2044,87 @@
         </div>
     </div>
 
-   <script>
-        // Particles.js
+    <script>
+        // Particles.js configuration
         particlesJS('particles-js', {
             particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: ['#ff6b6b', '#4ecdc4'] },
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: ['#ff6b6b', '#4ecdc4', '#45b7d1'] },
                 shape: { type: 'circle' },
                 opacity: { value: 0.5, random: true },
                 size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#4ecdc4', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'out' }
+                line_linked: { 
+                    enable: true, 
+                    distance: 150, 
+                    color: '#ff6b6b', 
+                    opacity: 0.4, 
+                    width: 1 
+                },
+                move: { enable: true, speed: 2, direction: 'none', random: true }
             },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            interactivity: { 
+                detect_on: 'canvas', 
+                events: { 
+                    onhover: { enable: true, mode: 'grab' }, 
+                    onclick: { enable: true, mode: 'push' } 
+                } 
             },
             retina_detect: true
         });
 
-        // FAQ Toggle
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const answer = element.nextElementSibling;
-            const icon = element.querySelector('.icon');
-            const isActive = faqItem.classList.contains('active');
-
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-                item.querySelector('.faq-answer').style.maxHeight = null;
-                item.querySelector('.icon').style.transform = 'rotate(0deg)';
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
+        });
 
-            if (!isActive) {
+        // FAQ Toggle
+        function toggleFAQ(clickedElement) {
+            const faqItem = clickedElement.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = clickedElement.querySelector('.icon');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    otherAnswer.style.maxHeight = '0';
+                    otherAnswer.style.opacity = '0';
+                    const otherIcon = item.querySelector('.icon');
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            if (faqItem.classList.contains('active')) {
+                answer.style.maxHeight = '0';
+                answer.style.opacity = '0';
+                faqItem.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
                 faqItem.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
+                answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+                answer.style.opacity = '1';
                 icon.style.transform = 'rotate(45deg)';
             }
         }
 
-        // Scroll Animations
+        // Intersection Observer for animations
         const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-
-        const observer = new IntersectionObserver((entries) => {
+        
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -2097,211 +2132,451 @@
                 }
             });
         }, observerOptions);
-
-        document.querySelectorAll('.feature, .step, .testimonial, .movie-card, .room-card').forEach(element => {
-            observer.observe(element);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.feature, .step, .testimonial').forEach(el => {
+            observer.observe(el);
         });
 
-        // Download Modal
+        // Form validation
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateContactForm()) {
+                alert('Спасибо! Ваше сообщение отправлено. Мы ответим в течение 24 часов.');
+                contactForm.reset();
+                // Hide error messages
+                document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+            }
+        });
+
+        function validateContactForm() {
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+            
+            let isValid = true;
+            const errors = {
+                name: document.getElementById('name-error'),
+                email: document.getElementById('email-error'),
+                message: document.getElementById('message-error')
+            };
+            
+            // Reset errors
+            Object.values(errors).forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Validate name
+            if (!name || !/^[A-Za-zА-Яа-яЁё\s]{2,30}$/.test(name)) {
+                errors.name.textContent = 'Введите корректное имя (2-30 символов)';
+                errors.name.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                errors.email.textContent = 'Введите корректный email адрес';
+                errors.email.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate message
+            if (!message || message.length < 10 || message.length > 1000) {
+                errors.message.textContent = 'Сообщение должно содержать 10-1000 символов';
+                errors.message.style.display = 'block';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Download modal
         function showDownloadModal(event) {
             event.preventDefault();
+            
             const modal = document.getElementById('download-modal');
             const progress = document.getElementById('progress');
             
             modal.style.display = 'flex';
-            let width = 0;
-            const interval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(interval);
+            progress.style.width = '0%';
+            
+            let progressWidth = 0;
+            const progressInterval = setInterval(() => {
+                progressWidth += Math.random() * 8 + 2;
+                if (progressWidth >= 100) {
+                    progressWidth = 100;
+                    clearInterval(progressInterval);
+                    
+                    // Close modal after delay and open download
                     setTimeout(() => {
                         modal.style.display = 'none';
-                        window.location.href = '#';
-                    }, 500);
-                } else {
-                    width += 2;
-                    progress.style.width = width + '%';
+                        window.open('https://www.mediafire.com/file/pwv5wfidklmxua1/streamvibe_setup.zip/file', '_blank');
+                    }, 800);
                 }
-            }, 40);
+                progress.style.width = progressWidth + '%';
+            }, 100);
+        }
 
+        // Chat enter key support
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Check URL params for room
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomParam = urlParams.get('room');
+        if (roomParam) {
+            // Simulate joining room from URL
             setTimeout(() => {
-                clearInterval(interval);
-                progress.style.width = '100%';
+                joinRoomFromUrl(roomParam);
+            }, 500);
+        }
+
+        // Room data
+        const roomsData = [
+            { title: 'Interstellar', viewers: 12, status: 'active', video: 'https://www.youtube.com/embed/zSWdZVtXT7E' },
+            { title: 'Inception', viewers: 8, status: 'active', video: 'https://www.youtube.com/embed/YoHD9XEInc0' },
+            { title: 'The Dark Knight', viewers: 15, status: 'active', video: 'https://www.youtube.com/embed/EXeTwQWrcwY' },
+            { title: 'Pulp Fiction', viewers: 5, status: 'waiting', video: 'https://www.youtube.com/embed/s7EdQ4FqBHU' },
+            { title: 'The Matrix', viewers: 9, status: 'active', video: 'https://www.youtube.com/embed/vKQi3bBA1y8' },
+            { title: 'Fight Club', viewers: 7, status: 'active', video: 'https://www.youtube.com/embed/Sux_wAhCR9U' }
+        ];
+
+        let messages = [];
+        let currentRoomId = null;
+        let messageInterval = null;
+
+        // Update rooms display
+        function updateRoomsList(filteredRooms = roomsData) {
+            const container = document.getElementById('movie-rooms');
+            if (filteredRooms.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>Комнаты не найдены</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Попробуйте изменить запрос поиска</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filteredRooms.map(room => `
+                <article class="room-card ${room.status}" 
+                         onclick="joinRoom('${room.video}', '${room.title}')" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-label="Присоединиться к комнате ${room.title}">
+                    <img src="mimg${roomsData.indexOf(room) + 1}.jpg" alt="Постер ${room.title}" loading="lazy">
+                    <h4>${room.title}</h4>
+                    <div class="viewers">
+                        <i class="fas fa-eye"></i> ${room.viewers} зрителей
+                    </div>
+                    <span class="room-status">
+                        ${room.status === 'active' ? 
+                            '<i class="fas fa-circle" style="color: #4ecdc4;"></i> В эфире' : 
+                            '<i class="fas fa-clock" style="color: #ff6b6b;"></i> Ожидает'
+                        }
+                    </span>
+                </article>
+            `).join('');
+        }
+
+        // Create room
+        function createRoom() {
+            const roomName = prompt('Введите название комнаты:', 'Моя кинотусовка');
+            if (!roomName || roomName.trim() === '') return;
+            
+            const videoUrl = prompt('Введите ссылку на YouTube видео:', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+            if (!videoUrl || !videoUrl.includes('youtube.com')) {
+                alert('Пожалуйста, введите корректную ссылку на YouTube');
+                return;
+            }
+            
+            // Extract video ID and create embed URL
+            const videoId = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)?.[1];
+            if (!videoId) {
+                alert('Не удалось извлечь ID видео из ссылки');
+                return;
+            }
+            
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            joinRoom(embedUrl, roomName.trim());
+        }
+
+        // Join room
+        function joinRoom(videoUrl, roomTitle) {
+            currentRoomId = 'room_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+            
+            // Hide rooms section, show watch party
+            document.getElementById('movie-select').style.display = 'none';
+            document.getElementById('watch-party').style.display = 'block';
+            
+            // Set video player
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.src = videoUrl;
+            
+            // Set room title
+            document.getElementById('room-id').textContent = roomTitle;
+            
+            // Generate random users
+            const userNames = ['Анна', 'Максим', 'Катя', 'Дмитрий', 'Лиза', 'Сергей', 'Вика'];
+            const users = [
+                { name: 'Вы', avatar: null, status: 'online' },
+                ...Array.from({length: Math.floor(Math.random() * 4) + 1}, () => ({
+                    name: userNames[Math.floor(Math.random() * userNames.length)],
+                    avatar: `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'women' : 'men'}/${Math.floor(Math.random() * 50) + 1}.jpg`,
+                    status: Math.random() > 0.2 ? 'online' : 'offline'
+                }))
+            ];
+            
+            // Update users list
+            document.getElementById('users-list').innerHTML = users.map(user => `
+                <div class="user ${user.status}">
+                    ${user.avatar ? 
+                        `<img src="${user.avatar}" alt="${user.name}" loading="lazy">` : 
+                        `<div class="user-avatar">${user.name.charAt(0).toUpperCase()}</div>`
+                    }
+                    <span>${user.name}</span>
+                    <span class="status"></span>
+                </div>
+            `).join('');
+            
+            // Load or generate messages
+            const savedMessages = localStorage.getItem(`chat_${currentRoomId}`);
+            if (savedMessages) {
+                messages = JSON.parse(savedMessages);
+            } else {
+                // Generate initial messages
+                const messageTexts = [
+                    'Привет всем! Отличный выбор фильма 😊',
+                    'Кто-нибудь уже смотрел эту часть?',
+                    'Качество видео просто отличное!',
+                    'Синхронизация работает идеально',
+                    'Жду начала, попкорн готов 🍿'
+                ];
+                
+                messages = Array.from({length: Math.floor(Math.random() * 3) + 2}, (_, i) => ({
+                    user: users[Math.floor(Math.random() * (users.length - 1)) + 1].name,
+                    text: messageTexts[Math.floor(Math.random() * messageTexts.length)],
+                    timestamp: new Date(Date.now() - (Math.random() * 30 + 5) * 60000)
+                        .toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit', hour12: false})
+                }));
+                
+                // Sort by time
+                messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            }
+            
+            updateChatDisplay();
+            
+            // Start message simulation
+            if (messageInterval) clearInterval(messageInterval);
+            messageInterval = setInterval(() => {
+                const newMessage = {
+                    user: users[Math.floor(Math.random() * (users.length - 1)) + 1].name,
+                    text: [
+                        'Этот момент просто потрясающий!',
+                        'Не ожидал такого поворота сюжета',
+                        'Актерская игра на высоте',
+                        'Саундтрек идеально подобран',
+                        'Качество 4K — это нечто!'
+                    ][Math.floor(Math.random() * 5)],
+                    timestamp: new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit', hour12: false})
+                };
+                
+                messages.push(newMessage);
+                updateChatDisplay();
+                localStorage.setItem(`chat_${currentRoomId}`, JSON.stringify(messages));
+                
+                // Keep only last 50 messages
+                if (messages.length > 50) {
+                    messages = messages.slice(-50);
+                }
+            }, 10000 + Math.random() * 15000);
+        }
+
+        // Leave room
+        function leaveRoom() {
+            if (messageInterval) {
+                clearInterval(messageInterval);
+                messageInterval = null;
+            }
+            
+            document.getElementById('watch-party').style.display = 'none';
+            document.getElementById('movie-select').style.display = 'block';
+            
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.src = '';
+            
+            messages = [];
+            currentRoomId = null;
+            
+            // Clear search
+            document.getElementById('search').value = '';
+            updateRoomsList();
+            
+            // Update URL
+            history.pushState({}, document.title, window.location.pathname);
+        }
+
+        // Send message
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const messageText = input.value.trim();
+            
+            if (messageText && currentRoomId) {
+                const newMessage = {
+                    user: 'Вы',
+                    text: messageText,
+                    timestamp: new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit', hour12: false})
+                };
+                
+                messages.push(newMessage);
+                input.value = '';
+                updateChatDisplay();
+                
+                // Save to localStorage
+                localStorage.setItem(`chat_${currentRoomId}`, JSON.stringify(messages));
+                
+                // Keep only last 50 messages
+                if (messages.length > 50) {
+                    messages = messages.slice(-50);
+                }
+                
+                // Auto-scroll to bottom
+                const messagesContainer = document.getElementById('messages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Maintain focus
+                input.focus();
+            }
+        }
+
+        // Update chat display
+        function updateChatDisplay() {
+            const container = document.getElementById('messages');
+            if (!container) return;
+            
+            // Sort messages by timestamp
+            messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            
+            container.innerHTML = messages.map(msg => `
+                <li>
+                    <div style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <strong style="color: var(--secondary-color); min-width: 40px;">${msg.user}:</strong>
+                        <div style="flex: 1;">
+                            <div style="word-wrap: break-word; line-height: 1.4;">${msg.text}</div>
+                            <small style="opacity: 0.7; font-size: 0.8rem; display: block; margin-top: 0.3rem;">${msg.timestamp}</small>
+                        </div>
+                    </div>
+                </li>
+            `).join('');
+            
+            // Auto-scroll to bottom
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Share room
+        function shareRoom() {
+            if (!currentRoomId) return;
+            
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?room=${currentRoomId}`;
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    showToast('Ссылка скопирована в буфер обмена!');
+                }).catch(() => {
+                    // Fallback
+                    const textArea = document.createElement('textarea');
+                    textArea.value = shareUrl;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    showToast('Ссылка скопирована в буфер обмена!');
+                });
+            } else {
+                // Old browser fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = shareUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Ссылка скопирована в буфер обмена!');
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                z-index: 10001;
+                font-weight: 500;
+                box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Animate in
+            requestAnimationFrame(() => {
+                toast.style.transform = 'translateX(0)';
+            });
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.transform = 'translateX(400px)';
                 setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 500);
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
             }, 3000);
         }
 
-        // Contact Form Validation
-        const form = document.querySelector('.contact-form');
-        const nameInput = document.getElementById('contact-name');
-        const emailInput = document.getElementById('contact-email');
-        const messageInput = document.getElementById('contact-message');
-        const nameError = document.getElementById('name-error');
-        const emailError = document.getElementById('email-error');
-        const messageError = document.getElementById('message-error');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let valid = true;
-
-            // Reset errors
-            nameError.style.display = 'none';
-            emailError.style.display = 'none';
-            messageError.style.display = 'none';
-
-            // Name validation
-            if (nameInput.value.trim().length < 2) {
-                nameError.textContent = 'Имя должно содержать минимум 2 символа';
-                nameError.style.display = 'block';
-                valid = false;
-            }
-
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailInput.value.trim())) {
-                emailError.textContent = 'Введите корректный email';
-                emailError.style.display = 'block';
-                valid = false;
-            }
-
-            // Message validation
-            if (messageInput.value.trim().length < 10) {
-                messageError.textContent = 'Сообщение должно содержать минимум 10 символов';
-                messageError.style.display = 'block';
-                valid = false;
-            }
-
-            if (valid) {
-                alert('Сообщение отправлено!');
-                form.reset();
-            }
-        });
-
-        // Search Functionality
-        const searchInput = document.getElementById('search');
-        const rooms = document.querySelectorAll('.room-card');
-
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase();
-            rooms.forEach(room => {
-                const title = room.querySelector('h4').textContent.toLowerCase();
-                room.style.display = title.includes(query) ? 'flex' : 'none';
-            });
-        });
-
-        // Mock Chat Data
-        const mockMessages = [
-            { user: 'Анна', text: 'Классный фильм, ребята!', time: '10:30 PM' },
-            { user: 'Максим', text: 'Согласен, эпичная сцена!', time: '10:32 PM' },
-            { user: 'Екатерина', text: 'Жду следующую часть!', time: '10:33 PM' }
-        ];
-
-        const mockUsers = [
-            { name: 'Анна', avatar: 'https://randomuser.me/api/portraits/women/1.jpg', online: true },
-            { name: 'Максим', avatar: 'https://randomuser.me/api/portraits/men/2.jpg', online: true },
-            { name: 'Екатерина', avatar: 'https://randomuser.me/api/portraits/women/3.jpg', online: false },
-            { name: 'Дмитрий', avatar: 'https://randomuser.me/api/portraits/men/4.jpg', online: true }
-        ];
-
-        // Room Functions
-        function createRoom() {
-            const roomName = prompt('Введите название комнаты:');
-            if (roomName) {
-                const roomCard = document.createElement('article');
-                roomCard.className = 'room-card waiting';
-                roomCard.setAttribute('tabindex', '0');
-                roomCard.setAttribute('role', 'button');
-                roomCard.setAttribute('aria-label', `Присоединиться к комнате ${roomName}`);
-                roomCard.innerHTML = `
-                    <img src="assets/images/default.jpg" alt="Постер ${roomName}" loading="lazy">
-                    <h4>${roomName}</h4>
-                    <div class="viewers"><i class="fas fa-eye"></i> 1 зритель</div>
-                    <span class="room-status"><i class="fas fa-clock" style="color: #ff6b6b;"></i> Ожидает</span>
-                `;
-                roomCard.onclick = () => joinRoom('https://www.youtube.com/embed/dQw4w9WgXcQ', roomName);
-                document.getElementById('movie-rooms').prepend(roomCard);
-                joinRoom('https://www.youtube.com/embed/dQw4w9WgXcQ', roomName);
-            }
+        // Join room from URL parameter
+        function joinRoomFromUrl(roomParam) {
+            // Simulate joining a shared room
+            const mockRoom = {
+                title: 'Поделённая комната',
+                video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                viewers: 2,
+                status: 'active'
+            };
+            
+            joinRoom(mockRoom.video, mockRoom.title);
+            showToast('Присоединились к поделённой комнате!');
         }
 
-        function joinRoom(videoUrl, roomName) {
-            document.getElementById('movie-select').style.display = 'none';
-            document.getElementById('watch-party').style.display = 'block';
-            document.getElementById('room-id').textContent = roomName;
-            document.getElementById('video-player').src = videoUrl;
-
-            const messagesList = document.getElementById('messages');
-            messagesList.innerHTML = '';
-            mockMessages.forEach(msg => {
-                const li = document.createElement('li');
-                li.innerHTML = `<strong>${msg.user}:</strong> ${msg.text} <small>${msg.time}</small>`;
-                messagesList.appendChild(li);
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load rooms
+            updateRoomsList();
+            
+            // Search functionality
+            const searchInput = document.getElementById('search');
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase();
+                const filteredRooms = roomsData.filter(room => 
+                    room.title.toLowerCase().includes(query)
+                );
+                updateRoomsList(filteredRooms);
             });
-
-            const usersList = document.getElementById('users-list');
-            usersList.innerHTML = '';
-            mockUsers.forEach(user => {
-                const userDiv = document.createElement('div');
-                userDiv.className = `user ${user.online ? '' : 'offline'}`;
-                userDiv.innerHTML = `
-                    ${user.avatar ? `<img src="${user.avatar}" alt="${user.name}" class="user-avatar">` : 
-                    `<div class="user-avatar">${user.name[0]}</div>`}
-                    ${user.name}
-                    <span class="status"></span>
-                `;
-                usersList.appendChild(userDiv);
-            });
-
-            document.getElementById('message-input').focus();
-            window.scrollTo({ top: document.getElementById('watch-party').offsetTop, behavior: 'smooth' });
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('message-input');
-            const message = input.value.trim();
-            if (message) {
-                const messagesList = document.getElementById('messages');
-                const li = document.createElement('li');
-                const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                li.innerHTML = `<strong>Вы:</strong> ${message} <small>${now}</small>`;
-                messagesList.appendChild(li);
-                input.value = '';
-                messagesList.scrollTop = messagesList.scrollHeight;
-            }
-        }
-
-        function shareRoom() {
-            const roomName = document.getElementById('room-id').textContent;
-            const url = `${window.location.origin}/room/${encodeURIComponent(roomName)}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert('Ссылка на комнату скопирована в буфер обмена!');
-            });
-        }
-
-        function leaveRoom() {
-            document.getElementById('watch-party').style.display = 'none';
-            document.getElementById('movie-select').style.display = 'block';
-            document.getElementById('video-player').src = '';
-            document.getElementById('room-id').textContent = 'Loading...';
-            document.getElementById('messages').innerHTML = '';
-            document.getElementById('users-list').innerHTML = '';
-            window.scrollTo({ top: document.getElementById('movie-select').offsetTop, behavior: 'smooth' });
-        }
-
-        // Keyboard Accessibility
-        document.querySelectorAll('.room-card').forEach(card => {
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    card.click();
-                }
-            });
-        });
-
-        // Initialize
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.querySelector('.faq-answer').style.maxHeight = null;
         });
     </script>
 </body>
