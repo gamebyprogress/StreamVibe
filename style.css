@@ -283,11 +283,9 @@ nav a:hover {
     position: relative;
     border: 1px solid var(--border-color);
     transition: var(--transition);
-    height: 400px;
+    height: 420px;
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    color: inherit;
 }
 
 .movie-card:hover {
@@ -296,12 +294,20 @@ nav a:hover {
     border-color: var(--primary-color);
 }
 
+.movie-card a:first-child {
+    display: block;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
 .movie-card img { 
     width: 100%; 
-    height: 300px;
-    object-fit: contain;
+    height: 340px;
+    object-fit: cover;
     background: var(--bg-tertiary);
     transition: var(--transition);
+    display: block;
 }
 
 .movie-card:hover img {
@@ -340,27 +346,18 @@ nav a:hover {
 }
 
 .movie-card-content {
-    padding: 1rem; 
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 0.5rem; 
+    flex-shrink: 0;
     background: var(--bg-tertiary);
     text-align: center;
 }
 
 .movie-card h3 { 
-    font-size: 1.1rem; 
+    font-size: 1rem; 
     font-weight: 600;
     color: var(--secondary-color);
-    margin-bottom: 0.5rem; 
-}
-
-.movie-card p {
-    font-size: 0.9rem; 
-    color: var(--text-secondary);
-    line-height: 1.4;
+    margin: 0;
+    line-height: 1.2;
 }
 
 .movie-card .rating {
@@ -1479,6 +1476,14 @@ footer h2 {
         gap: 1.5rem;
     }
     
+    .movie-card {
+        height: 380px;
+    }
+    
+    .movie-card img {
+        height: 300px;
+    }
+    
     .feature-grid { 
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1570,6 +1575,14 @@ footer h2 {
     
     .section-icon {
         font-size: 2rem;
+    }
+    
+    .movie-card {
+        height: 360px;
+    }
+    
+    .movie-card img {
+        height: 280px;
     }
     
     #video-player, #chat {
