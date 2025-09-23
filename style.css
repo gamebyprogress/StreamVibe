@@ -305,9 +305,11 @@ nav a:hover {
     width: 100%; 
     height: 340px;
     object-fit: cover;
-    background: var(--bg-tertiary);
+    background: transparent;
     transition: var(--transition);
     display: block;
+    margin-top: 0;
+    border-radius: 20px 20px 0 0;
 }
 
 .movie-card:hover img {
