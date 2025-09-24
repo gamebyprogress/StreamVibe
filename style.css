@@ -112,7 +112,7 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.05) 0%, var(--bg-secondary) 100%);
 }
 
 #particles-js {
@@ -249,7 +249,7 @@ nav a:hover {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom, rgba(255, 107, 107, 0.05) 0%, var(--bg-secondary) 100%);
+    background: linear-gradient(to bottom, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
 }
 
 #popular-particles {
@@ -372,6 +372,8 @@ nav a:hover {
     flex-direction: column;
     border-bottom: 1px solid var(--border-color);
     border-bottom-width: 2px;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .features {
@@ -440,7 +442,7 @@ nav a:hover {
     padding: 4rem 2rem;
     background: var(--bg-primary);
     text-align: center;
-    max-width: 1400px;
+    max-width: 1120px;
     margin: 0 auto;
     border-bottom: 1px solid var(--border-color);
     border-bottom-width: 2px;
@@ -540,8 +542,6 @@ nav a:hover {
     border: 1px solid var(--border-color);
     transition: var(--transition);
     text-align: left;
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .testimonial:hover {
@@ -672,6 +672,8 @@ nav a:hover {
     padding: 4rem 2rem;
     background: linear-gradient(to bottom, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     text-align: center;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .rooms-header {
@@ -749,7 +751,7 @@ nav a:hover {
 
 .room-card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border-radius: 15px 15px 0 0;
     margin-bottom: 1rem;
@@ -762,7 +764,7 @@ nav a:hover {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0 0 0.5rem;
+    margin: 1rem 0 0.5rem;
 }
 
 .room-card .viewers {
@@ -826,6 +828,9 @@ nav a:hover {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .party-buttons button {
@@ -856,6 +861,9 @@ nav a:hover {
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 #users-list {
@@ -929,6 +937,9 @@ nav a:hover {
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 #messages {
@@ -957,6 +968,13 @@ nav a:hover {
     text-align: center;
     max-width: 80%;
     margin: 0 auto 0.8rem;
+}
+
+#messages small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
 }
 
 .chat-input {
@@ -1003,6 +1021,8 @@ footer {
     text-align: center;
     border-top: 1px solid var(--border-color);
     border-top-width: 2px;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .contacts {
@@ -1088,6 +1108,13 @@ footer {
     box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
 }
 
+.contact-form .error {
+    display: none;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 .footer-links {
     margin-top: 2.5rem;
     padding-top: 2rem;
@@ -1150,6 +1177,19 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.modal-hint {
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modal-hint i {
+    color: var(--secondary-color);
+}
+
 .progress-bar {
     width: 100%;
     height: 8px;
@@ -1163,38 +1203,5 @@ footer {
     height: 100%;
     background: var(--gradient);
     width: 0;
-    transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    nav { flex-direction: column; gap: 1rem; }
-    .hero { padding: 1rem; min-height: calc(100vh - 80px); }
-    .hero iframe { height: 250px; }
-    .cta-container { flex-direction: column; }
-    .cta-btn { max-width: 300px; }
-    .movie-grid, .movie-rooms { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .movie-card { height: 380px; }
-    .movie-card img { height: 300px; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .steps { flex-direction: column; gap: 2rem; }
-    .step-number::after { display: none; }
-    .testimonial-grid { grid-template-columns: 1fr; }
-    .rooms-header { flex-direction: column; align-items: stretch; }
-    .movie-card-content { margin-top: 0.5rem; }
-    #search { min-width: auto; }
-    .player-chat { grid-template-columns: 1fr; }
-    .movie-card h3, .room-card h4, .room-card .viewers, .room-card .room-status { font-size: 0.8rem; }
-    #video-player, #chat { height: 50vh; }
-    .party-header { flex-direction: column; text-align: center; }
-    .party-buttons { width: 100%; justify-content: center; }
-    .party-buttons button { max-width: 200px; }
-}
-
-@media (max-width: 480px) {
-    .movie-grid, .movie-rooms { grid-template-columns: 1fr; }
-    .movie-card { height: 360px; }
-    .movie-card img { height: 280px; }
-    .room-card img { height: 120px; }
-    #video-player, #chat { height: 40vh; }
+    transition: width 0.3s ease;
 }
