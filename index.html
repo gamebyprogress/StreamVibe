@@ -31,7 +31,7 @@
         <div class="hero-content">
             <h1>Смотри фильмы в 4K вместе с друзьями</h1>
             <div class="hero-video">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/8SdL-PUJh6Q?autoplay=0" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="cta-container">
                 <a href="#" class="cta-btn cta-primary" onclick="downloadApp()">
@@ -383,36 +383,54 @@
         </div>
         <div class="movie-rooms">
             <div class="room-card">
+                <a href="#" class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </a>
                 <img src="mimg1.jpg" alt="Interstellar">
                 <h4>Interstellar</h4>
                 <div class="viewers">12 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card">
+                <a href="#" class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </a>
                 <img src="mimg2.jpg" alt="Inception">
                 <h4>Inception</h4>
                 <div class="viewers">8 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card">
+                <a href="#" class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </a>
                 <img src="mimg3.jpg" alt="The Dark Knight">
                 <h4>The Dark Knight</h4>
                 <div class="viewers">15 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card waiting">
+                <a href="#" class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </a>
                 <img src="mimg4.jpg" alt="Pulp Fiction">
                 <h4>Pulp Fiction</h4>
                 <div class="viewers">5 зрителей</div>
                 <span class="room-status">Ожидает</span>
             </div>
             <div class="room-card">
+                <a href="#" class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </a>
                 <img src="mimg5.jpg" alt="The Matrix">
                 <h4>The Matrix</h4>
                 <div class="viewers">9 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card">
+                <a href="#" class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </a>
                 <img src="mimg6.jpg" alt="Fight Club">
                 <h4>Fight Club</h4>
                 <div class="viewers">7 зрителей</div>
@@ -455,7 +473,7 @@
             </div>
             <div class="player-chat">
                 <div id="video-player">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="video-player-iframe" src="" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div id="chat">
                     <h3>
@@ -658,13 +676,25 @@
         }
 
         // Watch party functions
+        const movieTrailers = {
+            'Interstellar': 'https://www.youtube.com/embed/zSWdZVtXT7E?autoplay=0',
+            'Inception': 'https://www.youtube.com/embed/YoHD9XEInc0?autoplay=0',
+            'The Dark Knight': 'https://www.youtube.com/embed/EXeTwQWrcwY?autoplay=0',
+            'Pulp Fiction': 'https://www.youtube.com/embed/s7EdQ4fzBhY?autoplay=0',
+            'The Matrix': 'https://www.youtube.com/embed/vKQi3bBA1y8?autoplay=0',
+            'Fight Club': 'https://www.youtube.com/embed/SUXWAEX2jlg?autoplay=0'
+        };
+
         function joinRoom(roomTitle) {
             document.getElementById('party-movie-title').textContent = roomTitle;
+            const videoPlayer = document.getElementById('video-player-iframe');
+            videoPlayer.src = movieTrailers[roomTitle] || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0';
             document.getElementById('watch-party').classList.add('active');
         }
 
         function leaveRoom() {
             document.getElementById('watch-party').classList.remove('active');
+            document.getElementById('video-player-iframe').src = '';
         }
 
         function shareRoom() {
