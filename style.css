@@ -113,7 +113,6 @@ nav a:hover {
     text-align: center;
     padding: 2rem;
     background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
-    border-bottom: 1px solid var(--border-color);
 }
 
 #particles-js {
@@ -246,11 +245,20 @@ nav a:hover {
 /* Популярные фильмы */
 .popular-movies {
     padding: 3rem 2rem;
-    background: var(--bg-secondary);
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(to bottom, rgba(255, 107, 107, 0.05) 0%, var(--bg-secondary) 100%);
+}
+
+#popular-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .movie-grid {
@@ -260,6 +268,8 @@ nav a:hover {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .movie-card {
@@ -273,6 +283,8 @@ nav a:hover {
     height: 400px;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
 }
 
 .movie-card:hover {
@@ -326,6 +338,7 @@ nav a:hover {
     background: var(--bg-tertiary);
     text-align: center;
     flex: 0 0 auto;
+    margin-top: 0.8rem;
 }
 
 .movie-card h3 {
@@ -358,6 +371,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid var(--border-color);
+    border-bottom-width: 2px;
 }
 
 .features {
@@ -429,6 +443,7 @@ nav a:hover {
     max-width: 1400px;
     margin: 0 auto;
     border-bottom: 1px solid var(--border-color);
+    border-bottom-width: 2px;
 }
 
 .steps {
@@ -507,6 +522,7 @@ nav a:hover {
     max-width: 1400px;
     margin: 0 auto;
     border-bottom: 1px solid var(--border-color);
+    border-bottom-width: 2px;
 }
 
 .testimonial-grid {
@@ -560,10 +576,9 @@ nav a:hover {
 /* FAQ */
 .faq {
     padding: 4rem 2rem;
-    background: var(--bg-primary);
+    background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     max-width: 1400px;
     margin: 0 auto;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .faq-container {
@@ -655,9 +670,8 @@ nav a:hover {
 /* Активные комнаты */
 #movie-select {
     padding: 4rem 2rem;
-    background: var(--bg-secondary);
+    background: linear-gradient(to bottom, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     text-align: center;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .rooms-header {
@@ -985,9 +999,10 @@ nav a:hover {
 /* Футер */
 footer {
     padding: 4rem 2rem 2rem;
-    background: var(--bg-primary);
-    border-top: 1px solid var(--border-color);
+    background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     text-align: center;
+    border-top: 1px solid var(--border-color);
+    border-top-width: 2px;
 }
 
 .contacts {
@@ -1076,7 +1091,6 @@ footer {
 .footer-links {
     margin-top: 2.5rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -1167,8 +1181,10 @@ footer {
     .step-number::after { display: none; }
     .testimonial-grid { grid-template-columns: 1fr; }
     .rooms-header { flex-direction: column; align-items: stretch; }
+    .movie-card-content { margin-top: 0.5rem; }
     #search { min-width: auto; }
     .player-chat { grid-template-columns: 1fr; }
+    .movie-card h3, .room-card h4, .room-card .viewers, .room-card .room-status { font-size: 0.8rem; }
     #video-player, #chat { height: 50vh; }
     .party-header { flex-direction: column; text-align: center; }
     .party-buttons { width: 100%; justify-content: center; }
