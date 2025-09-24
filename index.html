@@ -7,6 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -48,6 +49,7 @@
 
     <!-- Popular Movies -->
     <section id="popular" class="popular-movies">
+        <div id="popular-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-fire"></i>
@@ -55,66 +57,66 @@
             <h2 class="section-title">Популярное сейчас</h2>
         </div>
         <div class="movie-grid">
-            <div class="movie-card">
-                <a href="#" class="play-overlay">
+            <a href="https://www.imdb.com/title/tt1517268/" class="movie-card">
+                <div class="play-overlay">
                     <i class="fas fa-play"></i>
-                </a>
+                </div>
                 <img src="img1.jpg" alt="Barbie">
                 <div class="rating">8.3</div>
                 <div class="movie-card-content">
                     <h3>Barbie</h3>
                 </div>
-            </div>
-            <div class="movie-card">
-                <a href="#" class="play-overlay">
+            </a>
+            <a href="https://www.imdb.com/title/tt15239678/" class="movie-card">
+                <div class="play-overlay">
                     <i class="fas fa-play"></i>
-                </a>
+                </div>
                 <img src="img2.jpg" alt="Dune: Part Two">
                 <div class="rating">8.7</div>
                 <div class="movie-card-content">
                     <h3>Dune: Part Two</h3>
                 </div>
-            </div>
-            <div class="movie-card">
-                <a href="#" class="play-overlay">
+            </a>
+            <a href="https://www.imdb.com/title/tt15398776/" class="movie-card">
+                <div class="play-overlay">
                     <i class="fas fa-play"></i>
-                </a>
+                </div>
                 <img src="img4.jpg" alt="Oppenheimer">
                 <div class="rating">8.4</div>
                 <div class="movie-card-content">
                     <h3>Oppenheimer</h3>
                 </div>
-            </div>
-            <div class="movie-card">
-                <a href="#" class="play-overlay">
+            </a>
+            <a href="https://www.imdb.com/title/tt0816692/" class="movie-card">
+                <div class="play-overlay">
                     <i class="fas fa-play"></i>
-                </a>
+                </div>
                 <img src="img5.jpg" alt="The Batman">
                 <div class="rating">7.9</div>
                 <div class="movie-card-content">
                     <h3>The Batman</h3>
                 </div>
-            </div>
-            <div class="movie-card">
-                <a href="#" class="play-overlay">
+            </a>
+            <a href="https://www.imdb.com/title/tt3748528/" class="movie-card">
+                <div class="play-overlay">
                     <i class="fas fa-play"></i>
-                </a>
+                </div>
                 <img src="img3.jpg" alt="Stranger Things S5">
                 <div class="rating">8.7</div>
                 <div class="movie-card-content">
                     <h3>Stranger Things S5</h3>
                 </div>
-            </div>
-            <div class="movie-card">
-                <a href="#" class="play-overlay">
+            </a>
+            <a href="https://www.imdb.com/title/tt0439572/" class="movie-card">
+                <div class="play-overlay">
                     <i class="fas fa-play"></i>
-                </a>
+                </div>
                 <img src="img6.jpg" alt="Avatar: Fire and Ash">
                 <div class="rating">7.8</div>
                 <div class="movie-card-content">
                     <h3>Avatar: Fire and Ash</h3>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -383,54 +385,36 @@
         </div>
         <div class="movie-rooms">
             <div class="room-card">
-                <a href="#" class="play-overlay">
-                    <i class="fas fa-play"></i>
-                </a>
                 <img src="mimg1.jpg" alt="Interstellar">
                 <h4>Interstellar</h4>
                 <div class="viewers">12 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card">
-                <a href="#" class="play-overlay">
-                    <i class="fas fa-play"></i>
-                </a>
                 <img src="mimg2.jpg" alt="Inception">
                 <h4>Inception</h4>
                 <div class="viewers">8 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card">
-                <a href="#" class="play-overlay">
-                    <i class="fas fa-play"></i>
-                </a>
                 <img src="mimg3.jpg" alt="The Dark Knight">
                 <h4>The Dark Knight</h4>
                 <div class="viewers">15 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card waiting">
-                <a href="#" class="play-overlay">
-                    <i class="fas fa-play"></i>
-                </a>
                 <img src="mimg4.jpg" alt="Pulp Fiction">
                 <h4>Pulp Fiction</h4>
                 <div class="viewers">5 зрителей</div>
                 <span class="room-status">Ожидает</span>
             </div>
             <div class="room-card">
-                <a href="#" class="play-overlay">
-                    <i class="fas fa-play"></i>
-                </a>
                 <img src="mimg5.jpg" alt="The Matrix">
                 <h4>The Matrix</h4>
                 <div class="viewers">9 зрителей</div>
                 <span class="room-status">В эфире</span>
             </div>
             <div class="room-card">
-                <a href="#" class="play-overlay">
-                    <i class="fas fa-play"></i>
-                </a>
                 <img src="mimg6.jpg" alt="Fight Club">
                 <h4>Fight Club</h4>
                 <div class="viewers">7 зрителей</div>
@@ -692,6 +676,14 @@
             document.getElementById('watch-party').classList.add('active');
         }
 
+        // Add click handlers for room cards
+        document.querySelectorAll('.room-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                joinRoom(title);
+            });
+        });
+
         function leaveRoom() {
             document.getElementById('watch-party').classList.remove('active');
             document.getElementById('video-player-iframe').src = '';
@@ -768,24 +760,6 @@
             animateFeatures();
             animateSteps();
             animateTestimonials();
-            
-            // Add click handlers for movie cards
-            document.querySelectorAll('.movie-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (!e.target.closest('.play-overlay')) {
-                        const title = this.querySelector('h3').textContent;
-                        joinRoom(title);
-                    }
-                });
-            });
-
-            // Add click handlers for room cards
-            document.querySelectorAll('.room-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const title = this.querySelector('h4').textContent;
-                    joinRoom(title);
-                });
-            });
 
             // Add welcome message to chat
             const messagesList = document.getElementById('messages');
@@ -820,14 +794,42 @@
         // Initialize users after a delay
         setTimeout(addRandomUsers, 1000);
 
-        // Parallax effect for hero section (optional)
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                const rate = scrolled * -0.5;
-                hero.style.transform = `translateY(${rate}px)`;
-            }
+        // Initialize particles.js for hero
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ff6b6b" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#ff6b6b", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: "none", random: false, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Initialize particles.js for popular-movies
+        particlesJS("popular-particles", {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 1000 } },
+                color: { value: "#4ecdc4" },
+                shape: { type: "triangle", stroke: { width: 1, color: "#4ecdc4" } },
+                opacity: { value: 0.6, random: true },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 200, color: "#4ecdc4", opacity: 0.3, width: 1.5 },
+                move: { enable: true, speed: 2, direction: "top", random: true, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "repulse" }, resize: true },
+                modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, repulse: { distance: 100 } }
+            },
+            retina_detect: true
         });
     </script>
 </body>
