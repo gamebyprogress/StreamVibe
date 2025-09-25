@@ -1144,7 +1144,6 @@ nav a:hover {
     z-index: 10;
     max-width: 90%;
     text-align: center;
-    filter: none;
     border: none;
 }
 
@@ -1167,7 +1166,8 @@ nav a:hover {
     margin-top: 1rem;
 }
 
-.chat-input input {
+.chat-input input,
+.chat-input textarea {
     flex: 1;
     padding: 0.8rem 1.2rem;
     border: 2px solid var(--border-color);
@@ -1175,9 +1175,11 @@ nav a:hover {
     background: var(--bg-secondary);
     color: var(--text-primary);
     font-size: 0.9rem;
+    maxlength: 500;
 }
 
-.chat-input input:focus {
+.chat-input input:focus,
+.chat-input textarea:focus {
     outline: none;
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
