@@ -106,7 +106,7 @@ nav a:hover {
 /* Hero секция */
 .hero {
     position: relative;
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,6 +114,7 @@ nav a:hover {
     padding: 2rem;
     background: var(--bg-primary);
     position: relative;
+    scroll-snap-align: start;
 }
 
 .hero::after {
@@ -229,7 +230,7 @@ nav a:hover {
 
 /* Специфический стиль для заголовка в секции Популярное сейчас */
 .popular-movies .section-header {
-    margin-bottom: calc(2.5rem + 78px);
+    margin-bottom: calc(2.5rem + 40px);
 }
 
 /* Специфический стиль для заголовка в секции Почему StreamVibe */
@@ -261,6 +262,7 @@ nav a:hover {
     position: relative;
     background: var(--bg-primary);
     min-height: 100vh;
+    scroll-snap-align: start;
 }
 
 .popular-movies::after {
@@ -1110,6 +1112,7 @@ nav a:hover {
     text-align: center;
     z-index: 3;
     width: 90%;
+    filter: none;
 }
 
 #messages li.you {
