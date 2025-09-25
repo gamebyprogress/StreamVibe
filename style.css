@@ -1297,7 +1297,7 @@ footer#contacts {
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1349,7 +1349,7 @@ footer#contacts {
 
 .contact-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
     max-height: 300px;
 }
 
@@ -1364,7 +1364,7 @@ footer#contacts {
     background: var(--gradient);
     color: var(--text-primary);
     border: none;
-    padding: 0.8rem 2rem;
+    padding: 1rem 3rem;
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
@@ -1388,6 +1388,7 @@ footer#contacts {
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    margin-top: 150px;
 }
 
 .footer-links a {
