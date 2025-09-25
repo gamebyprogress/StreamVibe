@@ -27,7 +27,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero section">
+        <div class="section-particles" id="hero-particles"></div>
         <div class="hero-content">
             <h1>Смотри фильмы в 4K вместе с друзьями</h1>
             <div class="hero-video">
@@ -47,8 +48,8 @@
     </section>
 
     <!-- Popular Movies -->
-    <section id="popular" class="popular-movies">
-        <div id="popular-particles"></div>
+    <section id="popular" class="popular-movies section">
+        <div class="section-particles" id="popular-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-fire"></i>
@@ -110,7 +111,8 @@
     </section>
 
     <!-- Features -->
-    <section id="features" class="features-container">
+    <section id="features" class="features-container section">
+        <div class="section-particles" id="features-particles"></div>
         <div class="features">
             <div class="section-header">
                 <div class="section-icon">
@@ -154,7 +156,8 @@
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section class="how-it-works section">
+        <div class="section-particles" id="how-it-works-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-cogs"></i>
@@ -181,7 +184,8 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials">
+    <section class="testimonials section">
+        <div class="section-particles" id="testimonials-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-quote-left"></i>
@@ -223,7 +227,8 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="faq">
+    <section id="faq" class="faq section">
+        <div class="section-particles" id="faq-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-question-circle"></i>
@@ -358,7 +363,8 @@
     </section>
 
     <!-- Movie Rooms -->
-    <section id="movie-select">
+    <section id="movie-select" class="section">
+        <div class="section-particles" id="movie-select-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-door-open"></i>
@@ -464,7 +470,8 @@
     </div>
 
     <!-- Footer -->
-    <footer id="contacts">
+    <footer id="contacts" class="section">
+        <div class="section-particles" id="footer-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-envelope"></i>
@@ -648,13 +655,12 @@
         function initPagination() {
             const pageButtons = document.querySelectorAll('.page-btn');
             const roomCards = document.querySelectorAll('.room-card');
-            let currentPage = '1'; // Отслеживаем текущую страницу
+            let currentPage = '1';
 
             function showPage(pageNumber) {
-                // Определяем направление анимации
                 const direction = parseInt(pageNumber) > parseInt(currentPage) ? 'enter-right' : 'enter-left';
 
-                // Скрываем все карточки и сбрасываем анимации
+                // Скрываем все карточки
                 roomCards.forEach(card => {
                     card.style.display = 'none';
                     card.style.opacity = '0';
@@ -662,16 +668,16 @@
                     card.classList.remove('enter-left', 'enter-right');
                 });
 
-                // Показываем карточки для выбранной страницы с анимацией
-                document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`).forEach((card, index) => {
+                // Показываем карточки для выбранной страницы
+                const cardsToShow = document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`);
+                cardsToShow.forEach((card, index) => {
                     card.style.display = 'flex';
                     card.style.opacity = '0';
                     card.style.visibility = 'visible';
-                    // Добавляем класс анимации с небольшой задержкой для эффекта последовательности
                     setTimeout(() => {
                         card.classList.add(direction);
                         card.style.opacity = '1';
-                    }, index * 150); // Задержка 150ms для каждой карточки
+                    }, index * 250); // Задержка 250ms для каждой карточки
                 });
 
                 // Обновляем активную кнопку
@@ -682,11 +688,9 @@
                     }
                 });
 
-                // Обновляем текущую страницу
                 currentPage = pageNumber;
             }
 
-            // Добавляем обработчики кликов на кнопки пагинации
             pageButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const page = button.getAttribute('data-page');
@@ -694,7 +698,6 @@
                 });
             });
 
-            // Показываем первую страницу по умолчанию
             showPage('1');
         }
 
@@ -720,7 +723,6 @@
             document.getElementById('watch-party').classList.add('active');
         }
 
-        // Add click handlers for room cards
         document.querySelectorAll('.room-card').forEach(card => {
             card.addEventListener('click', function() {
                 const title = this.querySelector('h4').textContent;
@@ -741,7 +743,6 @@
                     url: window.location.href
                 });
             } else {
-                // Fallback for browsers without Web Share API
                 const roomLink = window.location.href + '?room=' + Date.now();
                 navigator.clipboard.writeText(roomLink).then(() => {
                     alert('Ссылка на комнату скопирована в буфер обмена!');
@@ -750,7 +751,6 @@
         }
 
         // Chat functionality
-        let messageCount = 0;
         function sendMessage() {
             const input = document.querySelector('.chat-input input');
             const message = input.value.trim();
@@ -766,7 +766,6 @@
                 messagesList.scrollTop = messagesList.scrollHeight;
                 input.value = '';
                 
-                // Simulate bot response
                 setTimeout(() => {
                     const botLi = document.createElement('li');
                     botLi.innerHTML = `
@@ -799,14 +798,48 @@
             }, 3000);
         });
 
+        // Initialize particles.js for all sections
+        function initializeParticles() {
+            const particleSections = [
+                'hero-particles',
+                'popular-particles',
+                'features-particles',
+                'how-it-works-particles',
+                'testimonials-particles',
+                'faq-particles',
+                'movie-select-particles',
+                'footer-particles'
+            ];
+
+            particleSections.forEach(sectionId => {
+                particlesJS(sectionId, {
+                    particles: {
+                        number: { value: 60, density: { enable: true, value_area: 1000 } },
+                        color: { value: "#4ecdc4" },
+                        shape: { type: "triangle", stroke: { width: 1, color: "#4ecdc4" } },
+                        opacity: { value: 0.6, random: true },
+                        size: { value: 4, random: true },
+                        line_linked: { enable: true, distance: 200, color: "#4ecdc4", opacity: 0.3, width: 1.5 },
+                        move: { enable: true, speed: 2, direction: "top", random: true, out_mode: "out" }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "repulse" }, resize: true },
+                        modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, repulse: { distance: 100 } }
+                    },
+                    retina_detect: true
+                });
+            });
+        }
+
         // Initialize animations on page load
         document.addEventListener('DOMContentLoaded', function() {
+            initializeParticles();
             animateFeatures();
             animateSteps();
             animateTestimonials();
-            initPagination(); // Initialize pagination
+            initPagination();
 
-            // Add welcome message to chat
             const messagesList = document.getElementById('messages');
             const welcomeLi = document.createElement('li');
             welcomeLi.className = 'system';
@@ -836,27 +869,7 @@
             });
         }
 
-        // Initialize users after a delay
         setTimeout(addRandomUsers, 1000);
-
-        // Initialize particles.js for popular-movies
-        particlesJS("popular-particles", {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 1000 } },
-                color: { value: "#4ecdc4" },
-                shape: { type: "triangle", stroke: { width: 1, color: "#4ecdc4" } },
-                opacity: { value: 0.6, random: true },
-                size: { value: 4, random: true },
-                line_linked: { enable: true, distance: 200, color: "#4ecdc4", opacity: 0.3, width: 1.5 },
-                move: { enable: true, speed: 2, direction: "top", random: true, out_mode: "out" }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "repulse" }, resize: true },
-                modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, repulse: { distance: 100 } }
-            },
-            retina_detect: true
-        });
     </script>
 </body>
 </html>
