@@ -27,7 +27,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory; /* Включаем snap-скролл по Y */
+    scroll-snap-type: y mandatory;
 }
 
 /* Анимации */
@@ -109,7 +109,7 @@ nav a:hover {
     position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: flex-start; /* Выравнивание содержимого сверху */
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
     padding: 2rem;
@@ -126,7 +126,7 @@ nav a:hover {
     width: 80%;
     height: 2px;
     background: var(--border-color);
-    scroll-snap-align: end; /* Делаем бордер магнитом для nav */
+    scroll-snap-align: end;
 }
 
 .hero-content {
@@ -134,7 +134,7 @@ nav a:hover {
     z-index: 2;
     max-width: 900px;
     width: 100%;
-    padding: 4rem 1rem 0; /* Увеличиваем padding-top, чтобы поднять h1 */
+    padding: 0 1rem 0; /* Изменено для поднятия h1 */
 }
 
 .hero h1 {
@@ -1086,7 +1086,7 @@ nav a:hover {
     flex: 1;
     overflow-y: auto;
     list-style: none;
-    position: relative; /* Для позиционирования системного сообщения */
+    position: relative;
 }
 
 #messages li {
@@ -1097,24 +1097,6 @@ nav a:hover {
     border: 2px solid var(--border-color);
     position: relative;
     filter: blur(4px);
-}
-
-#messages li.download-prompt::after {
-    content: 'Скачайте наше приложение, чтобы полноценно пользоваться чатом!';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(15, 15, 35, 0.85);
-    color: var(--text-primary);
-    padding: 0.8rem 1.2rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    z-index: 3;
-    width: 90%;
-    filter: none;
 }
 
 #messages li.you {
@@ -1131,6 +1113,24 @@ nav a:hover {
     max-width: 80%;
     margin: 0 auto 0.8rem;
     filter: none;
+}
+
+#messages li.download-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(15, 15, 35, 0.85);
+    color: var(--text-primary);
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    z-index: 10;
+    width: 90%;
+    filter: none;
+    border: 2px solid var(--secondary-color);
 }
 
 #messages small {
