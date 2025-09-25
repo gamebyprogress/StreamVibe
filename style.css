@@ -261,14 +261,14 @@ nav a:hover {
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Изменено на 4 колонки для большей ширины карточек */
+    grid-template-columns: repeat(6, 1fr); /* Изменено на 6 колонок для одного ряда */
     gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
     position: relative;
     z-index: 2;
-    margin-top: 30px; /* Спущено ниже (увеличено с 10px/20px) */
+    margin-top: 30px;
 }
 
 .movie-card {
@@ -279,7 +279,7 @@ nav a:hover {
     position: relative;
     border: 2px solid var(--border-color);
     transition: var(--transition);
-    height: 400px; /* Высота оставлена стандартной, ширина от grid */
+    height: 430px; /* Установлена высота 430px */
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -417,8 +417,8 @@ nav a:hover {
     left: 0;
     height: 4px;
     background: var(--gradient);
-    animation: slideInLeft 0.35s ease-out forwards; /* Изменено с 0.3s на 0.35s */
-    width: 100%; /* Добавлено для полной ширины линии */
+    animation: slideInLeft 0.35s ease-out forwards;
+    width: 100%;
 }
 
 .feature.visible {
@@ -685,7 +685,7 @@ nav a:hover {
     text-align: center;
     max-width: 1120px;
     margin: 0 auto;
-    border-bottom: 2px solid var(--border-color); /* Оставлена только border-bottom, margin-bottom убрано */
+    border-bottom: 2px solid var(--border-color);
 }
 
 .rooms-header {
@@ -754,7 +754,7 @@ nav a:hover {
     flex-direction: column;
     align-items: center;
     position: relative;
-    justify-content: flex-start; /* Добавлено для лучшего выравнивания контента */
+    justify-content: flex-start;
 }
 
 .room-card:hover {
@@ -776,7 +776,7 @@ nav a:hover {
 
 .room-card img {
     width: 100%;
-    height: 240px; /* Увеличено с 200px за счёт удаления .viewers */
+    height: 240px;
     object-fit: cover;
     border-radius: 15px 15px 0 0;
     margin-bottom: 1rem;
@@ -800,7 +800,7 @@ nav a:hover {
     font-size: 0.8rem;
     color: var(--secondary-color);
     border: 2px solid var(--border-color);
-    margin-top: auto; /* Прижимает статус к низу карточки */
+    margin-top: 1rem; /* Добавлен отступ сверху для поднятия текста */
     flex-grow: 0;
 }
 
@@ -810,19 +810,17 @@ nav a:hover {
     border-color: var(--primary-color);
 }
 
-/* Специфический стиль для 3-й карточки (The Dark Knight) - поднять текст "В эфире" выше */
+/* Специфический стиль для 3-й карточки (The Dark Knight) */
 .room-card:nth-child(3) {
     justify-content: flex-start;
 }
 
-.room-card:nth-child(3) .room-status {
-    margin-top: 0.2rem; /* Поднято выше, чтобы выровнять с другими блоками */
-    align-self: center;
+.room-card:nth-child(3) img {
+    height: 240px; /* Установлена стандартная высота изображения */
 }
 
-/* Специфический стиль для комнат */
-.room-card:nth-child(3) img {
-    height: 260px; /* Увеличено с 220px */
+.room-card:nth-child(3) .room-status {
+    margin-top: 1rem; /* Поднят текст "В эфире" */
 }
 
 /* Модальное окно просмотра */
