@@ -294,7 +294,7 @@ nav a:hover {
     position: relative;
     border: 2px solid var(--border-color);
     transition: var(--transition);
-    height: 460px;
+    height: 540px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -309,7 +309,7 @@ nav a:hover {
 
 .movie-card img {
     width: 100%;
-    height: 400px;
+    height: 480px;
     object-fit: cover;
     border-radius: 20px 20px 0 0;
     transition: var(--transition);
@@ -1095,7 +1095,7 @@ nav a:hover {
     filter: blur(4px);
 }
 
-#messages li::after {
+#messages li.download-prompt::after {
     content: 'Скачайте наше приложение, чтобы полноценно пользоваться чатом!';
     position: absolute;
     top: 50%;
@@ -1119,10 +1119,6 @@ nav a:hover {
     filter: none;
 }
 
-#messages li.you::after {
-    content: none;
-}
-
 #messages li.system {
     background: rgba(69, 183, 209, 0.1);
     border-color: var(--accent-color);
@@ -1130,10 +1126,6 @@ nav a:hover {
     max-width: 80%;
     margin: 0 auto 0.8rem;
     filter: none;
-}
-
-#messages li.system::after {
-    content: none;
 }
 
 #messages small {
