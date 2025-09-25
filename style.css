@@ -46,6 +46,11 @@ body {
     to { transform: translateX(0); opacity: 1; }
 }
 
+@keyframes scaleHover {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
 /* Навигация */
 header {
     position: sticky;
@@ -68,17 +73,23 @@ nav {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
     transition: var(--transition);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .logo i {
     font-size: 1.6rem;
-    color: var(--text-primary);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .nav-links {
@@ -1096,7 +1107,7 @@ nav a:hover {
     border-radius: 12px;
     border: 2px solid var(--border-color);
     position: relative;
-    filter: blur(2px); /* Уменьшен блюр */
+    filter: blur(4px); /* Возвращён блюр 4px */
     user-select: none; /* Запрет копирования */
 }
 
@@ -1132,6 +1143,11 @@ nav a:hover {
     width: 90%;
     filter: none;
     border: 2px solid var(--secondary-color);
+    user-select: none; /* Запрет копирования */
+}
+
+#messages li.download-prompt {
+    filter: blur(4px); /* Блюр для фейковых сообщений */
     user-select: none; /* Запрет копирования */
 }
 
@@ -1201,32 +1217,41 @@ footer {
 .contacts {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     margin: 2rem 0;
     position: relative;
     z-index: 2;
 }
 
 .contact-link {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: var(--text-secondary);
     transition: var(--transition);
 }
 
 .contact-link:hover {
     color: var(--secondary-color);
-    transform: translateY(-3px);
+    transform: scale(1.2);
+    animation: scaleHover 0.3s ease-out;
+}
+
+.contact-description {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
 }
 
 .contact-form {
-    max-width: 500px;
+    max-width: 600px;
     margin: 2rem auto;
     position: relative;
     z-index: 2;
 }
 
 .contact-form h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
@@ -1242,18 +1267,18 @@ footer {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 0.8rem 1.2rem;
+    padding: 1rem 1.5rem;
     margin-bottom: 1rem;
     border: 2px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 15px;
     background: var(--bg-secondary);
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: var(--transition);
 }
 
 .contact-form textarea {
-    height: 120px;
+    height: 150px;
     resize: none;
 }
 
@@ -1267,10 +1292,11 @@ footer {
 .contact-form button {
     background: var(--gradient);
     border: none;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2.5rem;
     border-radius: 25px;
     color: var(--text-primary);
     font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
 }
@@ -1294,12 +1320,19 @@ footer {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9rem;
+    text-transform: uppercase;
     transition: var(--transition);
 }
 
 .footer-links a:hover {
     color: var(--secondary-color);
     transform: translateY(-2px);
+}
+
+.footer-links a:not(:last-child)::after {
+    content: '|';
+    margin-left: 1.5rem;
+    color: var(--text-secondary);
 }
 
 /* Download Modal */
@@ -1438,5 +1471,11 @@ footer {
     }
     .section-title {
         font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    .contact-link {
+        font-size: 1.8rem;
+    }
+    .contact-form {
+        max-width: 100%;
     }
 }
