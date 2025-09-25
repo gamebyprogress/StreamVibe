@@ -523,7 +523,8 @@
             <form id="contact-form">
                 <input type="text" placeholder="Ваше имя" required>
                 <input type="email" placeholder="Email" required>
-                <textarea placeholder="Сообщение" required></textarea>
+                <textarea placeholder="Сообщение" maxlength="500" required></textarea>
+                <div class="char-counter">0/500</div>
                 <button type="submit">Отправить</button>
             </form>
         </div>
@@ -937,7 +938,15 @@
             setTimeout(() => {
                 alert('Сообщение отправлено! Мы свяжемся с вами скоро.');
                 e.target.reset();
+                document.querySelector('.char-counter').textContent = '0/500';
             }, 1000);
+        });
+
+        // Character counter for textarea
+        document.querySelector('.contact-form textarea').addEventListener('input', function () {
+            const counter = document.querySelector('.char-counter');
+            const currentLength = this.value.length;
+            counter.textContent = `${currentLength}/500`;
         });
 
         // Initialize animations and functionality
