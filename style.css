@@ -1132,19 +1132,21 @@ nav a:hover {
 }
 
 #messages li.download-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--gradient);
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    background: transparent;
     color: var(--text-primary);
-    padding: 1rem 2rem;
-    border-radius: 15px;
+    padding: 1rem;
+    border-radius: 12px;
     font-weight: 600;
     z-index: 10;
-    max-width: 90%;
+    width: 100%;
+    max-width: 100%;
     text-align: center;
-    border: none;
+    border: 2px solid var(--accent-color);
+    filter: none;
 }
 
 #messages li.download-prompt {
@@ -1327,6 +1329,7 @@ footer#contacts {
 .contact-form {
     max-width: 600px;
     margin: 0 auto 2rem;
+    position: relative;
 }
 
 .contact-form h3 {
@@ -1353,6 +1356,17 @@ footer#contacts {
     resize: vertical;
     min-height: 120px;
     max-height: 300px;
+}
+
+.contact-form textarea + .char-counter {
+    position: absolute;
+    right: 10px;
+    bottom: 110px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
 }
 
 .contact-form input:focus,
