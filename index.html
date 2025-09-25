@@ -10,6 +10,9 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
+    <!-- Background particles -->
+    <div id="background-particles"></div>
+
     <!-- Navigation -->
     <header>
         <nav>
@@ -28,7 +31,6 @@
 
     <!-- Hero Section -->
     <section class="hero section">
-        <div class="section-particles" id="hero-particles"></div>
         <div class="hero-content">
             <h1>Смотри фильмы в 4K вместе с друзьями</h1>
             <div class="hero-video">
@@ -49,7 +51,6 @@
 
     <!-- Popular Movies -->
     <section id="popular" class="popular-movies section">
-        <div class="section-particles" id="popular-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-fire"></i>
@@ -112,14 +113,13 @@
 
     <!-- Features -->
     <section id="features" class="features-container section">
-        <div class="section-particles" id="features-particles"></div>
-        <div class="features">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h2 class="section-title">Почему StreamVibe?</h2>
+        <div class="section-header">
+            <div class="section-icon">
+                <i class="fas fa-star"></i>
             </div>
+            <h2 class="section-title">Почему StreamVibe?</h2>
+        </div>
+        <div class="features">
             <div class="feature-grid">
                 <div class="feature">
                     <i class="fas fa-users"></i>
@@ -157,7 +157,6 @@
 
     <!-- How It Works -->
     <section class="how-it-works section">
-        <div class="section-particles" id="how-it-works-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-cogs"></i>
@@ -185,7 +184,6 @@
 
     <!-- Testimonials -->
     <section class="testimonials section">
-        <div class="section-particles" id="testimonials-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-quote-left"></i>
@@ -228,7 +226,6 @@
 
     <!-- FAQ -->
     <section id="faq" class="faq section">
-        <div class="section-particles" id="faq-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-question-circle"></i>
@@ -364,7 +361,6 @@
 
     <!-- Movie Rooms -->
     <section id="movie-select" class="section">
-        <div class="section-particles" id="movie-select-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-door-open"></i>
@@ -471,7 +467,6 @@
 
     <!-- Footer -->
     <footer id="contacts" class="section">
-        <div class="section-particles" id="footer-particles"></div>
         <div class="section-header">
             <div class="section-icon">
                 <i class="fas fa-envelope"></i>
@@ -643,10 +638,11 @@
             
             roomCards.forEach(card => {
                 const title = card.querySelector('h4').textContent.toLowerCase();
-                if (title.includes(searchTerm) && card.style.display !== 'none') {
-                    card.style.display = 'flex';
-                } else if (!title.includes(searchTerm)) {
-                    card.style.display = 'none';
+                const isVisible = title.includes(searchTerm);
+                card.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) {
+                    card.style.opacity = '1';
+                    card.style.visibility = 'visible';
                 }
             });
         }
@@ -660,12 +656,13 @@
             function showPage(pageNumber) {
                 const direction = parseInt(pageNumber) > parseInt(currentPage) ? 'enter-right' : 'enter-left';
 
-                // Скрываем все карточки
+                // Сбрасываем стили и классы для всех карточек
                 roomCards.forEach(card => {
-                    card.style.display = 'none';
+                    card.classList.remove('enter-left', 'enter-right');
                     card.style.opacity = '0';
                     card.style.visibility = 'hidden';
-                    card.classList.remove('enter-left', 'enter-right');
+                    card.style.display = 'none';
+                    card.style.animation = 'none'; // Сбрасываем анимацию
                 });
 
                 // Показываем карточки для выбранной страницы
@@ -798,37 +795,24 @@
             }, 3000);
         });
 
-        // Initialize particles.js for all sections
+        // Initialize particles.js for background
         function initializeParticles() {
-            const particleSections = [
-                'hero-particles',
-                'popular-particles',
-                'features-particles',
-                'how-it-works-particles',
-                'testimonials-particles',
-                'faq-particles',
-                'movie-select-particles',
-                'footer-particles'
-            ];
-
-            particleSections.forEach(sectionId => {
-                particlesJS(sectionId, {
-                    particles: {
-                        number: { value: 60, density: { enable: true, value_area: 1000 } },
-                        color: { value: "#4ecdc4" },
-                        shape: { type: "triangle", stroke: { width: 1, color: "#4ecdc4" } },
-                        opacity: { value: 0.6, random: true },
-                        size: { value: 4, random: true },
-                        line_linked: { enable: true, distance: 200, color: "#4ecdc4", opacity: 0.3, width: 1.5 },
-                        move: { enable: true, speed: 2, direction: "top", random: true, out_mode: "out" }
-                    },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "repulse" }, resize: true },
-                        modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, repulse: { distance: 100 } }
-                    },
-                    retina_detect: true
-                });
+            particlesJS('background-particles', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 1000 } },
+                    color: { value: "#4ecdc4" },
+                    shape: { type: "triangle", stroke: { width: 1, color: "#4ecdc4" } },
+                    opacity: { value: 0.6, random: true },
+                    size: { value: 4, random: true },
+                    line_linked: { enable: true, distance: 200, color: "#4ecdc4", opacity: 0.3, width: 1.5 },
+                    move: { enable: true, speed: 1, direction: "top", random: true, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
+                    modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, repulse: { distance: 100 } }
+                },
+                retina_detect: true
             });
         }
 
