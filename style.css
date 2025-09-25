@@ -261,14 +261,14 @@ nav a:hover {
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Изменено на 1 ряд по 6 */
+    grid-template-columns: repeat(4, 1fr); /* Изменено на 4 колонки для большей ширины карточек */
     gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
     position: relative;
     z-index: 2;
-    margin-top: 10px; /* Смещение вниз чутка */
+    margin-top: 30px; /* Спущено ниже (увеличено с 10px/20px) */
 }
 
 .movie-card {
@@ -279,7 +279,7 @@ nav a:hover {
     position: relative;
     border: 2px solid var(--border-color);
     transition: var(--transition);
-    height: 420px; /* Увеличено с 400px для чуть большей ширины */
+    height: 400px; /* Высота оставлена стандартной, ширина от grid */
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -418,6 +418,7 @@ nav a:hover {
     height: 4px;
     background: var(--gradient);
     animation: slideInLeft 0.35s ease-out forwards; /* Изменено с 0.3s на 0.35s */
+    width: 100%; /* Добавлено для полной ширины линии */
 }
 
 .feature.visible {
@@ -684,8 +685,7 @@ nav a:hover {
     text-align: center;
     max-width: 1120px;
     margin: 0 auto;
-    margin-bottom: 2rem; /* Изменено с margin-top: 4rem */
-    border-bottom: 2px solid var(--border-color); /* Изменено с border-top */
+    border-bottom: 2px solid var(--border-color); /* Оставлена только border-bottom, margin-bottom убрано */
 }
 
 .rooms-header {
@@ -754,6 +754,7 @@ nav a:hover {
     flex-direction: column;
     align-items: center;
     position: relative;
+    justify-content: flex-start; /* Добавлено для лучшего выравнивания контента */
 }
 
 .room-card:hover {
@@ -789,6 +790,7 @@ nav a:hover {
     font-weight: 600;
     color: var(--text-primary);
     margin: 0.5rem 0 0.5rem;
+    flex-grow: 0;
 }
 
 .room-card .room-status {
@@ -798,20 +800,24 @@ nav a:hover {
     font-size: 0.8rem;
     color: var(--secondary-color);
     border: 2px solid var(--border-color);
-}
-
-.room-card:nth-child(3) h4 {
-    margin: 0.5rem 0 0.5rem; /* Выравнивание как в других блоках */
-}
-
-.room-card:nth-child(3) .room-status {
-    margin: 0.5rem 0; /* Выравнивание как в других блоках */
+    margin-top: auto; /* Прижимает статус к низу карточки */
+    flex-grow: 0;
 }
 
 .room-card.waiting .room-status {
     background: rgba(255, 107, 107, 0.1);
     color: var(--primary-color);
     border-color: var(--primary-color);
+}
+
+/* Специфический стиль для 3-й карточки (The Dark Knight) - поднять текст "В эфире" выше */
+.room-card:nth-child(3) {
+    justify-content: flex-start;
+}
+
+.room-card:nth-child(3) .room-status {
+    margin-top: 0.2rem; /* Поднято выше, чтобы выровнять с другими блоками */
+    align-self: center;
 }
 
 /* Специфический стиль для комнат */
