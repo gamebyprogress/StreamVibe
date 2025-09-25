@@ -237,7 +237,7 @@ nav a:hover {
 
 /* Специфический стиль для заголовка в секции Популярное сейчас */
 .popular-movies .section-header {
-    margin-bottom: calc(2.5rem + 58px);
+    margin-bottom: calc(2.5rem + 78px);
 }
 
 /* Специфический стиль для заголовка в секции Почему StreamVibe */
@@ -399,6 +399,7 @@ nav a:hover {
     max-width: 1120px;
     margin: 0 auto;
     position: relative;
+    min-height: 100vh;
 }
 
 .features {
@@ -808,11 +809,11 @@ nav a:hover {
 }
 
 .room-card.enter-left {
-    animation: slideInLeft 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .room-card.enter-right {
-    animation: slideInRight 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .room-card.enter-left:nth-child(1),
@@ -822,12 +823,12 @@ nav a:hover {
 
 .room-card.enter-left:nth-child(2),
 .room-card.enter-right:nth-child(2) {
-    animation-delay: 250ms;
+    animation-delay: 150ms;
 }
 
 .room-card.enter-left:nth-child(3),
-.room-card.enter-right:nth-child(1) {
-    animation-delay: 500ms;
+.room-card.enter-right:nth-child(1 | .waiting) {
+    animation-delay: 300ms;
 }
 
 .room-card:hover {
@@ -1167,6 +1168,7 @@ footer {
     max-width: 1120px;
     margin: 0 auto;
     position: relative;
+    min-height: 100vh;
 }
 
 .contacts {
