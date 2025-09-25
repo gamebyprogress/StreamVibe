@@ -952,7 +952,6 @@ nav a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
-    border-bottom: 2px solid var(--border-color);
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -1109,8 +1108,7 @@ nav a:hover {
     font-size: 0.9rem;
     font-weight: 600;
     text-align: center;
-    z-index: 2;
-    filter: none;
+    z-index: 3;
     width: 90%;
 }
 
@@ -1118,6 +1116,11 @@ nav a:hover {
     background: rgba(78, 205, 196, 0.1);
     border-color: var(--secondary-color);
     margin-left: 20%;
+    filter: none;
+}
+
+#messages li.you::after {
+    content: none;
 }
 
 #messages li.system {
@@ -1143,18 +1146,19 @@ nav a:hover {
 
 .chat-input {
     display: flex;
-    gap: 0.8rem;
-    padding-top: 0.5rem;
-    border-top: 2px solid var(--border-color);
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .chat-input input {
     flex: 1;
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 1.2rem;
     border: 2px solid var(--border-color);
     border-radius: 25px;
     background: var(--bg-secondary);
     color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: var(--transition);
 }
 
 .chat-input input:focus {
@@ -1166,52 +1170,58 @@ nav a:hover {
 .chat-input button {
     background: var(--gradient);
     border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 25px;
+    color: var(--text-primary);
     cursor: pointer;
+    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
 }
 
-.chat-input button:hover { transform: scale(1.1); }
+.chat-input button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
 
-/* Футер */
+/* Footer */
 footer {
-    padding: 4rem 2rem 0;
+    padding: 4rem 2rem;
     background: var(--bg-primary);
     text-align: center;
     max-width: 1120px;
     margin: 0 auto;
     position: relative;
     min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contacts {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin: 2rem 0;
     position: relative;
     z-index: 2;
 }
 
 .contact-link {
-    font-size: 2rem;
-    color: var(--secondary-color);
+    font-size: 1.8rem;
+    color: var(--text-secondary);
     transition: var(--transition);
 }
 
 .contact-link:hover {
-    transform: translateY(-5px);
-    color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-3px);
 }
 
 .contact-form {
-    max-width: 600px;
-    margin: 0 auto 2rem;
+    max-width: 500px;
+    margin: 2rem auto;
     position: relative;
     z-index: 2;
 }
@@ -1223,72 +1233,61 @@ footer {
     margin-bottom: 1.5rem;
 }
 
-.contact-form .error {
+#form-error {
     display: none;
-    padding: 0.8rem;
-    background: rgba(255, 107, 107, 0.1);
-    border: 2px solid var(--primary-color);
-    border-radius: 10px;
     color: var(--primary-color);
     margin-bottom: 1rem;
-    text-align: center;
+    font-size: 0.95rem;
 }
 
-#contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-#contact-form input,
-#contact-form textarea {
-    padding: 1rem 1.5rem;
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1rem;
     border: 2px solid var(--border-color);
     border-radius: 10px;
-    background: var(--bg-tertiary);
+    background: var(--bg-secondary);
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: var(--transition);
 }
 
-#contact-form textarea {
-    min-height: 150px;
-    resize: vertical;
+.contact-form textarea {
+    height: 120px;
+    resize: none;
 }
 
-#contact-form input:focus,
-#contact-form textarea:focus {
+.contact-form input:focus,
+.contact-form textarea:focus {
     outline: none;
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
 }
 
-#contact-form button {
+.contact-form button {
     background: var(--gradient);
     border: none;
-    padding: 1rem;
-    border-radius: 10px;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
     color: var(--text-primary);
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
 }
 
-#contact-form button:hover {
+.contact-form button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
 }
 
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 1rem 0;
-    background: var(--bg-primary);
+    margin-top: 2rem;
+    position: relative;
     z-index: 2;
 }
 
@@ -1304,7 +1303,7 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Модальное окно загрузки */
+/* Download Modal */
 .modal {
     position: fixed;
     top: 0;
@@ -1312,18 +1311,15 @@ footer {
     width: 100%;
     height: 100%;
     background: rgba(15, 15, 35, 0.95);
-    display: flex;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: none;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
 }
 
 .modal.visible {
-    opacity: 1;
-    visibility: visible;
+    display: flex;
 }
 
 .modal-content {
@@ -1334,6 +1330,7 @@ footer {
     width: 90%;
     text-align: center;
     border: 2px solid var(--border-color);
+    box-shadow: var(--shadow);
 }
 
 .modal-content h2 {
@@ -1350,9 +1347,10 @@ footer {
 }
 
 .progress-bar {
+    width: 100%;
+    height: 8px;
     background: var(--bg-secondary);
     border-radius: 10px;
-    height: 10px;
     overflow: hidden;
     margin-bottom: 1.5rem;
 }
@@ -1368,12 +1366,12 @@ footer {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-secondary);
     font-size: 0.9rem;
-    background: rgba(78, 205, 196, 0.1);
-    padding: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 1rem;
     border-radius: 10px;
-    border: 2px solid var(--border-color);
 }
 
 .modal-hint i {
@@ -1381,71 +1379,47 @@ footer {
 }
 
 /* Медиа-запросы */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .movie-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-
     .movie-rooms {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .player-chat {
-        grid-template-columns: 1fr;
-    }
-
-    #video-player,
-    #chat {
-        height: 40vh;
     }
 }
 
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    .hero iframe {
-        height: 300px;
-    }
-
     .movie-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
     .movie-rooms {
         grid-template-columns: 1fr;
     }
-
-    .steps {
-        flex-direction: column;
-        align-items: center;
+    .player-chat {
+        grid-template-columns: 1fr;
     }
-
-    .step-number::after {
-        display: none;
+    #video-player,
+    #chat {
+        height: 50vh;
+    }
+    .hero h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+    .hero-video {
+        height: 300px;
     }
 }
 
 @media (max-width: 480px) {
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
     .movie-grid {
         grid-template-columns: 1fr;
     }
-
+    .hero-video {
+        height: 200px;
+    }
     .cta-btn {
         width: 100%;
     }
-
     .section-title {
         font-size: clamp(1.5rem, 3vw, 2rem);
     }
