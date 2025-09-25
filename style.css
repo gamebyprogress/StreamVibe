@@ -242,7 +242,7 @@ nav a:hover {
 
 /* Специфический стиль для заголовка в секции Почему StreamVibe */
 .features-container .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: -1rem;
 }
 
 .section-icon {
@@ -827,7 +827,7 @@ nav a:hover {
 }
 
 .room-card.enter-left:nth-child(3),
-.room-card.enter-right:nth-child(1 | .waiting) {
+.room-card.enter-right:nth-child(1) {
     animation-delay: 300ms;
 }
 
@@ -1162,7 +1162,7 @@ nav a:hover {
 
 /* Футер */
 footer {
-    padding: 4rem 2rem 2rem;
+    padding: 4rem 2rem 0;
     background: var(--bg-primary);
     text-align: center;
     max-width: 1120px;
@@ -1266,7 +1266,11 @@ footer {
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: var(--bg-primary);
     z-index: 2;
 }
 
