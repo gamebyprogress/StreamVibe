@@ -242,7 +242,7 @@ nav a:hover {
 
 /* Специфический стиль для заголовка в секции Почему StreamVibe */
 .features-container .section-header {
-    margin-bottom: -1rem;
+    margin-bottom: -3rem;
 }
 
 .section-icon {
@@ -302,7 +302,7 @@ nav a:hover {
     position: relative;
     border: 2px solid var(--border-color);
     transition: var(--transition);
-    height: 420px;
+    height: 460px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -317,7 +317,7 @@ nav a:hover {
 
 .movie-card img {
     width: 100%;
-    height: 360px;
+    height: 400px;
     object-fit: cover;
     border-radius: 20px 20px 0 0;
     transition: var(--transition);
@@ -1168,7 +1168,7 @@ footer {
     max-width: 1120px;
     margin: 0 auto;
     position: relative;
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 .contacts {
