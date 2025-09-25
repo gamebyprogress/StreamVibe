@@ -452,11 +452,6 @@
                     <ul id="messages">
                         <li class="system">
                             <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
-                            <small>${new Date().toLocaleTimeString()}</small>
-                        </li>
-                        <li class="system">
-                            <strong>StreamVibe:</strong> Скачайте наше приложение, чтобы полноценно пользоваться чатом!
-                            <small>${new Date().toLocaleTimeString()}</small>
                         </li>
                     </ul>
                     <div class="chat-input">
@@ -758,6 +753,7 @@
             const movieTitleElement = document.getElementById('party-movie-title');
             const videoPlayer = document.getElementById('video-player-iframe');
             const usersList = document.getElementById('users-list');
+            const messages = document.getElementById('messages');
 
             // Set movie title and video
             movieTitleElement.textContent = movieTitle;
@@ -784,11 +780,18 @@
                 usersList.appendChild(userElement);
             });
 
+            // Reset messages with welcome message and dynamic time
+            messages.innerHTML = `
+                <li class="system">
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
+                    <small>${new Date().toLocaleTimeString()}</small>
+                </li>
+            `;
+
             // Show watch party modal
             watchParty.classList.add('active');
 
             // Auto-scroll chat to bottom
-            const messages = document.getElementById('messages');
             messages.scrollTop = messages.scrollHeight;
 
             // Simulate chat messages
@@ -871,15 +874,12 @@
         function leaveRoom() {
             const watchParty = document.getElementById('watch-party');
             const videoPlayer = document.getElementById('video-player-iframe');
+            const messages = document.getElementById('messages');
             watchParty.classList.remove('active');
             videoPlayer.src = '';
-            document.getElementById('messages').innerHTML = `
+            messages.innerHTML = `
                 <li class="system">
                     <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
-                    <small>${new Date().toLocaleTimeString()}</small>
-                </li>
-                <li class="system">
-                    <strong>StreamVibe:</strong> Скачайте наше приложение, чтобы полноценно пользоваться чатом!
                     <small>${new Date().toLocaleTimeString()}</small>
                 </li>
             `;
