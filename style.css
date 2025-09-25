@@ -223,12 +223,12 @@ nav a:hover {
 
 /* Специфический стиль для заголовка в секции Популярное сейчас */
 .popular-movies .section-header {
-    margin-bottom: calc(2.5rem + 20px); /* Увеличен отступ на 20px */
+    margin-bottom: calc(2.5rem + 20px); /* Сохранён увеличенный отступ */
 }
 
 /* Специфический стиль для заголовка в секции Почему StreamVibe */
 .features-container .section-header {
-    margin-bottom: 2rem; /* Поднято выше, уменьшено с 2.5rem до 2rem */
+    margin-bottom: 2rem; /* Сохранено уменьшение с 2.5rem до 2rem */
 }
 
 .section-icon {
@@ -251,7 +251,7 @@ nav a:hover {
 
 /* Популярные фильмы */
 .popular-movies {
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 2rem; /* Уменьшен padding-bottom с 3rem до 2rem */
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -278,7 +278,7 @@ nav a:hover {
     padding: 0 1rem;
     position: relative;
     z-index: 2;
-    margin-top: 70px; /* Изменено с 30px на 70px */
+    margin-top: 60px; /* Изменено с 70px на 60px */
 }
 
 .movie-card {
@@ -304,7 +304,7 @@ nav a:hover {
 
 .movie-card img {
     width: 100%;
-    height: 360px; /* Увеличено с 340px до 360px для большего места под фото */
+    height: 360px; /* Сохранено 360px для большего места под фото */
     object-fit: cover;
     border-radius: 20px 20px 0 0;
     transition: var(--transition);
@@ -343,7 +343,7 @@ nav a:hover {
 }
 
 .movie-card-content {
-    padding: 0.3rem; /* Уменьшено с 0.5rem до 0.3rem для уменьшения блока */
+    padding: 0.3rem; /* Сохранено уменьшение с 0.5rem до 0.3rem */
     background: var(--bg-tertiary);
     text-align: center;
     flex: 0 0 auto;
@@ -351,11 +351,12 @@ nav a:hover {
 }
 
 .movie-card h3 {
-    font-size: 0.8rem; /* Уменьшено с 0.9rem до 0.8rem для компактности */
+    font-size: 0.8rem; /* Сохранено уменьшение с 0.9rem до 0.8rem */
     font-weight: 600;
     color: var(--secondary-color);
     margin: 0;
     line-height: 1.2;
+    text-transform: uppercase; /* Добавлено для текста в капс */
 }
 
 .movie-card .rating {
@@ -374,7 +375,7 @@ nav a:hover {
 
 /* Особенности */
 .features-container {
-    padding: 4rem 2rem;
+    padding: 2.5rem 2rem; /* Уменьшен padding-top с 4rem до 2.5rem */
     background: var(--bg-primary);
     min-height: 100vh;
     display: flex;
