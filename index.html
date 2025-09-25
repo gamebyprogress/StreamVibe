@@ -434,8 +434,8 @@
                 </h3>
                 <div id="users-list">
                     <div class="user you">
-                        <div class="user-avatar">В</div>
-                        <span>Вы</span>
+                        <div class="user-avatar">Т</div>
+                        <span>Ты</span>
                         <div class="status"></div>
                     </div>
                 </div>
@@ -449,7 +449,12 @@
                         <i class="fas fa-comments"></i>
                         Чат комнаты
                     </h3>
-                    <ul id="messages"></ul>
+                    <ul id="messages">
+                        <li class="system">
+                            <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
+                            <small>${new Date().toLocaleTimeString()}</small>
+                        </li>
+                    </ul>
                     <div class="chat-input">
                         <input type="text" placeholder="Напиши сообщение..." onkeypress="handleKeyPress(event)">
                         <button onclick="sendMessage()">
@@ -703,29 +708,19 @@
 
         // Watch party functions
         const movieTrailers = {
-            'Interstellar': 'https://www.youtube.com/embed/zşiktaş
-
-System: SWdZVtXT7E?autoplay=1&mute=1',
-            'Inception': 'https://www.youtube.com/embed/YoHD9XEInc0?autoplay=1&mute=1',
-            'The Dark Knight': 'https://www.youtube.com/embed/EXeTwQWrcwY?autoplay=1&mute=1',
-            'Pulp Fiction': 'https://www.youtube.com/embed/s7EdQ4fzBhY?autoplay=1&mute=1',
-            'The Matrix': 'https://www.youtube.com/embed/vKQi3bBA1y8?autoplay=1&mute=1',
-            'Fight Club': 'https://www.youtube.com/embed/SUXWAEX2jlg?autoplay=1&mute=1'
+            'Interstellar': 'https://www.youtube.com/embed/zSWdZVtXT7E?autoplay=0',
+            'Inception': 'https://www.youtube.com/embed/YoHD9XEInc0?autoplay=0',
+            'The Dark Knight': 'https://www.youtube.com/embed/EXeTwQWrcwY?autoplay=0',
+            'Pulp Fiction': 'https://www.youtube.com/embed/s7EdQ4fzBhY?autoplay=0',
+            'The Matrix': 'https://www.youtube.com/embed/vKQi3bBA1y8?autoplay=0',
+            'Fight Club': 'https://www.youtube.com/embed/SUXWAEX2jlg?autoplay=0'
         };
 
         function joinRoom(roomTitle) {
             document.getElementById('party-movie-title').textContent = roomTitle;
             const videoPlayer = document.getElementById('video-player-iframe');
-            videoPlayer.src = movieTrailers[roomTitle] || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1';
+            videoPlayer.src = movieTrailers[roomTitle] || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0';
             document.getElementById('watch-party').classList.add('active');
-            // Initialize system message
-            const messagesList = document.getElementById('messages');
-            messagesList.innerHTML = `
-                <li class="system">
-                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
-                    <small>${new Date().toLocaleTimeString()}</small>
-                </li>
-            `;
             startChatSimulation();
         }
 
@@ -739,7 +734,12 @@ System: SWdZVtXT7E?autoplay=1&mute=1',
         function leaveRoom() {
             document.getElementById('watch-party').classList.remove('active');
             document.getElementById('video-player-iframe').src = '';
-            document.getElementById('messages').innerHTML = '';
+            document.getElementById('messages').innerHTML = `
+                <li class="system">
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
+                    <small>${new Date().toLocaleTimeString()}</small>
+                </li>
+            `;
             stopChatSimulation();
         }
 
@@ -769,7 +769,7 @@ System: SWdZVtXT7E?autoplay=1&mute=1',
                 const li = document.createElement('li');
                 li.className = 'you';
                 li.innerHTML = `
-                    <strong>Вы:</strong> ${message}
+                    <strong>Ты:</strong> ${message}
                     <small>${new Date().toLocaleTimeString()}</small>
                 `;
                 messagesList.appendChild(li);
@@ -807,7 +807,7 @@ System: SWdZVtXT7E?autoplay=1&mute=1',
             ];
             const names = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Елена'];
 
-            function addRandomMessage() {
+            chatInterval = setInterval(() => {
                 const randomName = names[Math.floor(Math.random() * names.length)];
                 const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
                 const li = document.createElement('li');
@@ -817,18 +817,12 @@ System: SWdZVtXT7E?autoplay=1&mute=1',
                 `;
                 messagesList.appendChild(li);
                 messagesList.scrollTop = messagesList.scrollHeight;
-                // Schedule next message with random delay between 5 and 15 seconds
-                const randomDelay = Math.floor(Math.random() * (15000 - 5000 + 1)) + 5000;
-                chatInterval = setTimeout(addRandomMessage, randomDelay);
-            }
-
-            // Start first message after initial delay
-            chatInterval = setTimeout(addRandomMessage, 5000);
+            }, 5000);
         }
 
         function stopChatSimulation() {
             if (chatInterval) {
-                clearTimeout(chatInterval);
+                clearInterval(chatInterval);
                 chatInterval = null;
             }
         }
@@ -847,7 +841,7 @@ System: SWdZVtXT7E?autoplay=1&mute=1',
             }, 3000);
         });
 
-        // Initialize animations and users on page load
+        // Initialize animations and chat on page load
         document.addEventListener('DOMContentLoaded', function() {
             animateFeatures();
             animateSteps();
@@ -858,11 +852,8 @@ System: SWdZVtXT7E?autoplay=1&mute=1',
             function addRandomUsers() {
                 const usersList = document.getElementById('users-list');
                 const names = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Елена'];
-                // Generate random number of users (2 to 7)
-                const numUsers = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
-                const selectedNames = names.sort(() => Math.random() - 0.5).slice(0, numUsers);
                 
-                selectedNames.forEach((name, index) => {
+                names.forEach((name, index) => {
                     setTimeout(() => {
                         const userDiv = document.createElement('div');
                         userDiv.className = 'user';
