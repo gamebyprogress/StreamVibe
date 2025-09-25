@@ -83,8 +83,6 @@ nav {
     transition: var(--transition);
 }
 
-.logo:hover { transform: scale(1.05); }
-
 .logo i {
     font-size: 1.6rem;
     animation: pulse 2s infinite;
@@ -775,14 +773,16 @@ nav a:hover {
     align-items: center;
     position: relative;
     justify-content: flex-start;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .room-card.enter-left {
-    animation: slideInRight 0.6s ease-out forwards;
+    animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .room-card.enter-right {
-    animation: slideInLeft 0.6s ease-out forwards;
+    animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .room-card:hover {
@@ -1315,7 +1315,7 @@ footer {
     .movie-rooms { grid-template-columns: repeat(2, 1fr); }
     .hero-video iframe { height: 350px; }
     .player-chat { grid-template-columns: 1fr; }
-    #video-player, #chat { height: 50vh; }
+    .player-chat #video-player, .player-chat #chat { height: 50vh; }
 }
 
 @media (max-width: 768px) {
