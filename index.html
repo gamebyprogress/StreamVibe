@@ -373,36 +373,40 @@
             </button>
         </div>
         <div class="movie-rooms">
-            <div class="room-card">
+            <div class="room-card" data-page="1">
                 <img src="mimg1.jpg" alt="Interstellar">
                 <h4>Interstellar</h4>
                 <span class="room-status">В эфире</span>
             </div>
-            <div class="room-card">
+            <div class="room-card" data-page="1">
                 <img src="mimg2.jpg" alt="Inception">
                 <h4>Inception</h4>
                 <span class="room-status">В эфире</span>
             </div>
-            <div class="room-card">
+            <div class="room-card" data-page="1">
                 <img src="mimg3.jpg" alt="The Dark Knight">
                 <h4>The Dark Knight</h4>
                 <span class="room-status">В эфире</span>
             </div>
-            <div class="room-card waiting">
+            <div class="room-card waiting" data-page="2">
                 <img src="mimg4.jpg" alt="Pulp Fiction">
                 <h4>Pulp Fiction</h4>
                 <span class="room-status">Ожидает</span>
             </div>
-            <div class="room-card">
+            <div class="room-card" data-page="2">
                 <img src="mimg5.jpg" alt="The Matrix">
                 <h4>The Matrix</h4>
                 <span class="room-status">В эфире</span>
             </div>
-            <div class="room-card">
+            <div class="room-card" data-page="2">
                 <img src="mimg6.jpg" alt="Fight Club">
                 <h4>Fight Club</h4>
                 <span class="room-status">В эфире</span>
             </div>
+        </div>
+        <div class="pagination">
+            <button class="page-btn active" data-page="1">1</button>
+            <button class="page-btn" data-page="2">2</button>
         </div>
     </section>
 
@@ -632,12 +636,49 @@
             
             roomCards.forEach(card => {
                 const title = card.querySelector('h4').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
+                if (title.includes(searchTerm) && card.style.display !== 'none') {
                     card.style.display = 'flex';
-                } else {
+                } else if (!title.includes(searchTerm)) {
                     card.style.display = 'none';
                 }
             });
+        }
+
+        // Pagination functionality
+        function initPagination() {
+            const pageButtons = document.querySelectorAll('.page-btn');
+            const roomCards = document.querySelectorAll('.room-card');
+
+            function showPage(pageNumber) {
+                // Hide all rooms
+                roomCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+
+                // Show rooms for the selected page
+                document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`).forEach(card => {
+                    card.style.display = 'flex';
+                });
+
+                // Update active button
+                pageButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-page') === pageNumber) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            // Add click event listeners to pagination buttons
+            pageButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const page = button.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+
+            // Show first page by default
+            showPage('1');
         }
 
         // Create room functionality
@@ -746,6 +787,7 @@
             animateFeatures();
             animateSteps();
             animateTestimonials();
+            initPagination(); // Initialize pagination
 
             // Add welcome message to chat
             const messagesList = document.getElementById('messages');
