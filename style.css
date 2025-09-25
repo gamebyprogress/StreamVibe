@@ -29,16 +29,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Фоновые частицы */
-#background-particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
 /* Анимации */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -131,7 +121,18 @@ nav a:hover {
     text-align: center;
     padding: 2rem;
     background: var(--bg-primary);
-    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: var(--border-color);
 }
 
 .hero-content {
@@ -236,7 +237,7 @@ nav a:hover {
 
 /* Специфический стиль для заголовка в секции Популярное сейчас */
 .popular-movies .section-header {
-    margin-bottom: calc(2.5rem + 20px);
+    margin-bottom: calc(2.5rem + 58px);
 }
 
 /* Специфический стиль для заголовка в секции Почему StreamVibe */
@@ -267,8 +268,18 @@ nav a:hover {
     padding: 3rem 2rem 2rem;
     position: relative;
     background: var(--bg-primary);
-    border-bottom: 2px solid var(--border-color);
     min-height: 100vh;
+}
+
+.popular-movies::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: var(--border-color);
 }
 
 .movie-grid {
@@ -576,6 +587,10 @@ nav a:hover {
     border: 2px solid var(--border-color);
     transition: var(--transition);
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 260px;
 }
 
 .testimonial:hover {
@@ -598,6 +613,7 @@ nav a:hover {
     line-height: 1.6;
     color: var(--text-secondary);
     font-size: 1rem;
+    flex-grow: 1;
 }
 
 .testimonial-author {
@@ -800,7 +816,7 @@ nav a:hover {
 }
 
 .room-card.enter-left:nth-child(1),
-.room-card.enter-right:nth-child(1) {
+.room-card.enter-right:nth-child(3) {
     animation-delay: 0ms;
 }
 
@@ -810,7 +826,7 @@ nav a:hover {
 }
 
 .room-card.enter-left:nth-child(3),
-.room-card.enter-right:nth-child(3) {
+.room-card.enter-right:nth-child(1) {
     animation-delay: 500ms;
 }
 
