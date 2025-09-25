@@ -27,6 +27,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory; /* Включаем snap-скролл по Y */
 }
 
 /* Анимации */
@@ -108,12 +109,11 @@ nav a:hover {
     position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Выравнивание содержимого сверху */
     justify-content: center;
     text-align: center;
     padding: 2rem;
     background: var(--bg-primary);
-    position: relative;
     scroll-snap-align: start;
 }
 
@@ -126,6 +126,7 @@ nav a:hover {
     width: 80%;
     height: 2px;
     background: var(--border-color);
+    scroll-snap-align: end; /* Делаем бордер магнитом для nav */
 }
 
 .hero-content {
@@ -133,7 +134,7 @@ nav a:hover {
     z-index: 2;
     max-width: 900px;
     width: 100%;
-    padding: 0 1rem;
+    padding: 4rem 1rem 0; /* Увеличиваем padding-top, чтобы поднять h1 */
 }
 
 .hero h1 {
@@ -1085,6 +1086,7 @@ nav a:hover {
     flex: 1;
     overflow-y: auto;
     list-style: none;
+    position: relative; /* Для позиционирования системного сообщения */
 }
 
 #messages li {
