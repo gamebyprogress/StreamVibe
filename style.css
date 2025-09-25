@@ -829,6 +829,42 @@ nav a:hover {
     height: 240px; /* Установлена стандартная высота изображения */
 }
 
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.page-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-btn:hover {
+    background: var(--gradient);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.page-btn.active {
+    background: var(--gradient);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+}
+
 /* Модальное окно просмотра */
 #watch-party {
     position: fixed;
