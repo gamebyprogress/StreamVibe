@@ -145,165 +145,6 @@ nav a:hover {
     margin: 2rem auto;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow:ව
-
-System: I'm sorry, it seems like your message was cut off. Based on your instructions, you want to:
-
-1. Change the height of the movie cards in the "Популярное сейчас" section to `420px` (from `430px`).
-2. Increase the margin below the "Популярное сейчас" section header by `20px` (current `margin-bottom` is `2.5rem` for `.section-header`, which we'll adjust specifically for this section).
-
-I'll also ensure that the previous changes (one row for movie cards, increased width by 15px per card, raised "В эфире"/"Ожидает" text, and standardized "The Dark Knight" image size) are preserved.
-
-Below is the updated CSS with these changes applied.
-
-<xaiArtifact artifact_id="f2813171-1f28-4c9d-974d-30b4afa9846e" artifact_version_id="56e2c2aa-3b3d-424d-a5b0-eacb3d129f8b" title="style.css" contentType="text/css">
-/* Общие стили и сброс */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --primary-color: #ff6b6b;
-    --secondary-color: #4ecdc4;
-    --accent-color: #45b7d1;
-    --text-primary: #ffffff;
-    --text-secondary: #b8c6dc;
-    --bg-primary: #0f0f23;
-    --bg-secondary: #1a1a2e;
-    --bg-tertiary: #16213e;
-    --border-color: rgba(255, 107, 107, 0.2);
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-body {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-/* Анимации */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-@keyframes slideInLeft {
-    from { width: 0; opacity: 0; }
-    to { width: 100%; opacity: 1; }
-}
-
-/* Навигация */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(15, 15, 35, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 2px solid var(--border-color);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.logo:hover { transform: scale(1.05); }
-
-.logo i {
-    font-size: 1.6rem;
-    animation: pulse 2s infinite;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-nav a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    transition: var(--transition);
-}
-
-nav a:hover {
-    color: var(--text-primary);
-    transform: translateY(-2px);
-    background: rgba(78, 205, 196, 0.1);
-}
-
-/* Hero секция */
-.hero {
-    position: relative;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    background: var(--bg-primary);
-    border-bottom: 2px solid var(--border-color);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    width: 100%;
-    padding: 0 1rem;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 700;
-    line-height: 1.2;
-    animation: fadeInUp 1s ease-out;
-}
-
-.hero-video {
-    margin: 2rem auto;
-    border-radius: 20px;
-    overflow: hidden;
     box-shadow: var(--shadow);
     max-width: 800px;
     width: 100%;
@@ -380,11 +221,6 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
-/* Специфический стиль для заголовка в секции Популярное сейчас */
-.popular-movies .section-header {
-    margin-bottom: calc(2.5rem + 20px); /* Увеличен отступ на 20px */
-}
-
 .section-icon {
     font-size: 2.5rem;
     background: var(--gradient);
@@ -425,9 +261,9 @@ nav a:hover {
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr); /* Изменено на 6 колонок для одного ряда */
     gap: 2rem;
-    max-width: 1490px; /* Увеличено для шире карточек на 15px */
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
     position: relative;
@@ -443,7 +279,7 @@ nav a:hover {
     position: relative;
     border: 2px solid var(--border-color);
     transition: var(--transition);
-    height: 420px; /* Изменено на 420px */
+    height: 430px; /* Установлена высота 430px */
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -964,7 +800,7 @@ nav a:hover {
     font-size: 0.8rem;
     color: var(--secondary-color);
     border: 2px solid var(--border-color);
-    margin-top: 1rem;
+    margin-top: 1rem; /* Добавлен отступ сверху для поднятия текста */
     flex-grow: 0;
 }
 
@@ -980,11 +816,11 @@ nav a:hover {
 }
 
 .room-card:nth-child(3) img {
-    height: 240px;
+    height: 240px; /* Установлена стандартная высота изображения */
 }
 
 .room-card:nth-child(3) .room-status {
-    margin-top: 1rem;
+    margin-top: 1rem; /* Поднят текст "В эфире" */
 }
 
 /* Модальное окно просмотра */
