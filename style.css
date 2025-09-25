@@ -134,7 +134,7 @@ nav a:hover {
     z-index: 2;
     max-width: 900px;
     width: 100%;
-    padding: 0 1rem 0; /* Изменено для поднятия h1 */
+    padding: 0 1rem 0;
 }
 
 .hero h1 {
@@ -1096,7 +1096,8 @@ nav a:hover {
     border-radius: 12px;
     border: 2px solid var(--border-color);
     position: relative;
-    filter: blur(4px);
+    filter: blur(2px); /* Уменьшен блюр */
+    user-select: none; /* Запрет копирования */
 }
 
 #messages li.you {
@@ -1131,6 +1132,7 @@ nav a:hover {
     width: 90%;
     filter: none;
     border: 2px solid var(--secondary-color);
+    user-select: none; /* Запрет копирования */
 }
 
 #messages small {
@@ -1373,6 +1375,23 @@ footer {
 
 .modal-hint i {
     color: var(--secondary-color);
+}
+
+.modal-button {
+    background: var(--gradient);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.modal-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
 }
 
 /* Медиа-запросы */
