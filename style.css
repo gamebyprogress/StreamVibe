@@ -35,11 +35,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
 @keyframes slideInLeft {
     from { transform: translateX(-100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -72,10 +67,7 @@ nav {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -85,7 +77,7 @@ nav {
 
 .logo i {
     font-size: 1.6rem;
-    animation: pulse 2s infinite;
+    color: var(--text-primary);
 }
 
 .nav-links {
@@ -1100,6 +1092,26 @@ nav a:hover {
     background: rgba(255, 107, 107, 0.05);
     border-radius: 12px;
     border: 2px solid var(--border-color);
+    position: relative;
+    filter: blur(4px);
+}
+
+#messages li::after {
+    content: 'Скачайте наше приложение, чтобы полноценно пользоваться чатом!';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(15, 15, 35, 0.85);
+    color: var(--text-primary);
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    z-index: 2;
+    filter: none;
+    width: 90%;
 }
 
 #messages li.you {
@@ -1111,9 +1123,14 @@ nav a:hover {
 #messages li.system {
     background: rgba(69, 183, 209, 0.1);
     border-color: var(--accent-color);
-    text-align: center;
+    text-align: left;
     max-width: 80%;
     margin: 0 auto 0.8rem;
+    filter: none;
+}
+
+#messages li.system::after {
+    content: none;
 }
 
 #messages small {
@@ -1121,6 +1138,7 @@ nav a:hover {
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-top: 0.4rem;
+    filter: none;
 }
 
 .chat-input {
