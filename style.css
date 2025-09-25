@@ -251,7 +251,7 @@ nav a:hover {
 
 /* Популярные фильмы */
 .popular-movies {
-    padding: 3rem 2rem 2rem; /* Уменьшен padding-bottom с 3rem до 2rem */
+    padding: 3rem 2rem 2rem; /* Сохранён уменьшенный padding-bottom */
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -278,7 +278,7 @@ nav a:hover {
     padding: 0 1rem;
     position: relative;
     z-index: 2;
-    margin-top: 60px; /* Изменено с 70px на 60px */
+    margin-top: 60px; /* Сохранено 60px */
 }
 
 .movie-card {
@@ -307,7 +307,7 @@ nav a:hover {
     height: 360px; /* Сохранено 360px для большего места под фото */
     object-fit: cover;
     border-radius: 20px 20px 0 0;
-    transition: var(--transition);
+    transition: var(--transitionmaybe: transition;
 }
 
 .movie-card:hover img { transform: scale(1.05); }
@@ -352,11 +352,11 @@ nav a:hover {
 
 .movie-card h3 {
     font-size: 0.8rem; /* Сохранено уменьшение с 0.9rem до 0.8rem */
-    font-weight: 600;
+    font-weight: 700; /* Увеличено с 600 до 700 для большей жирности */
     color: var(--secondary-color);
     margin: 0;
     line-height: 1.2;
-    text-transform: uppercase; /* Добавлено для текста в капс */
+    text-transform: uppercase; /* Сохранено для текста в капс */
 }
 
 .movie-card .rating {
@@ -375,7 +375,7 @@ nav a:hover {
 
 /* Особенности */
 .features-container {
-    padding: 2.5rem 2rem; /* Уменьшен padding-top с 4rem до 2.5rem */
+    padding: 2.5rem 2rem; /* Сохранён уменьшенный padding-top */
     background: var(--bg-primary);
     min-height: 100vh;
     display: flex;
@@ -428,7 +428,7 @@ nav a:hover {
     left: 0;
     height: 4px;
     background: var(--gradient);
-    animation: slideInLeft 0.35s ease-out forwards; /* Сохранено 0.35s */
+    animation: slideInLeft 0.35s ease-out forwards;
     width: 100%;
 }
 
@@ -820,13 +820,40 @@ nav a:hover {
     border-color: var(--primary-color);
 }
 
-/* Специфический стиль для 3-й карточки (The Dark Knight) */
-.room-card:nth-child(3) {
-    justify-content: flex-start;
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-.room-card:nth-child(3) img {
-    height: 240px; /* Установлена стандартная высота изображения */
+.page-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-btn:hover {
+    background: var(--gradient);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.page-btn.active {
+    background: var(--gradient);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
 }
 
 /* Модальное окно просмотра */
@@ -1087,11 +1114,6 @@ footer {
     overflow: hidden;
 }
 
-/* Убираем фиолетовую линию под Telegram */
-.contact-link[title="Telegram"]::after {
-    display: none !important;
-}
-
 .contact-link:hover {
     background: var(--gradient);
     transform: translateY(-3px);
@@ -1180,73 +1202,60 @@ footer {
     transition: var(--transition);
 }
 
-.footer-links a:hover { color: var(--secondary-color); }
+.footer-links a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
 
 /* Модальное окно загрузки */
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(15, 15, 35, 0.95);
-    backdrop-filter: blur(10px);
-    justify-content: center;
+    backdrop-filter: blur(20px);
+    display: none;
     align-items: center;
+    justify-content: center;
     z-index: 1000;
-    padding: 2rem;
-    border: 2px solid var(--border-color);
 }
 
-.modal.visible {
-    display: flex;
-}
+.modal.visible { display: flex; }
 
 .modal-content {
-    background: var(--bg-secondary);
-    padding: 3rem;
+    background: var(--bg-tertiary);
+    padding: 2rem;
     border-radius: 20px;
-    max-width: 450px;
-    width: 100%;
-    border: 2px solid var(--border-color);
-    box-shadow: var(--shadow);
+    max-width: 500px;
+    width: 90%;
     text-align: center;
+    border: 2px solid var(--border-color);
 }
 
 .modal-content h2 {
-    color: var(--secondary-color);
-    font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .modal-content p {
+    font-size: 1rem;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
-}
-
-.modal-hint {
-    margin-top: 1.5rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.modal-hint i {
-    color: var(--secondary-color);
 }
 
 .progress-bar {
     width: 100%;
     height: 8px;
-    background: var(--bg-tertiary);
+    background: var(--bg-secondary);
     border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 1rem;
-    border: 2px solid var(--border-color);
+    margin-bottom: 1.5rem;
 }
 
 .progress {
@@ -1254,4 +1263,48 @@ footer {
     background: var(--gradient);
     width: 0;
     transition: width 0.3s ease;
+}
+
+.modal-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.modal-hint i { color: var(--secondary-color); }
+
+.modal-hint code {
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .movie-grid { grid-template-columns: repeat(3, 1fr); }
+    .movie-rooms { grid-template-columns: repeat(2, 1fr); }
+    .hero-video iframe { height: 350px; }
+    .player-chat { grid-template-columns: 1fr; }
+    #video-player, #chat { height: 50vh; }
+}
+
+@media (max-width: 768px) {
+    .movie-grid { grid-template-columns: repeat(2, 1fr); }
+    .movie-rooms { grid-template-columns: 1fr; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
+    .hero-video iframe { height: 250px; }
+    .cta-btn { width: 100%; }
+    .nav-links { gap: 1rem; }
+    nav a { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+    .logo { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .movie-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); }
+    .section-icon { font-size: 2rem; }
+    .hero-video iframe { height: 200px; }
+    .modal-content { padding: 1.5rem; }
 }
