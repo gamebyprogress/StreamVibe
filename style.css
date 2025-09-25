@@ -40,6 +40,11 @@ body {
     50% { transform: scale(1.05); }
 }
 
+@keyframes slideInTop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 /* Навигация */
 header {
     position: sticky;
@@ -47,7 +52,7 @@ header {
     z-index: 100;
     background: rgba(15, 15, 35, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
 }
 
 nav {
@@ -113,6 +118,7 @@ nav a:hover {
     text-align: center;
     padding: 2rem;
     background: var(--bg-primary);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .hero-content {
@@ -241,6 +247,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border-color);
 }
 
 #popular-particles {
@@ -269,7 +276,7 @@ nav a:hover {
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     transition: var(--transition);
     height: 400px;
     display: flex;
@@ -351,7 +358,7 @@ nav a:hover {
     font-size: 0.8rem;
     font-weight: 600;
     z-index: 3;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
 }
 
 /* Особенности */
@@ -361,8 +368,7 @@ nav a:hover {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid var(--border-color);
-    border-bottom-width: 2px;
+    border-bottom: 2px solid var(--border-color);
     max-width: 1120px;
     margin: 0 auto;
 }
@@ -391,9 +397,10 @@ nav a:hover {
     transition: var(--transition);
     opacity: 0;
     transform: translateY(30px);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
 .feature:hover {
@@ -410,7 +417,7 @@ nav a:hover {
     width: 100%;
     height: 4px;
     background: var(--gradient);
-    border-radius: 20px 20px 0 0;
+    animation: slideInTop 0.6s ease-out forwards;
 }
 
 .feature.visible {
@@ -447,8 +454,7 @@ nav a:hover {
     text-align: center;
     max-width: 1120px;
     margin: 0 auto;
-    border-bottom: 1px solid var(--border-color);
-    border-bottom-width: 2px;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .steps {
@@ -527,7 +533,7 @@ nav a:hover {
     max-width: 1400px;
     margin: 0 auto;
     background: var(--bg-primary);
-    border-top: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .testimonial-grid {
@@ -542,7 +548,7 @@ nav a:hover {
     background: var(--bg-tertiary);
     padding: 2.5rem 2rem;
     border-radius: 20px;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     transition: var(--transition);
     text-align: left;
 }
@@ -558,7 +564,7 @@ nav a:hover {
     border-radius: 50%;
     margin: 0 auto 1.5rem;
     object-fit: cover;
-    border: 3px solid var(--secondary-color);
+    border: 2px solid var(--secondary-color);
 }
 
 .testimonial-text {
@@ -582,7 +588,7 @@ nav a:hover {
     background: var(--bg-primary);
     max-width: 1400px;
     margin: 0 auto;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .faq-container {
@@ -595,7 +601,7 @@ nav a:hover {
     margin-bottom: 1rem;
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     transition: var(--transition);
 }
 
@@ -687,6 +693,7 @@ nav a:hover {
     gap: 2rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+    border-bottom: 2px solid var(--border-color);
 }
 
 #search {
@@ -739,7 +746,7 @@ nav a:hover {
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     transition: var(--transition);
     height: 360px;
     display: flex;
@@ -762,7 +769,7 @@ nav a:hover {
     width: 100%;
     height: 4px;
     background: var(--gradient);
-    border-radius: 20px 20px 0 0;
+    animation: slideInTop 0.6s ease-out forwards;
 }
 
 .room-card img {
@@ -780,7 +787,7 @@ nav a:hover {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 1rem 0 0.5rem;
+    margin: 0.5rem 0 0.5rem;
 }
 
 .room-card .viewers {
@@ -795,8 +802,7 @@ nav a:hover {
     border-radius: 25px;
     font-size: 0.8rem;
     color: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
-    text-align: center;
+    border: 2px solid var(--border-color);
 }
 
 .room-card.waiting .room-status {
@@ -805,13 +811,15 @@ nav a:hover {
     border-color: var(--primary-color);
 }
 
-/* Специфический стиль для The Dark Knight */
+/* Специфический стиль для комнат */
 .room-card:nth-child(3) img {
     height: 220px;
 }
 
-.room-card:nth-child(3) h4 {
-    margin: 0.5rem 0 0.5rem;
+.room-card:nth-child(3) h4,
+.room-card:nth-child(3) .viewers,
+.room-card:nth-child(3) .room-status {
+    margin: 0.5rem 0;
 }
 
 /* Модальное окно просмотра */
@@ -825,6 +833,7 @@ nav a:hover {
     z-index: 1000;
     display: none;
     padding: 2rem;
+    border: 2px solid var(--border-color);
 }
 
 #watch-party.active { display: block; }
@@ -841,7 +850,7 @@ nav a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -878,7 +887,7 @@ nav a:hover {
     border-radius: 20px;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
 }
 
 .party-users h3 {
@@ -905,6 +914,7 @@ nav a:hover {
     background: var(--bg-secondary);
     border-radius: 20px;
     font-size: 0.9rem;
+    border: 2px solid var(--border-color);
 }
 
 .user-avatar {
@@ -938,6 +948,7 @@ nav a:hover {
     box-shadow: var(--shadow);
     height: 60vh;
     max-height: 600px;
+    border: 2px solid var(--border-color);
 }
 
 #video-player iframe {
@@ -952,7 +963,7 @@ nav a:hover {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     height: 60vh;
     max-height: 600px;
 }
@@ -978,18 +989,18 @@ nav a:hover {
     margin-bottom: 0.8rem;
     background: rgba(255, 107, 107, 0.05);
     border-radius: 12px;
-    border-left: 3px solid var(--primary-color);
+    border: 2px solid var(--border-color);
 }
 
 #messages li.you {
     background: rgba(78, 205, 196, 0.1);
-    border-left-color: var(--secondary-color);
+    border-color: var(--secondary-color);
     margin-left: 20%;
 }
 
 #messages li.system {
     background: rgba(69, 183, 209, 0.1);
-    border-left-color: var(--accent-color);
+    border-color: var(--accent-color);
     text-align: center;
     max-width: 80%;
     margin: 0 auto 0.8rem;
@@ -1006,7 +1017,7 @@ nav a:hover {
     display: flex;
     gap: 0.8rem;
     padding-top: 0.5rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 2px solid var(--border-color);
 }
 
 .chat-input input {
@@ -1044,10 +1055,9 @@ footer {
     padding: 4rem 2rem 2rem;
     background: var(--bg-primary);
     text-align: center;
-    border-top: 1px solid var(--border-color);
-    border-top-width: 2px;
     max-width: 1120px;
     margin: 0 auto;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .contacts {
@@ -1066,7 +1076,7 @@ footer {
     background: var(--bg-tertiary);
     border-radius: 15px;
     transition: var(--transition);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
 }
 
 .contact-link:hover {
@@ -1085,6 +1095,7 @@ footer {
 .contact-form {
     max-width: 600px;
     margin: 3rem auto 2rem;
+    border: 2px solid var(--border-color);
 }
 
 .contact-form h3 {
@@ -1173,6 +1184,7 @@ footer {
     align-items: center;
     z-index: 1000;
     padding: 2rem;
+    border: 2px solid var(--border-color);
 }
 
 .modal.visible {
@@ -1185,7 +1197,7 @@ footer {
     border-radius: 20px;
     max-width: 450px;
     width: 100%;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     box-shadow: var(--shadow);
     text-align: center;
 }
@@ -1222,6 +1234,7 @@ footer {
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 1rem;
+    border: 2px solid var(--border-color);
 }
 
 .progress {
