@@ -449,7 +449,12 @@
                         <i class="fas fa-comments"></i>
                         Чат комнаты
                     </h3>
-                    <ul id="messages"></ul>
+                    <ul id="messages">
+                        <li class="system">
+                            <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
+                            <small>${new Date().toLocaleTimeString()}</small>
+                        </li>
+                    </ul>
                     <div class="chat-input">
                         <input type="text" placeholder="Напиши сообщение..." onkeypress="handleKeyPress(event)">
                         <button onclick="sendMessage()">
@@ -653,7 +658,7 @@
                 const isBackward = parseInt(pageNumber) < parseInt(currentPage);
                 const direction = isBackward ? 'enter-right' : 'enter-left';
 
-                // Сбрасываем стили и классы для всех карточек
+                // Reset styles and classes for all cards
                 roomCards.forEach(card => {
                     card.classList.remove('enter-left', 'enter-right');
                     card.style.opacity = '0';
@@ -662,9 +667,8 @@
                     card.style.animation = 'none';
                 });
 
-                // Показываем карточки для выбранной страницы
+                // Show cards for the selected page
                 const cardsToShow = Array.from(document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`));
-                // Если движемся назад (с 2 на 1), меняем порядок появления
                 const orderedCards = isBackward ? cardsToShow.reverse() : cardsToShow;
                 orderedCards.forEach((card, index) => {
                     card.style.display = 'flex';
@@ -676,7 +680,7 @@
                     }, index * 250);
                 });
 
-                // Обновляем активную кнопку
+                // Update active button
                 pageButtons.forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.getAttribute('data-page') === pageNumber) {
@@ -717,6 +721,7 @@
             const videoPlayer = document.getElementById('video-player-iframe');
             videoPlayer.src = movieTrailers[roomTitle] || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0';
             document.getElementById('watch-party').classList.add('active');
+            startChatSimulation();
         }
 
         document.querySelectorAll('.room-card').forEach(card => {
@@ -729,6 +734,13 @@
         function leaveRoom() {
             document.getElementById('watch-party').classList.remove('active');
             document.getElementById('video-player-iframe').src = '';
+            document.getElementById('messages').innerHTML = `
+                <li class="system">
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
+                    <small>${new Date().toLocaleTimeString()}</small>
+                </li>
+            `;
+            stopChatSimulation();
         }
 
         function shareRoom() {
@@ -747,6 +759,8 @@
         }
 
         // Chat functionality
+        let chatInterval = null;
+
         function sendMessage() {
             const input = document.querySelector('.chat-input input');
             const message = input.value.trim();
@@ -762,6 +776,7 @@
                 messagesList.scrollTop = messagesList.scrollHeight;
                 input.value = '';
                 
+                // Simulate bot response
                 setTimeout(() => {
                     const botLi = document.createElement('li');
                     botLi.innerHTML = `
@@ -780,6 +795,38 @@
             }
         }
 
+        // Simulate random user messages
+        function startChatSimulation() {
+            const messagesList = document.getElementById('messages');
+            const randomMessages = [
+                'Классный момент! 😎',
+                'Жду продолжения! 🍿',
+                'Это что, поворот?! 🤯',
+                'Ха, отличная сцена! 😂',
+                'Кто-нибудь заметил отсылку? 👀'
+            ];
+            const names = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Елена'];
+
+            chatInterval = setInterval(() => {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${randomName}:</strong> ${randomMessage}
+                    <small>${new Date().toLocaleTimeString()}</small>
+                `;
+                messagesList.appendChild(li);
+                messagesList.scrollTop = messagesList.scrollHeight;
+            }, 5000);
+        }
+
+        function stopChatSimulation() {
+            if (chatInterval) {
+                clearInterval(chatInterval);
+                chatInterval = null;
+            }
+        }
+
         // Contact form handling
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -794,43 +841,34 @@
             }, 3000);
         });
 
-        // Initialize animations on page load
+        // Initialize animations and chat on page load
         document.addEventListener('DOMContentLoaded', function() {
             animateFeatures();
             animateSteps();
             animateTestimonials();
             initPagination();
 
-            const messagesList = document.getElementById('messages');
-            const welcomeLi = document.createElement('li');
-            welcomeLi.className = 'system';
-            welcomeLi.innerHTML = `
-                <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями 🎬
-                <small>${new Date().toLocaleTimeString()}</small>
-            `;
-            messagesList.appendChild(welcomeLi);
+            // Add random users to room simulation
+            function addRandomUsers() {
+                const usersList = document.getElementById('users-list');
+                const names = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Елена'];
+                
+                names.forEach((name, index) => {
+                    setTimeout(() => {
+                        const userDiv = document.createElement('div');
+                        userDiv.className = 'user';
+                        userDiv.innerHTML = `
+                            <div class="user-avatar">${name[0]}</div>
+                            <span>${name}</span>
+                            <div class="status"></div>
+                        `;
+                        usersList.appendChild(userDiv);
+                    }, index * 500);
+                });
+            }
+
+            setTimeout(addRandomUsers, 1000);
         });
-
-        // Add more users to room simulation
-        function addRandomUsers() {
-            const usersList = document.getElementById('users-list');
-            const names = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Елена'];
-            
-            names.forEach((name, index) => {
-                setTimeout(() => {
-                    const userDiv = document.createElement('div');
-                    userDiv.className = 'user';
-                    userDiv.innerHTML = `
-                        <div class="user-avatar">${name[0]}</div>
-                        <span>${name}</span>
-                        <div class="status"></div>
-                    `;
-                    usersList.appendChild(userDiv);
-                }, index * 500);
-            });
-        }
-
-        setTimeout(addRandomUsers, 1000);
     </script>
 </body>
 </html>
