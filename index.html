@@ -7,12 +7,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- Background particles -->
-    <div id="background-particles"></div>
-
     <!-- Navigation -->
     <header>
         <nav>
@@ -654,7 +650,8 @@
             let currentPage = '1';
 
             function showPage(pageNumber) {
-                const direction = parseInt(pageNumber) > parseInt(currentPage) ? 'enter-right' : 'enter-left';
+                const isBackward = parseInt(pageNumber) < parseInt(currentPage);
+                const direction = isBackward ? 'enter-right' : 'enter-left';
 
                 // Сбрасываем стили и классы для всех карточек
                 roomCards.forEach(card => {
@@ -662,19 +659,21 @@
                     card.style.opacity = '0';
                     card.style.visibility = 'hidden';
                     card.style.display = 'none';
-                    card.style.animation = 'none'; // Сбрасываем анимацию
+                    card.style.animation = 'none';
                 });
 
                 // Показываем карточки для выбранной страницы
-                const cardsToShow = document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`);
-                cardsToShow.forEach((card, index) => {
+                const cardsToShow = Array.from(document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`));
+                // Если движемся назад (с 2 на 1), меняем порядок появления
+                const orderedCards = isBackward ? cardsToShow.reverse() : cardsToShow;
+                orderedCards.forEach((card, index) => {
                     card.style.display = 'flex';
                     card.style.opacity = '0';
                     card.style.visibility = 'visible';
                     setTimeout(() => {
                         card.classList.add(direction);
                         card.style.opacity = '1';
-                    }, index * 250); // Задержка 250ms для каждой карточки
+                    }, index * 250);
                 });
 
                 // Обновляем активную кнопку
@@ -795,30 +794,8 @@
             }, 3000);
         });
 
-        // Initialize particles.js for background
-        function initializeParticles() {
-            particlesJS('background-particles', {
-                particles: {
-                    number: { value: 60, density: { enable: true, value_area: 1000 } },
-                    color: { value: "#4ecdc4" },
-                    shape: { type: "triangle", stroke: { width: 1, color: "#4ecdc4" } },
-                    opacity: { value: 0.6, random: true },
-                    size: { value: 4, random: true },
-                    line_linked: { enable: true, distance: 200, color: "#4ecdc4", opacity: 0.3, width: 1.5 },
-                    move: { enable: true, speed: 1, direction: "top", random: true, out_mode: "out" }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
-                    modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, repulse: { distance: 100 } }
-                },
-                retina_detect: true
-            });
-        }
-
         // Initialize animations on page load
         document.addEventListener('DOMContentLoaded', function() {
-            initializeParticles();
             animateFeatures();
             animateSteps();
             animateTestimonials();
