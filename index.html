@@ -648,28 +648,40 @@
         function initPagination() {
             const pageButtons = document.querySelectorAll('.page-btn');
             const roomCards = document.querySelectorAll('.room-card');
+            let currentPage = '1'; // Отслеживаем текущую страницу
 
             function showPage(pageNumber) {
-                // Hide all rooms
+                // Определяем направление анимации
+                const direction = parseInt(pageNumber) > parseInt(currentPage) ? 'enter-right' : 'enter-left';
+
+                // Удаляем классы анимации у всех карточек
                 roomCards.forEach(card => {
                     card.style.display = 'none';
+                    card.classList.remove('enter-left', 'enter-right');
                 });
 
-                // Show rooms for the selected page
-                document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`).forEach(card => {
+                // Показываем карточки для выбранной страницы с анимацией
+                document.querySelectorAll(`.room-card[data-page="${pageNumber}"]`).forEach((card, index) => {
                     card.style.display = 'flex';
+                    // Добавляем класс анимации с небольшой задержкой для эффекта последовательности
+                    setTimeout(() => {
+                        card.classList.add(direction);
+                    }, index * 100); // Задержка 100ms для каждой карточки
                 });
 
-                // Update active button
+                // Обновляем активную кнопку
                 pageButtons.forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.getAttribute('data-page') === pageNumber) {
                         btn.classList.add('active');
                     }
                 });
+
+                // Обновляем текущую страницу
+                currentPage = pageNumber;
             }
 
-            // Add click event listeners to pagination buttons
+            // Добавляем обработчики кликов на кнопки пагинации
             pageButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const page = button.getAttribute('data-page');
@@ -677,7 +689,7 @@
                 });
             });
 
-            // Show first page by default
+            // Показываем первую страницу по умолчанию
             showPage('1');
         }
 
