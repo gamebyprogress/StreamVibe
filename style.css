@@ -268,6 +268,7 @@ nav a:hover {
     padding: 0 1rem;
     position: relative;
     z-index: 2;
+    margin-top: 10px; /* Смещение вниз чутка */
 }
 
 .movie-card {
@@ -278,7 +279,7 @@ nav a:hover {
     position: relative;
     border: 2px solid var(--border-color);
     transition: var(--transition);
-    height: 400px;
+    height: 420px; /* Увеличено с 400px для чуть большей ширины */
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -416,7 +417,7 @@ nav a:hover {
     left: 0;
     height: 4px;
     background: var(--gradient);
-    animation: slideInLeft 0.3s ease-out forwards; /* Слева направо, ускорено до 0.3s */
+    animation: slideInLeft 0.35s ease-out forwards; /* Изменено с 0.3s на 0.35s */
 }
 
 .feature.visible {
@@ -683,8 +684,8 @@ nav a:hover {
     text-align: center;
     max-width: 1120px;
     margin: 0 auto;
-    margin-top: 4rem; /* Увеличено расстояние между блоками */
-    border-top: 2px solid var(--border-color); /* Линия между блоками */
+    margin-bottom: 2rem; /* Изменено с margin-top: 4rem */
+    border-bottom: 2px solid var(--border-color); /* Изменено с border-top */
 }
 
 .rooms-header {
@@ -799,6 +800,14 @@ nav a:hover {
     border: 2px solid var(--border-color);
 }
 
+.room-card:nth-child(3) h4 {
+    margin: 0.5rem 0 0.5rem; /* Выравнивание как в других блоках */
+}
+
+.room-card:nth-child(3) .room-status {
+    margin: 0.5rem 0; /* Выравнивание как в других блоках */
+}
+
 .room-card.waiting .room-status {
     background: rgba(255, 107, 107, 0.1);
     color: var(--primary-color);
@@ -808,11 +817,6 @@ nav a:hover {
 /* Специфический стиль для комнат */
 .room-card:nth-child(3) img {
     height: 260px; /* Увеличено с 220px */
-}
-
-.room-card:nth-child(3) h4,
-.room-card:nth-child(3) .room-status {
-    margin: 0.5rem 0;
 }
 
 /* Модальное окно просмотра */
