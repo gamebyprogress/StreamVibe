@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamVibe</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <header>
+        <a href="#" class="logo">
+            <i class="fas fa-play-circle"></i>
+            StreamVibe
+        </a>
         <nav>
-            <a href="#" class="logo">
-                <i class="fas fa-play-circle"></i>
-                StreamVibe
-            </a>
             <div class="nav-links">
                 <a href="#popular">Фильмы</a>
                 <a href="#features">Особенности</a>
@@ -472,6 +472,7 @@
     <!-- Download Modal -->
     <div id="download-modal" class="modal">
         <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('download-modal')">&times;</button>
             <h2>Скачивание началось!</h2>
             <p>Ваш файл загружается. Пожалуйста, дождитесь завершения.</p>
             <div class="progress-bar">
@@ -487,6 +488,7 @@
     <!-- Create Room Modal -->
     <div id="create-room-modal" class="modal">
         <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('create-room-modal')">&times;</button>
             <h2>Создание комнаты</h2>
             <p>Скачайте наше приложение, чтобы создать комнату!</p>
             <button class="modal-button" onclick="downloadApp(); document.getElementById('create-room-modal').classList.remove('visible')">
@@ -582,6 +584,11 @@
             setTimeout(() => {
                 modal.classList.remove('visible');
             }, 3000);
+        }
+
+        // Close modal function
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('visible');
         }
 
         // Create room modal
@@ -772,12 +779,17 @@
         }
 
         // Join room
+        let scrollPosition = 0;
         function joinRoom(movieTitle) {
             const watchParty = document.getElementById('watch-party');
             const movieTitleElement = document.getElementById('party-movie-title');
             const videoPlayer = document.getElementById('video-player-iframe');
             const usersList = document.getElementById('users-list');
             const messages = document.getElementById('messages');
+
+            // Save scroll position and disable scrolling
+            scrollPosition = window.pageYOffset;
+            document.body.style.overflow = 'hidden';
 
             // Set movie title and video
             movieTitleElement.textContent = movieTitle;
@@ -915,6 +927,15 @@
                     Скачайте наше приложение, чтобы полноценно пользоваться чатом!
                 </li>
             `;
+            // Restore scrolling and scroll to movie-select section
+            document.body.style.overflow = '';
+            const movieSelect = document.getElementById('movie-select');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = movieSelect.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
 
         // Room card click handler
@@ -946,7 +967,7 @@
                 alert('Сообщение отправлено! Мы свяжемся с вами скоро.');
                 e.target.reset();
                 document.querySelector('.char-counter').textContent = '0/500';
-                document.querySelector('.char-counter').classList.remove('visible'); // Скрываем счетчик после сброса
+                document.querySelector('.char-counter').classList.remove('visible');
             }, 1000);
         });
 
@@ -956,7 +977,6 @@
             const currentLength = this.value.length;
             counter.textContent = `${currentLength}/500`;
             
-            // Показываем счетчик, если есть текст, иначе скрываем
             if (currentLength > 0) {
                 counter.classList.add('visible');
             } else {
