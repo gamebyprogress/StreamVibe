@@ -58,15 +58,17 @@ header {
     background: rgba(15, 15, 35, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 2px solid var(--border-color);
-}
-
-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -408,7 +410,7 @@ nav a:hover {
 .features {
     max-width: 1400px;
     margin: 0 auto;
-    flex: none; /* Изменено с flex: 1 на flex: none */
+    flex: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1208,6 +1210,23 @@ nav a:hover {
     position: relative;
 }
 
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
 .modal-content h2 {
     font-size: 1.8rem;
     font-weight: 700;
@@ -1270,7 +1289,7 @@ nav a:hover {
 /* Футер */
 footer {
     min-height: 90vh;
-    padding: 2rem 2rem; /* Уменьшено с 4rem до 2rem */
+    padding: 2rem 2rem;
     background: var(--bg-primary);
     text-align: center;
     max-width: 1400px;
@@ -1341,7 +1360,7 @@ footer {
 #contact-form input,
 #contact-form textarea {
     width: 100%;
-    padding: 1rem 1rem; /* Изменено с 0.8rem 1rem на 1rem 1rem */
+    padding: 1rem 1rem;
     border: 2px solid var(--border-color);
     border-radius: 10px;
     background: var(--bg-secondary);
@@ -1354,7 +1373,7 @@ footer {
     resize: vertical;
     min-height: 120px;
     max-height: 300px;
-    padding-bottom: 2.5rem; /* Место для char-counter */
+    padding-bottom: 2.5rem;
 }
 
 #contact-form input:focus,
@@ -1373,11 +1392,11 @@ footer {
     background: var(--bg-secondary);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    display: none; /* Скрываем по умолчанию */
+    display: none;
 }
 
 #contact-form .char-counter.visible {
-    display: block; /* Показываем при вводе */
+    display: block;
 }
 
 #contact-form .char-counter.limit-reached {
@@ -1402,7 +1421,7 @@ footer {
 }
 
 .footer-links {
-    margin-top: 6rem; /* Увеличено с 4rem до 6rem для смещения вниз */
+    margin-top: 6rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
