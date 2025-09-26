@@ -799,6 +799,18 @@
             });
         }
 
+        // Format seconds to XhYmZs
+        function formatTimeToHMS(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            let timeString = '';
+            if (hours > 0) timeString += `${hours}h`;
+            if (minutes > 0 || hours > 0) timeString += `${minutes}m`;
+            timeString += `${secs}s`;
+            return timeString;
+        }
+
         // Join room
         let scrollPosition = 0;
         function joinRoom(movieTitle) {
@@ -822,12 +834,26 @@
                 roomStartTimes[movieTitle] = Math.floor(Math.random() * duration);
             }
             const startTime = roomStartTimes[movieTitle];
+            const startTimeHMS = formatTimeToHMS(startTime);
 
-            // Set video source with random start time
-            videoPlayer.src = `${movieTrailers[movieTitle]}&t=${startTime}`;
+            // Set video source with random start time in URL (for imitation)
+            videoPlayer.src = `${movieTrailers[movieTitle]}?t=${startTimeHMS}`;
 
             // Show overlay to prevent interaction
             videoOverlay.style.display = 'block';
+
+            // Block keyboard controls
+            const blockPlayerControls = (e) => {
+                // Block space (pause), arrows (seek), and common player shortcuts (J, K, L, F)
+                if ([' ', 'ArrowLeft', 'ArrowRight', 'KeyJ', 'KeyK', 'KeyL', 'KeyF'].includes(e.code)) {
+                    e.preventDefault();
+                }
+            };
+            document.addEventListener('keydown', blockPlayerControls);
+
+            // Block context menu and wheel events on video player
+            videoOverlay.addEventListener('contextmenu', (e) => e.preventDefault());
+            videoOverlay.addEventListener('wheel', (e) => e.preventDefault());
 
             // Clear previous users
             usersList.innerHTML = `
@@ -853,7 +879,7 @@
             // Reset messages with welcome message and dynamic time
             messages.innerHTML = `
                 <li class="system">
-                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Видео началось с ${formatTime(startTime)}. Наслаждайтесь просмотром!
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Видео началось с ${startTimeHMS.replace('h', ':').replace('m', ':').replace('s', '')}. Наслаждайтесь просмотром!
                     <small>${new Date().toLocaleTimeString()}</small>
                 </li>
                 <li class="download-message">
@@ -869,13 +895,9 @@
 
             // Simulate chat messages
             simulateChatMessages(movieTitle);
-        }
 
-        // Format time for display (e.g., 125 seconds -> 2:05)
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+            // Clean up event listeners when leaving room
+            watchParty.dataset.cleanup = JSON.stringify({ blockPlayerControls });
         }
 
         // Simulate chat messages
@@ -947,7 +969,8 @@
         function shareRoom() {
             const movieTitle = document.getElementById('party-movie-title').textContent;
             const startTime = roomStartTimes[movieTitle] || 0;
-            const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}?t=${startTime}`;
+            const startTimeHMS = formatTimeToHMS(startTime);
+            const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}?t=${startTimeHMS}`;
             navigator.clipboard.writeText(shareLink).then(() => {
                 alert('Ссылка на комнату скопирована в буфер обмена!');
             });
@@ -959,6 +982,16 @@
             const videoPlayer = document.getElementById('video-player-iframe');
             const videoOverlay = document.getElementById('video-overlay');
             const messages = document.getElementById('messages');
+
+            // Remove event listeners
+            const cleanup = JSON.parse(watchParty.dataset.cleanup || '{}');
+            if (cleanup.blockPlayerControls) {
+                document.removeEventListener('keydown', cleanup.blockPlayerControls);
+            }
+            videoOverlay.removeEventListener('contextmenu', (e) => e.preventDefault());
+            videoOverlay.removeEventListener('wheel', (e) => e.preventDefault());
+
+            // Reset modal
             watchParty.classList.remove('active');
             videoPlayer.src = '';
             videoOverlay.style.display = 'none';
