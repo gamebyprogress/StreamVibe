@@ -954,6 +954,11 @@
             const counter = document.querySelector('.char-counter');
             const currentLength = this.value.length;
             counter.textContent = `${currentLength}/500`;
+            if (currentLength >= 500) {
+                counter.classList.add('limit-reached');
+            } else {
+                counter.classList.remove('limit-reached');
+            }
         });
 
         // Initialize animations and functionality
