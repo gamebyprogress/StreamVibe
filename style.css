@@ -1317,6 +1317,10 @@ footer {
     gap: 1rem;
 }
 
+.textarea-container {
+    position: relative;
+}
+
 #contact-form input,
 #contact-form textarea {
     padding: 0.8rem 1rem;
@@ -1332,6 +1336,7 @@ footer {
     resize: vertical;
     min-height: 100px;
     max-height: 300px;
+    padding-bottom: 2rem; /* Добавлено место для char-counter */
 }
 
 #contact-form input:focus,
@@ -1342,10 +1347,11 @@ footer {
 }
 
 #contact-form .char-counter {
-    align-self: flex-end;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
     font-size: 0.8rem;
     color: var(--text-secondary);
-    margin-top: -0.5rem;
 }
 
 #contact-form .char-counter.limit-reached {
