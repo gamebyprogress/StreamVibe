@@ -408,7 +408,7 @@ nav a:hover {
 .features {
     max-width: 1400px;
     margin: 0 auto;
-    flex: 1;
+    flex: none; /* Изменено с flex: 1 на flex: none */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1270,7 +1270,7 @@ nav a:hover {
 /* Футер */
 footer {
     min-height: 90vh;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem; /* Уменьшено с 4rem до 2rem */
     background: var(--bg-primary);
     text-align: center;
     max-width: 1400px;
@@ -1341,7 +1341,7 @@ footer {
 #contact-form input,
 #contact-form textarea {
     width: 100%;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1rem; /* Изменено с 0.8rem 1rem на 1rem 1rem */
     border: 2px solid var(--border-color);
     border-radius: 10px;
     background: var(--bg-secondary);
@@ -1373,6 +1373,11 @@ footer {
     background: var(--bg-secondary);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
+    display: none; /* Скрываем по умолчанию */
+}
+
+#contact-form .char-counter.visible {
+    display: block; /* Показываем при вводе */
 }
 
 #contact-form .char-counter.limit-reached {
@@ -1397,7 +1402,7 @@ footer {
 }
 
 .footer-links {
-    margin-top: 4rem;
+    margin-top: 6rem; /* Увеличено с 4rem до 6rem для смещения вниз */
     display: flex;
     justify-content: center;
     gap: 2rem;
