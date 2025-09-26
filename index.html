@@ -26,7 +26,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero section">
+    <section class="hero section" id="hero">
         <div class="hero-content">
             <h1>Смотри фильмы в 4K вместе с друзьями</h1>
             <div class="hero-video">
@@ -242,7 +242,7 @@
                         <li>Запустите stream-vibe-installer.exe</li>
                         <li>Следуйте инструкциям установщика (2-3 минуты)</li>
                     </ul>
-                    <p><strong>Поддержка:</strong> доступна 24/7 через встроенный чат</p>
+                    <p><strong>Поддержка:</strong> Доступна 24/7 через встроенный чат</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -253,13 +253,13 @@
                 <div class="faq-answer">
                     <strong>Текущая поддержка:</strong>
                     <ul>
-                        <li><code>Windows 10/11</code> — полная поддержка (64-bit)</li>
+                        <li><code>Windows 10/11</code> — Полная поддержка (64-bit)</li>
                         <li><code>Браузерная версия</code> — Chrome, Firefox, Safari</li>
                     </ul>
                     <strong>В разработке:</strong>
                     <ul>
-                        <li><code>macOS</code> — релиз через 2-3 месяца</li>
-                        <li><code>iOS/Android</code> — первая половина 2026 года</li>
+                        <li><code>macOS</code> — Релиз через 2-3 месяца</li>
+                        <li><code>iOS/Android</code> — Первая половина 2026 года</li>
                     </ul>
                     <p><strong>Системные требования:</strong> 4 ГБ RAM, 100 МБ места</p>
                 </div>
@@ -272,7 +272,7 @@
                 <div class="faq-answer">
                     <strong>Технология SyncTime™ обеспечивает:</strong>
                     <ul>
-                        <li><strong>Задержка &lt; 50ms</strong> между участниками</li>
+                        <li><strong>Задержка &lt; 50 мс</strong> между участниками</li>
                         <li>Автоматическая компенсация буферизации</li>
                         <li>Адаптивная синхронизация под разную скорость интернета</li>
                         <li>Резервное копирование через WebRTC</li>
@@ -288,11 +288,11 @@
                 <div class="faq-answer">
                     <strong>Полная поддержка:</strong>
                     <ul>
-                        <li><code>YouTube</code> — все видео включая 4K и 60 FPS</li>
-                        <li><code>Netflix</code> — премиум контент (требуется подписка)</li>
+                        <li><code>YouTube</code> — Все видео включая 4K и 60 FPS</li>
+                        <li><code>Netflix</code> — Премиум контент (требуется подписка)</li>
                         <li><code>Amazon Prime Video</code> — 4K HDR контент</li>
                         <li><code>Disney+</code> — Marvel, Star Wars, Pixar</li>
-                        <li><code>HBO Max</code> — контент Warner Bros.</li>
+                        <li><code>HBO Max</code> — Контент Warner Bros.</li>
                     </ul>
                     <strong>Дополнительно:</strong>
                     <ul>
@@ -310,10 +310,10 @@
                 <div class="faq-answer">
                     <strong>Меры безопасности:</strong>
                     <ul>
-                        <li><strong>Антивирусная защита:</strong> проверено Norton, McAfee, Kaspersky</li>
+                        <li><strong>Антивирусная защита:</strong> Проверено Norton, McAfee, Kaspersky</li>
                         <li><strong>Шифрование:</strong> TLS 1.3 для соединений + AES-256 для данных</li>
                         <li><strong>Приватность:</strong> End-to-End шифрование приватных комнат</li>
-                        <li><strong>Аутентификация:</strong> цифровая подпись Microsoft Authenticode</li>
+                        <li><strong>Аутентификация:</strong> Цифровая подпись Microsoft Authenticode</li>
                     </ul>
                     <strong>Что НЕ делаем:</strong>
                     <ul>
@@ -322,7 +322,7 @@
                         <li>Не показываем рекламу в приложении</li>
                         <li>Соответствуем GDPR и российскому законодательству</li>
                     </ul>
-                    <p><strong>Важно:</strong> скачивайте только с официального сайта</p>
+                    <p><strong>Важно:</strong> Скачивайте только с официального сайта</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -333,8 +333,8 @@
                 <div class="faq-answer">
                     <strong>Онлайн режим (основной):</strong>
                     <ul>
-                        <li><code>1080p:</code> от 5 Мбит/с</li>
-                        <li><code>4K:</code> от 25 Мбит/с</li>
+                        <li><code>1080p:</code> От 5 Мбит/с</li>
+                        <li><code>4K:</code> От 25 Мбит/с</li>
                         <li>Авто-подстройка под скорость соединения</li>
                     </ul>
                     <strong>Оффлайн возможности:</strong>
@@ -349,7 +349,7 @@
                         <li>Поддержка USB/HDD накопителей</li>
                         <li>Встроенный плеер с субтитрами и эквалайзером</li>
                     </ul>
-                    <p><strong>Ограничения:</strong> чат работает только в локальной сети, нет облачного сохранения прогресса</p>
+                    <p><strong>Ограничения:</strong> Чат работает только в локальной сети, нет облачного сохранения прогресса</p>
                 </div>
             </div>
         </div>
@@ -523,8 +523,10 @@
             <form id="contact-form">
                 <input type="text" placeholder="Ваше имя" required>
                 <input type="email" placeholder="Email" required>
-                <textarea placeholder="Сообщение" maxlength="500" required></textarea>
-                <div class="char-counter">0/500</div>
+                <div class="textarea-container">
+                    <textarea placeholder="Сообщение" maxlength="500" required></textarea>
+                    <div class="char-counter">0/500</div>
+                </div>
                 <button type="submit">Отправить</button>
             </form>
         </div>
@@ -542,7 +544,12 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
+                let target;
+                if (targetId === '#') {
+                    target = document.querySelector('.hero');
+                } else {
+                    target = document.querySelector(targetId);
+                }
                 if (target) {
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
