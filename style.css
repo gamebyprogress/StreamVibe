@@ -62,8 +62,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 nav {
@@ -1288,7 +1287,7 @@ nav a:hover {
 
 /* Футер */
 footer {
-    min-height: 90vh;
+    min-height: 92vh;
     padding: 2rem 2rem;
     background: var(--bg-primary);
     text-align: center;
