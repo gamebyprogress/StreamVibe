@@ -81,6 +81,17 @@ nav {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    position: relative;
+}
+
+.logo::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="url(#grad)" stroke-width="2"/><path d="M12 6v12M6 12h12" stroke="url(#grad)" stroke-width="2"/><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23ff6b6b"/><stop offset="100%" style="stop-color:%234ecdc4"/></linearGradient></defs></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .logo i {
@@ -237,7 +248,7 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
     flex-wrap: wrap;
 }
 
@@ -1341,7 +1352,7 @@ footer {
 
 #contact-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
     max-height: 300px;
     padding-bottom: 2.5rem; /* Место для char-counter */
 }
@@ -1371,7 +1382,7 @@ footer {
 #contact-form button {
     background: var(--gradient);
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 3rem;
     border-radius: 25px;
     color: var(--text-primary);
     font-weight: 600;
@@ -1386,7 +1397,7 @@ footer {
 }
 
 .footer-links {
-    margin-top: auto;
+    margin-top: 4rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
