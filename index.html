@@ -749,24 +749,6 @@
             'Fight Club': 'https://vkvideo.ru/video_ext.php?oid=-220018529&id=456243245&hd=2&autoplay=1&mute=1'
         };
 
-        const movieDurations = {
-            'Interstellar': 3599, // Max 59m59s
-            'Inception': 3599,
-            'The Dark Knight': 3599,
-            'Pulp Fiction': 3599,
-            'The Matrix': 3599,
-            'Fight Club': 3599
-        };
-
-        const roomStartTimes = {
-            'Interstellar': null,
-            'Inception': null,
-            'The Dark Knight': null,
-            'Pulp Fiction': null,
-            'The Matrix': null,
-            'Fight Club': null
-        };
-
         const roomUsers = {
             'Interstellar': [],
             'Inception': [],
@@ -798,16 +780,6 @@
             });
         }
 
-        // Format seconds to XmYs for URL and X:YY for chat
-        function formatTimeToHMS(seconds, forChat = false) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            if (forChat) {
-                return `${minutes}:${secs.toString().padStart(2, '0')}`;
-            }
-            return `${minutes}m${secs}s`;
-        }
-
         // Join room
         let scrollPosition = 0;
         function joinRoom(movieTitle) {
@@ -825,17 +797,8 @@
             // Set movie title
             movieTitleElement.textContent = movieTitle;
 
-            // Generate or reuse random start time for the room (0-3599 seconds)
-            if (roomStartTimes[movieTitle] === null) {
-                const duration = movieDurations[movieTitle] || 3599; // Max 59m59s
-                roomStartTimes[movieTitle] = Math.floor(Math.random() * duration);
-            }
-            const startTime = roomStartTimes[movieTitle];
-            const startTimeHMS = formatTimeToHMS(startTime); // e.g., 15m15s
-            const startTimeChat = formatTimeToHMS(startTime, true); // e.g., 15:15
-
-            // Set video source with random start time in URL
-            videoPlayer.src = `${movieTrailers[movieTitle]}?t=${startTimeHMS}`;
+            // Set video source without start time
+            videoPlayer.src = movieTrailers[movieTitle];
 
             // Show overlay to prevent interaction
             videoOverlay.style.display = 'block';
@@ -874,10 +837,10 @@
                 usersList.appendChild(userElement);
             });
 
-            // Reset messages with welcome message and dynamic time
+            // Reset messages with welcome message
             messages.innerHTML = `
                 <li class="system">
-                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Видео началось с ${startTimeChat}. Наслаждайтесь просмотром!
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром!
                     <small>${new Date().toLocaleTimeString()}</small>
                 </li>
                 <li class="download-message">
@@ -966,9 +929,7 @@
         // Share room
         function shareRoom() {
             const movieTitle = document.getElementById('party-movie-title').textContent;
-            const startTime = roomStartTimes[movieTitle] || 0;
-            const startTimeHMS = formatTimeToHMS(startTime); // e.g., 15m15s
-            const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}?t=${startTimeHMS}`;
+            const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}`;
             navigator.clipboard.writeText(shareLink).then(() => {
                 alert('Ссылка на комнату скопирована в буфер обмена!');
             });
