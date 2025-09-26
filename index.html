@@ -443,6 +443,7 @@
             <div class="player-chat">
                 <div id="video-player">
                     <iframe id="video-player-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    <div id="video-overlay"></div>
                 </div>
                 <div id="chat">
                     <h3>
@@ -748,6 +749,24 @@
             'Fight Club': 'https://vkvideo.ru/video_ext.php?oid=-220018529&id=456243245&hd=2&autoplay=1&mute=1'
         };
 
+        const movieDurations = {
+            'Interstellar': 10140, // ~169 minutes
+            'Inception': 8880, // ~148 minutes
+            'The Dark Knight': 9120, // ~152 minutes
+            'Pulp Fiction': 9240, // ~154 minutes
+            'The Matrix': 8160, // ~136 minutes
+            'Fight Club': 8340 // ~139 minutes
+        };
+
+        const roomStartTimes = {
+            'Interstellar': null,
+            'Inception': null,
+            'The Dark Knight': null,
+            'Pulp Fiction': null,
+            'The Matrix': null,
+            'Fight Club': null
+        };
+
         // Generate and store room users
         const roomUsers = {
             'Interstellar': [],
@@ -786,6 +805,7 @@
             const watchParty = document.getElementById('watch-party');
             const movieTitleElement = document.getElementById('party-movie-title');
             const videoPlayer = document.getElementById('video-player-iframe');
+            const videoOverlay = document.getElementById('video-overlay');
             const usersList = document.getElementById('users-list');
             const messages = document.getElementById('messages');
 
@@ -793,9 +813,21 @@
             scrollPosition = window.pageYOffset;
             document.body.style.overflow = 'hidden';
 
-            // Set movie title and video
+            // Set movie title
             movieTitleElement.textContent = movieTitle;
-            videoPlayer.src = movieTrailers[movieTitle] || '';
+
+            // Generate or reuse random start time for the room
+            if (roomStartTimes[movieTitle] === null) {
+                const duration = movieDurations[movieTitle] || 7200; // Default 2 hours if not specified
+                roomStartTimes[movieTitle] = Math.floor(Math.random() * duration);
+            }
+            const startTime = roomStartTimes[movieTitle];
+
+            // Set video source with random start time
+            videoPlayer.src = `${movieTrailers[movieTitle]}&t=${startTime}`;
+
+            // Show overlay to prevent interaction
+            videoOverlay.style.display = 'block';
 
             // Clear previous users
             usersList.innerHTML = `
@@ -821,7 +853,7 @@
             // Reset messages with welcome message and dynamic time
             messages.innerHTML = `
                 <li class="system">
-                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Видео началось с ${formatTime(startTime)}. Наслаждайтесь просмотром!
                     <small>${new Date().toLocaleTimeString()}</small>
                 </li>
                 <li class="download-message">
@@ -837,6 +869,13 @@
 
             // Simulate chat messages
             simulateChatMessages(movieTitle);
+        }
+
+        // Format time for display (e.g., 125 seconds -> 2:05)
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
         // Simulate chat messages
@@ -907,7 +946,8 @@
         // Share room
         function shareRoom() {
             const movieTitle = document.getElementById('party-movie-title').textContent;
-            const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}`;
+            const startTime = roomStartTimes[movieTitle] || 0;
+            const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}?t=${startTime}`;
             navigator.clipboard.writeText(shareLink).then(() => {
                 alert('Ссылка на комнату скопирована в буфер обмена!');
             });
@@ -917,9 +957,11 @@
         function leaveRoom() {
             const watchParty = document.getElementById('watch-party');
             const videoPlayer = document.getElementById('video-player-iframe');
+            const videoOverlay = document.getElementById('video-overlay');
             const messages = document.getElementById('messages');
             watchParty.classList.remove('active');
             videoPlayer.src = '';
+            videoOverlay.style.display = 'none';
             messages.innerHTML = `
                 <li class="system">
                     <strong>StreamVibe:</strong> Добро пожаловать в комнату! Наслаждайтесь просмотром вместе с друзьями
