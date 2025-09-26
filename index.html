@@ -946,6 +946,7 @@
                 alert('Сообщение отправлено! Мы свяжемся с вами скоро.');
                 e.target.reset();
                 document.querySelector('.char-counter').textContent = '0/500';
+                document.querySelector('.char-counter').classList.remove('visible'); // Скрываем счетчик после сброса
             }, 1000);
         });
 
@@ -954,6 +955,14 @@
             const counter = document.querySelector('.char-counter');
             const currentLength = this.value.length;
             counter.textContent = `${currentLength}/500`;
+            
+            // Показываем счетчик, если есть текст, иначе скрываем
+            if (currentLength > 0) {
+                counter.classList.add('visible');
+            } else {
+                counter.classList.remove('visible');
+            }
+            
             if (currentLength >= 500) {
                 counter.classList.add('limit-reached');
             } else {
