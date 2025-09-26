@@ -1292,9 +1292,9 @@ footer {
 }
 
 .contact-form {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 2rem;
+    width: 550px;
+    max-width: 550px;
+    margin: 0 auto 2rem;
     position: relative;
     z-index: 2;
 }
@@ -1472,7 +1472,9 @@ footer {
     }
 
     .contact-form {
-        max-width: 500px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 2rem;
     }
 }
 
