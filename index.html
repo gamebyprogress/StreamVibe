@@ -750,12 +750,12 @@
         };
 
         const movieDurations = {
-            'Interstellar': 10140, // ~169 minutes
-            'Inception': 8880, // ~148 minutes
-            'The Dark Knight': 9120, // ~152 minutes
-            'Pulp Fiction': 9240, // ~154 minutes
-            'The Matrix': 8160, // ~136 minutes
-            'Fight Club': 8340 // ~139 minutes
+            'Interstellar': 3599, // Max 59m59s
+            'Inception': 3599,
+            'The Dark Knight': 3599,
+            'Pulp Fiction': 3599,
+            'The Matrix': 3599,
+            'Fight Club': 3599
         };
 
         const roomStartTimes = {
@@ -767,7 +767,6 @@
             'Fight Club': null
         };
 
-        // Generate and store room users
         const roomUsers = {
             'Interstellar': [],
             'Inception': [],
@@ -799,16 +798,14 @@
             });
         }
 
-        // Format seconds to XhYmZs
-        function formatTimeToHMS(seconds) {
-            const hours = Math.floor(seconds / 3600);
-            const minutes = Math.floor((seconds % 3600) / 60);
+        // Format seconds to XmYs for URL and X:YY for chat
+        function formatTimeToHMS(seconds, forChat = false) {
+            const minutes = Math.floor(seconds / 60);
             const secs = seconds % 60;
-            let timeString = '';
-            if (hours > 0) timeString += `${hours}h`;
-            if (minutes > 0 || hours > 0) timeString += `${minutes}m`;
-            timeString += `${secs}s`;
-            return timeString;
+            if (forChat) {
+                return `${minutes}:${secs.toString().padStart(2, '0')}`;
+            }
+            return `${minutes}m${secs}s`;
         }
 
         // Join room
@@ -828,15 +825,16 @@
             // Set movie title
             movieTitleElement.textContent = movieTitle;
 
-            // Generate or reuse random start time for the room
+            // Generate or reuse random start time for the room (0-3599 seconds)
             if (roomStartTimes[movieTitle] === null) {
-                const duration = movieDurations[movieTitle] || 7200; // Default 2 hours if not specified
+                const duration = movieDurations[movieTitle] || 3599; // Max 59m59s
                 roomStartTimes[movieTitle] = Math.floor(Math.random() * duration);
             }
             const startTime = roomStartTimes[movieTitle];
-            const startTimeHMS = formatTimeToHMS(startTime);
+            const startTimeHMS = formatTimeToHMS(startTime); // e.g., 15m15s
+            const startTimeChat = formatTimeToHMS(startTime, true); // e.g., 15:15
 
-            // Set video source with random start time in URL (for imitation)
+            // Set video source with random start time in URL
             videoPlayer.src = `${movieTrailers[movieTitle]}?t=${startTimeHMS}`;
 
             // Show overlay to prevent interaction
@@ -879,7 +877,7 @@
             // Reset messages with welcome message and dynamic time
             messages.innerHTML = `
                 <li class="system">
-                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Видео началось с ${startTimeHMS.replace('h', ':').replace('m', ':').replace('s', '')}. Наслаждайтесь просмотром!
+                    <strong>StreamVibe:</strong> Добро пожаловать в комнату! Видео началось с ${startTimeChat}. Наслаждайтесь просмотром!
                     <small>${new Date().toLocaleTimeString()}</small>
                 </li>
                 <li class="download-message">
@@ -969,7 +967,7 @@
         function shareRoom() {
             const movieTitle = document.getElementById('party-movie-title').textContent;
             const startTime = roomStartTimes[movieTitle] || 0;
-            const startTimeHMS = formatTimeToHMS(startTime);
+            const startTimeHMS = formatTimeToHMS(startTime); // e.g., 15m15s
             const shareLink = `https://streamvibe.com/room/${encodeURIComponent(movieTitle)}?t=${startTimeHMS}`;
             navigator.clipboard.writeText(shareLink).then(() => {
                 alert('Ссылка на комнату скопирована в буфер обмена!');
