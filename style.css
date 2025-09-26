@@ -1292,8 +1292,9 @@ footer {
 }
 
 .contact-form {
-    max-width: 500px;
-    margin: 0 auto 2rem;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 2;
 }
@@ -1468,6 +1469,10 @@ footer {
     nav a {
         font-size: 0.8rem;
         padding: 0.5rem;
+    }
+
+    .contact-form {
+        max-width: 500px;
     }
 }
 
